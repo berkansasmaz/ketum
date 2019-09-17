@@ -1,67 +1,69 @@
 <template>
-    <div>
-      <h1 class="mt-4">
-        Hello, Ketum! This is a monitoring app.
-      </h1>
-
-      <h5 class="mt-5">
-        Made with <icon icon="heart" class="fuscia" /> by
-        <a href="https://trilon.io" target="_blank" class="fuscia">Trilon.io</a>
-      </h5>
-
-      <br>
-
-      <a href="https://trilon.io" target="_blank">
-        <img class="trilon-logo" src="https://trilon.io/trilon-logo-clear.png" />
-      </a>
-
-      <br><br>
-
-      <h4>
-        <a href="https://trilon.io" target="_blank" class="fuscia">
-          Enterprise Consulting | Development | Training | Workshops
-        </a>
-      </h4>
-      <strong>
-        Get your Team & Application up to speed by working with some of the leading industry
-        experts in JavaScript & ASP.NET!
-      </strong>
-      <br><br>
-      <ul>
-        <li>Official <a href="https://www.nestjs.com" target="_blank">NestJS</a> Consulting</li>
-        <li>Architectural Review</li>
-        <li>JavaScript Application Consulting
-          <ul>
-            <li>Vue | React | Angular</li>
-            <li>Best-practices</li>
-          </ul>
-        </li>
-        <li>Team Augmentation & Support</li>
-        <li>Much more!</li>
-      </ul>
-
-      <strong>Let's get in touch and see how Trilon can help you! </strong>
-      <p><a href="mailto:hello@trilon.io?subject=Trilon%20Consulting"><icon icon="envelope"/> hello@trilon.io</a></p>
-
-      <h3 class="mt-5">Find us Online</h3>
-      <strong>Website: <a href="https://trilon.io" target="_blank">Trilon.io</a></strong>
-      <br>
-      <strong>Twitter: <a href="https://twitter.com/trilon_io" target="_blank">@Trilon_IO</a></strong>
-      <br>
-      <strong>Github: <a href="https://github.com/trilonio" target="_blank">@Trilon_IO</a></strong>
-
-      <br><br><br>
+  <div>
+    <div class="row">
+      <div class="col-sm-6 col-xl-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="lnr lnr-cart display-4 text-success"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Monthly sales</div>
+                <div class="text-large">2362</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="lnr lnr-earth display-4 text-info"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Monthly visits</div>
+                <div class="text-large">687,123</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="lnr lnr-gift display-4 text-danger"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Products</div>
+                <div class="text-large">985</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="lnr lnr-users display-4 text-warning"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Users</div>
+                <div class="text-large">105,652</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {}
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style>
-
 </style>
