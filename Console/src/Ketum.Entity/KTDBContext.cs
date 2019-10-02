@@ -11,5 +11,9 @@ namespace Ketum.Entity
         public KTDBContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<KTDMonitor> Monitors {get; set;}
+        public DbSet<KTDMonitorStep> MonitorSteps { get; set; }
+        public DbSet<KTDMonitorStepLog> MonitorStepLogs { get; set; }
     }
 }

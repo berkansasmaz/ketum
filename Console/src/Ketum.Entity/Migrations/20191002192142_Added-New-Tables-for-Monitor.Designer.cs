@@ -3,15 +3,17 @@ using System;
 using Ketum.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Ketum.Entity.Migrations
 {
     [DbContext(typeof(KTDBContext))]
-    partial class KTDBContextModelSnapshot : ModelSnapshot
+    [Migration("20191002192142_Added-New-Tables-for-Monitor")]
+    partial class AddedNewTablesforMonitor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
