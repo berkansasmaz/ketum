@@ -1,14 +1,36 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ketum.Web.Controllers
 {
-    [Authorize]
-    public class MonitoringController : Controller
+    public class MonitoringController : ApiController
     {
-        public IActionResult Index(){
-            return View();
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Json(new
+            {
+                Success = true,
+                Message = "Hi there!"
+            });
         }
 
+        [HttpPost]
+        public IActionResult Post([FromBody]MonitoringModel value)
+        {
+            return Forbid();
+            // return Json(new
+            // {
+            //     Success = true,
+            //     Message = "I saved it.",
+            //     Data = value
+            // });
+        }
+    }
+
+    public class MonitoringModel
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
     }
 }
