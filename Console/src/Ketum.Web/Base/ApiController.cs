@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using Ketum.Entity;
 using Ketum.Web.Models;
-using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Ketum.Web
 {
     [Route("api/v1/[controller]")]
     public class ApiController : SecureDbController
     {
-	
+		private UserManager<KTUser> _userManager;
+        public UserManager<KTUser> UserManager => _userManager ?? (UserManager<KTUser>)HttpContext?.RequestServices.GetService(typeof(UserManager<KTUser>));
 		public IActionResult Success(string message = default(string), object data = default(object), int code = 200){
 			return Ok(
 				new KTReturn(){
