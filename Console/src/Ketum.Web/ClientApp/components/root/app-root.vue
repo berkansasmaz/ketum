@@ -12,7 +12,8 @@
     <div class="layout-content">
       <!-- Page content -->
       <div class="container-fluid flex-grow-1 container-p-y">
-        <router-view></router-view>
+		  	<notifications/>
+        	<router-view></router-view>
       </div>
       <!-- / Page content -->
     </div>
