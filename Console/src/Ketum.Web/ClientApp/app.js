@@ -6,9 +6,12 @@ import { sync } from 'vuex-router-sync';
 import App from 'components/root/app-root';
 import { FontAwesomeIcon } from './icons';
 import PageHead from 'components/shared/page-head';
+import Notifications from 'vue-notification';
+
 // Registration of global components
 Vue.component('icon', FontAwesomeIcon);
 Vue.component('page-head', PageHead);
+Vue.use(Notifications);
 
 Vue.prototype.$http = axios;
 
