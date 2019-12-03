@@ -8,7 +8,7 @@
 export default {
 	props: {
 		title: {
-			"default": "",
+			"default": "title",
 			"type" : String
 		},
 		prefix: {
@@ -16,7 +16,7 @@ export default {
 			"type" : String
 		},
 		icon: {
-			"default": "Ketum",
+			"default": "icon",
 			"type" : String
 		}
 	}
