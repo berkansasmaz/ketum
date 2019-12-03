@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ketum.Web
 {
 	 [Authorize]
-    public class SecureDbController : Controller
+    public class SecureDbController : DbController
     {
     	
     }
