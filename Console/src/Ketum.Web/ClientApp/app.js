@@ -7,11 +7,20 @@ import App from 'components/root/app-root';
 import { FontAwesomeIcon } from './icons';
 import PageHead from 'components/shared/page-head';
 import Notifications from 'vue-notification';
+import VueContentPlaceholders from 'vue-content-placeholders'
+
+Vue.use(VueContentPlaceholders)
+// Input Controls
+import KTIText from 'components/Input/text';
+
+Vue.use(Notifications);
+
 
 // Registration of global components
 Vue.component('icon', FontAwesomeIcon);
 Vue.component('page-head', PageHead);
-Vue.use(Notifications);
+//Registration for Inputs Controls 
+Vue.component('mvi-text', KTIText);
 
 Vue.prototype.$http = axios;
 
