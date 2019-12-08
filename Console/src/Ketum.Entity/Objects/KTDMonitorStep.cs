@@ -22,4 +22,8 @@ namespace Ketum.Entity
         HeaderExists = 3,
         BodyContains = 4,
     }
+
+	public class KTDSMonitorStepSettingsRequest{
+		public string Url { get; set; }
+	}
 }
