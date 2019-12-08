@@ -1,5 +1,6 @@
 import MonitoringList from 'components/pages/monitoring/list';
 import MonitoringSave from 'components/pages/monitoring/save';
+import MonitoringView from 'components/pages/monitoring/view';
 import Forbidden from 'components/root/forbidden';
 
 export const routes = [{
@@ -19,6 +20,12 @@ export const routes = [{
     component: MonitoringSave,
     display: 'New Monitoring',
     icon: 'plus'
+  },  {
+    name: 'monitoring-view',
+    path: '/monitoring/view/:id',
+    component: MonitoringView,
+	display: 'View Monitoring',
+	hidden: true, 
   },
   {
     divider: true,
