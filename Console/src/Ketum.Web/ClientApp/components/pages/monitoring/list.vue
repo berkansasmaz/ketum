@@ -2,19 +2,23 @@
   <div>
     <page-head icon="chart-line" title="All Monitorings" />
     <div class="row">
-      <div class="col-md-12" >
-        <!-- Popular products -->
-       <div class="card mb-3 col-md-3" v-for="(monitoring, index) in monitorings" :key="index">
-                  <img class="card-img-top" src="https://via.placeholder.com/512" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">{{monitoring.name}}</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                  </div>
-                </div>
-        <!-- / Popular products -->
+      <div class="col-md-3" v-for="(monitoring, index) in monitorings" :key="index">
+        <div class="card  mr-4 mb-4">
+          <img class="card-img-top shadow-sm"
+            src="https://api.apiflash.com/v1/urltoimage?access_key=ea5fe25b67544bc2b9424e8748ac6eb8&url=http://berkansasmaz.com"
+            alt="">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+          </div>
+          <div class="card-body">
+            <router-link 
+					:to="{name: 'monitoring-view' , params: {id:monitoring.monitorId}}"
+					class="card-link"
+			>
+              View Dashboard
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -23,15 +27,15 @@
 <script>
   import service from "service/monitoring";
   export default {
-	data() {
-		return {
-			monitorings: []
-		}
-	},
+    data() {
+      return {
+        monitorings: []
+      }
+    },
     async mounted() {
-	  var result = await service.list();
-	  if(result.data && result.data.length)
-	 	 this.monitorings.push(...result.data);
+      var result = await service.list();
+      if (result.data && result.data.length)
+        this.monitorings.push(...result.data);
     }
   };
 
