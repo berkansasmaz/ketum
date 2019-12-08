@@ -16,7 +16,6 @@ export default {
 			"type" : String
 		},
 		icon: {
-			"default": "icon",
 			"type" : String
 		}
 	}
