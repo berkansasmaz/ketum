@@ -50,7 +50,7 @@
 
       <!-- Layout navbar -->
       <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-navbar-theme container-p-x" id="layout-navbar">
-        <a href="index.html" class="navbar-brand">Ketum</a>
+        <a href="/" class="navbar-brand">Ketum</a>
 
         <!-- Sidenav toggle -->
         <div class="layout-sidenav-toggle navbar-nav align-items-lg-center mr-auto mr-lg-4">
@@ -65,16 +65,15 @@
         </button>
 
         <div class="navbar-collapse collapse" id="layout-navbar-collapse">
-          <div class="navbar-nav align-items-lg-center">
+          <div class="navbar-nav align-items-lg-center d-none">
             <div class="nav-item"><a class="nav-link" href="#">Link 1</a></div>
             <div class="nav-item"><a class="nav-link" href="#">Link 2</a></div>
           </div>
         </div>
       </nav>
-@RenderBody()
+			@RenderBody()
     </div>
     <!-- Layout inner -->
-
     <div class="layout-overlay layout-sidenav-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
