@@ -1,5 +1,4 @@
 <template>
-
   <!-- / Layout navbar -->
 
   <div
