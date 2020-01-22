@@ -21,9 +21,11 @@
     "update-packages": "npx npm-check -u"
   },
   "dependencies": {
+    "apexcharts": "^3.10.1",
     "axios": "^0.18.0",
     "core-js": "^2.5.3",
     "vue": "^2.6.10",
+    "vue-apexcharts": "^1.5.1",
     "vue-content-placeholders": "^0.2.1",
     "vue-notification": "^1.3.20",
     "vue-router": "^3.0.3",

@@ -7,11 +7,17 @@ import App from 'components/root/app-root';
 import { FontAwesomeIcon } from './icons';
 import PageHead from 'components/shared/page-head';
 import Notifications from 'vue-notification';
-import VueContentPlaceholders from 'vue-content-placeholders'
-
-Vue.use(VueContentPlaceholders)
-// Input Controls
+import VueContentPlaceholders from 'vue-content-placeholders';
 import KTIText from 'components/Input/text';
+import VueApexCharts from 'vue-apexcharts';
+
+Vue.use(VueContentPlaceholders);
+
+Vue.use(VueApexCharts);
+
+Vue.component('apexchart', VueApexCharts);
+
+// Input Controls
 
 Vue.use(Notifications);
 
