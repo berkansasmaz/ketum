@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Ketum.Entity
 
@@ -13,6 +14,10 @@ namespace Ketum.Entity
         public Guid MonitorId { get; set; }
         public KTDMonitorStepTypes Type { get; set; }
         public string Settings { get; set; }
+
+		public KTDSMonitorStepSettingsRequest SettingsAsRequest(){
+			return JsonConvert.DeserializeObject<KTDSMonitorStepSettingsRequest>(Settings);
+		}
     }
 
     public enum KTDMonitorStepTypes : short
