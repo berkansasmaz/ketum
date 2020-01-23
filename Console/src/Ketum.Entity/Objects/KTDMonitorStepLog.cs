@@ -15,11 +15,7 @@ namespace Ketum.Entity
         public DateTime EndDate { get; set; }
         public KTDMonitorStepStatusTypes Status { get; set; }
         public string Log { get; set; }
+		public int Interval { get; set; }
         
-    }
-    public enum KTDMonitorStepStatusTypes : short
-    {
-        Fail = 0,
-        Success = 1,
     }
 }
