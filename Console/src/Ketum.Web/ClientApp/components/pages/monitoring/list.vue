@@ -9,10 +9,10 @@
             <h4 class="card-title">{{monitoring.name}} 
 			</h4>
 			<div class="btn-group">
-				<router-link :to="{name: 'monitoring-view' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-secondary ml-0 mr-0 ">
-					View Dashboard
+				<router-link :to="{name: 'monitoring-view' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-secondary">
+					Dashboard
 				</router-link>
-				<router-link :to="{name: 'monitoring-save' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-primary ml-0 mr-0 ">
+				<router-link :to="{name: 'monitoring-save' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-primary">
 					Edit
 				</router-link>
 			</div>

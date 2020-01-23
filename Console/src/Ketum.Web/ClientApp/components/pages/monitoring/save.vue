@@ -33,7 +33,7 @@
 	},
 	computed: {
 		title(){
-			return this.$route.params.id ? this.model.name : "New Monitoring";
+			 return this.$route.params.id ? this.model.name : "New Monitoring";
 		}
 	},
 	async mounted() {
@@ -45,9 +45,9 @@
 				this.model.name = result.data.name;
 				this.model.url = result.data.url;
 			}
-			else{
-				this.loading = false;
-			}
+		}
+		else{
+			this.loading = false;
 		}
 	},
     methods: {

@@ -13,7 +13,7 @@
           :key="index"
         >
           <router-link
-            :to="route.path"
+            :to="{ name : route.name }"
             exact-active-class="active"
             class="sidenav-link"
             v-if="route.component"
