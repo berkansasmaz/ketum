@@ -17,6 +17,8 @@ namespace Ketum.Entity
 		public int Interval { get; set; }
         public KTDMonitorStepStatusTypes Status { get; set; }
 
+        public DateTime LastCheckDate { get; set; }//Orderby etmek için.
+
 		public KTDSMonitorStepSettingsRequest SettingsAsRequest(){
 			return JsonConvert.DeserializeObject<KTDSMonitorStepSettingsRequest>(Settings);
 		}
@@ -26,9 +28,10 @@ namespace Ketum.Entity
     {
 		Unknown = 0,
 		Pending = 1,
-        Success = 2,
-		Fail = 3,
-		Warning = 4 
+        Processing = 2,
+        Success = 3,
+        Warning = 4,
+		Fail = 5,
     }
 
     public enum KTDMonitorStepTypes : short
