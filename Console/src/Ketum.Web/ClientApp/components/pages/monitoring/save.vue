@@ -41,7 +41,6 @@
 			const result = await service.get(this.$route.params.id);
 			this.loading = false;
 			if (result.success) {
-				console.log(result);
 				this.model.name = result.data.name;
 				this.model.url = result.data.url;
 			}
