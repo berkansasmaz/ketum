@@ -10,6 +10,8 @@ import Notifications from 'vue-notification';
 import VueContentPlaceholders from 'vue-content-placeholders';
 import KTIText from 'components/Input/text';
 import VueApexCharts from 'vue-apexcharts';
+import KTVMonitorStatus from 'components/shared/monitor-status';
+
 
 Vue.use(VueContentPlaceholders);
 
@@ -25,6 +27,8 @@ Vue.use(Notifications);
 // Registration of global components
 Vue.component('icon', FontAwesomeIcon);
 Vue.component('page-head', PageHead);
+Vue.component('ktv-monitor-status', KTVMonitorStatus);
+
 //Registration for Inputs Controls 
 Vue.component('mvi-text', KTIText);
 
