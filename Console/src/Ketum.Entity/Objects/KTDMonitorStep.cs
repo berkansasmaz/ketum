@@ -32,6 +32,7 @@ namespace Ketum.Entity
         Success = 3,
         Warning = 4,
 		Fail = 5,
+        Error = 6
     }
 
     public enum KTDMonitorStepTypes : short
