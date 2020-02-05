@@ -2,20 +2,52 @@
   <div>
     <page-head icon="chart-line" title="All Monitorings" />
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="(monitoring, index) in monitorings" :key="index">
-        <div class="card  mr-2 mb-2">
-          <apexchart  type="area" :options="monitoring.chart" :series="monitoring.chart.series" class="mt-4 ml-2 mr-2"></apexchart>
-          <div class="card-body text-center">
-            <h4 class="card-title">{{monitoring.name}} 
-			</h4>
-			<div class="btn-group">
-				<router-link :to="{name: 'monitoring-view' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-secondary">
-					Dashboard
-				</router-link>
-				<router-link :to="{name: 'monitoring-save' , params: { id:monitoring.monitorId }}" class="btn btn-sm btn-primary">
-					Edit
-				</router-link>
-			</div>
+      <div v-for="(item, index) in monitorings" :key="'monitoring - '  + index">
+        <div class="card mr-2 ml-2 mb-4 monitor-card">
+          <div class="card-header pl-3 pr-3 d-flex">
+            <div class="card-title mb-0 with-elements">
+              <router-link :to="{name:'monitoring-view', params:{id:item.monitorId}}">
+                <icon icon="chart-line" />
+                {{item.name}}
+              </router-link>
+              
+              <ktv-monitor-status class="ml-1 mr-1" :status="item.stepStatus" :title="item.stepStatusText"/>
+
+              <div class="card-title-elements ml-md-auto">
+                <router-link
+                  class="hover-show"
+                  :to="{name:'monitoring-save', params:{id:item.monitorId}}"
+                >
+                  <icon icon="edit" />Edit
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <apexchart
+            type="area"
+            :options="item.uptimeChart"
+            :series="item.uptimeChart.series"
+            class="m-2 mt-4"
+            height="140"
+          />
+          <apexchart
+            type="area"
+            :options="item.loadtimeChart"
+            :series="item.loadtimeChart.series"
+            class="m-2 mt-4"
+            height="140"
+          />
+          <div class="card-body">
+            <div class="card-subtitle text-muted">
+              <a
+                :href="item.url"
+                target="_blank"
+                class="text-muted font-weight-light d-block text-ellipsis"
+              >
+                <icon icon="external-link-alt" />&nbsp;
+                {{ item.url }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -24,77 +56,79 @@
 </template>
 
 <script>
-  import service from "service/monitoring";
-  export default {
-    data() {
+import service from "service/monitoring";
+export default {
+  data() {
+    return {
+      monitorings: []
+    };
+  },
+  async mounted() {
+    var result = await service.list();
+    if (result.data && result.data.length)
+      result.data.map(item => {
+        item.loadtimeChart = this.chart(
+          `${item.loadTime.toFixed(2)} ms`,
+          "Load time",
+          item.loadTimes
+        );
+        item.uptimeChart = this.chart(
+          `${item.upTime.toFixed(2)} %`,
+          "Uptime",
+          item.upTimes
+        );
+        this.monitorings.push(item);
+      });
+  },
+  methods: {
+    chart(title, subtitle, data) {
       return {
-        monitorings: []
-      }
-    },
-    async mounted() {
-      var result = await service.list();
-      if (result.data && result.data.length)
-		result.data.map(item => {
-			item.chart = {
-				chart: {
-					type: 'area',
-					height: 160,
-					sparkline: {
-					enabled: true
-					},
-				},
-				stroke: {
-					curve: 'straight'
-				},
-				fill: {
-					opacity: 0.3,
-				},
-				series: [{
-					data: this.randomize()
-				}],
-				yaxis: {
-					min: 0
-				},
-				colors: ['#DCE6EC'],
-				title: {
-					text: '99,34 %',
-					offsetX: 0,
-					style: {
-					fontSize: '20pt',
-					cssClass: 'apexcharts-yaxis-title'
-					}
-				},
-				subtitle: {
-					text: 'Uptime',
-					offsetX: 0,
-					style: {
-					fontSize: '14px',
-					cssClass: 'apexcharts-yaxis-title'
-					}
-				}
-        };
-			this.monitorings.push(item);
-		});
-},
-    methods: {
-      randomize() {
-        let arg = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
-        var array = arg.slice();
-        var currentIndex = array.length,
-          temporaryValue, randomIndex;
-
-        while (0 !== currentIndex) {
-
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
+        chart: {
+          type: "area",
+          height: 160,
+          sparkline: {
+            enabled: true
+          }
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        fill: {
+          opacity: 0.3,
+          type: 'gradient' / 'solid' / 'pattern' / 'image'
+        },
+        markers: {
+          size: 0,
+        },
+        series: [
+          {
+            name: subtitle,
+            data: data
+          }
+        ],
+        yaxis: {
+          min: 0
+        },
+        
+        colors: ["#2E93fA"],
+        title: {
+          text: title,
+          offsetX: 0,
+          style: {
+            fontSize: "16pt",
+            cssClass: "apexcharts-yaxis-title"
+          }
+        },
+        subtitle: {
+          text: subtitle,
+          offsetX: 0,
+          style: {
+            fontSize: "10pt",
+            cssClass: "apexcharts-yaxis-title"
+          }
         }
-        return array;
-      }
+      };
     },
-  };
-
+  }
+};
 </script>
