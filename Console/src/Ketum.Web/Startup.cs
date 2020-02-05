@@ -33,6 +33,7 @@ namespace Ketum.Web {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+			services.AddHostedService<KTBSMonitoring>();//Bizim yerimize background servisi oluşturur ve StartAsync() metodunu çağırıcak. https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2
             //https://docs.microsoft.com/en-us/ASPNET/Core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio
 
             services.Configure < IdentityOptions > (options => {
