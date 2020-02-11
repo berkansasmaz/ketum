@@ -22,7 +22,7 @@ namespace Ketum.Web {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext < KTDBContext > (
-                options => options.UseNpgsql("Server=localhost; Port=5432; Database= ketum; User Id= postgres; Password=1234567890;")
+                options => options.UseNpgsql("Server=localhost; Port=5432; Database= ketum; User Id= postgres; Password=123456789;")
             );
 
             services
