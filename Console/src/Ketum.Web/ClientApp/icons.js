@@ -2,7 +2,22 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 // Official documentation available at: https://github.com/FortAwesome/vue-fontawesome
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { faEnvelope, faHeart, faGraduationCap, faHome, faInfo, faList, faSpinner, faPlus, faCreditCard, faChartLine,faUserCircle, faEdit, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEnvelope,
+  faHeart,
+  faGraduationCap,
+  faHome,
+  faInfo,
+  faList,
+  faSpinner,
+  faPlus,
+  faCreditCard,
+  faChartLine,
+  faUserCircle,
+  faEdit,
+  faExternalLinkAlt,
+  faSearch
+} from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faMicrosoft, faVuejs } from '@fortawesome/free-brands-svg-icons'
 
 // If not present, it won't be visible within the application. Considering that you
@@ -27,7 +42,8 @@ library.add(
   faCreditCard,
   faChartLine,
   faEdit,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faSearch
 )
 
 export {
