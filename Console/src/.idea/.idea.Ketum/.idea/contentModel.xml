@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="$USER_HOME$/.gitignore_global" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$/../../.git/info/exclude" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Ketum.Entity" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -13,6 +15,10 @@
           <e p="20191002192142_Added-New-Tables-for-Monitor.Designer.cs" t="Include" />
           <e p="20191202233641_Added-New-Fields-to-Monitor.cs" t="Include" />
           <e p="20191202233641_Added-New-Fields-to-Monitor.Designer.cs" t="Include" />
+          <e p="20200123121321_New-Columns-To-Tables.cs" t="Include" />
+          <e p="20200123121321_New-Columns-To-Tables.Designer.cs" t="Include" />
+          <e p="20200130222126_LastCheckDate-to-MonitorStep.cs" t="Include" />
+          <e p="20200130222126_LastCheckDate-to-MonitorStep.Designer.cs" t="Include" />
           <e p="KTDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -136,6 +142,7 @@
               <e p="nav-menu.vue" t="Include" />
             </e>
             <e p="shared" t="Include">
+              <e p="monitor-status.vue" t="Include" />
               <e p="page-head.vue" t="Include" />
             </e>
           </e>
@@ -203,6 +210,7 @@
         <e p="node_modules/babel-eslint" t="IncludeRecursive" />
         <e p="node_modules/babel-loader" t="IncludeRecursive" />
         <e p="node_modules/bootstrap" t="IncludeRecursive" />
+        <e p="node_modules/bootstrap-vue" t="IncludeRecursive" />
         <e p="node_modules/chalk" t="IncludeRecursive" />
         <e p="node_modules/commander" t="IncludeRecursive" />
         <e p="node_modules/core-js" t="IncludeRecursive" />
@@ -224,6 +232,7 @@
         <e p="node_modules/node-sass" t="IncludeRecursive" />
         <e p="node_modules/optimize-css-assets-webpack-plugin" t="IncludeRecursive" />
         <e p="node_modules/popper.js" t="IncludeRecursive" />
+        <e p="node_modules/portal-vue" t="IncludeRecursive" />
         <e p="node_modules/postcss" t="IncludeRecursive" />
         <e p="node_modules/postcss-selector-parser" t="IncludeRecursive" />
         <e p="node_modules/sass-loader" t="IncludeRecursive" />
@@ -234,7 +243,9 @@
         <e p="node_modules/vue" t="IncludeRecursive" />
         <e p="node_modules/vue-apexcharts" t="IncludeRecursive" />
         <e p="node_modules/vue-content-placeholders" t="IncludeRecursive" />
+        <e p="node_modules/vue-functional-data-merge" t="IncludeRecursive" />
         <e p="node_modules/vue-loader" t="IncludeRecursive" />
+        <e p="node_modules/vue-moment" t="IncludeRecursive" />
         <e p="node_modules/vue-notification" t="IncludeRecursive" />
         <e p="node_modules/vue-router" t="IncludeRecursive" />
         <e p="node_modules/vue-server-renderer" t="IncludeRecursive" />
@@ -253,7 +264,6 @@
             </e>
           </e>
         </e>
-        <e p="package-lock.json" t="Include" />
         <e p="package.json" t="Include" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -261,6 +271,9 @@
         </e>
         <e p="repo-example.png" t="Include" />
         <e p="ScaffoldingReadme.txt" t="Include" />
+        <e p="services" t="Include">
+          <e p="KTBSMonitoring.cs" t="Include" />
+        </e>
         <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
@@ -855,7 +868,11 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
+    <e p="$PROJECT_DIR$/../../node_modules/cross-env" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Ketum.-1927177644.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Ketum.-1772119195.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
   </component>
 </project>
