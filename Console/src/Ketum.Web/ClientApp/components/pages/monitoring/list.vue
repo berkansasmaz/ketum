@@ -10,7 +10,7 @@
                 <icon icon="chart-line" />
                 {{item.name}}
               </router-link>
-              
+
               <ktv-monitor-status class="ml-1 mr-1" :status="item.stepStatus" :title="item.stepStatusText"/>
 
               <div class="card-title-elements ml-md-auto">
@@ -109,7 +109,7 @@ export default {
         yaxis: {
           min: 0
         },
-        
+
         colors: ["#2E93fA"],
         title: {
           text: title,

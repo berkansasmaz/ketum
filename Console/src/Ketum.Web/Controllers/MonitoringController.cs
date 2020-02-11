@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Ketum.Entity;
+using Ketum.Web.Models;
 using Newtonsoft.Json;
 
 namespace Ketum.Web.Controllers
@@ -28,7 +29,8 @@ namespace Ketum.Web.Controllers
 
             var stepStatus = KTDMonitorStepStatusTypes.Unknown;
 
-            var monitorStepRequest = await Db.MonitorSteps.FirstOrDefaultAsync(x => x.MonitorId == monitor.MonitorId && x.Type == KTDMonitorStepTypes.Request);
+            var monitorStepRequest = await Db.MonitorSteps.FirstOrDefaultAsync(x =>
+                x.MonitorId == monitor.MonitorId && x.Type == KTDMonitorStepTypes.Request);
             if (monitorStepRequest != null)
             {
                 var requestSettings = monitorStepRequest.SettingsAsRequest();
@@ -39,18 +41,18 @@ namespace Ketum.Web.Controllers
 
                 var week = DateTime.UtcNow.AddDays(-14);
                 var logs = await Db.MonitorStepLogs
-                                .Where(x => x.MonitorStepId == monitorStepRequest.MonitorStepId && x.StartDate >= week)
-                                .OrderByDescending(x => x.StartDate)
-                                .Take(50)
-                                .ToListAsync();
+                    .Where(x => x.MonitorStepId == monitorStepRequest.MonitorStepId && x.StartDate >= week)
+                    .OrderByDescending(x => x.StartDate)
+                    .Take(50)
+                    .ToListAsync();
 
                 logs = logs.OrderBy(x => x.StartDate).ToList();
 
                 if (logs.Any(x => x.Status == KTDMonitorStepStatusTypes.Success))
                 {
                     loadTime = logs
-                                .Where(x => x.Status == KTDMonitorStepStatusTypes.Success)
-                                .Average(x => x.EndDate.Subtract(x.StartDate).TotalMilliseconds);
+                        .Where(x => x.Status == KTDMonitorStepStatusTypes.Success)
+                        .Average(x => x.EndDate.Subtract(x.StartDate).TotalMilliseconds);
                 }
 
                 foreach (var log in logs)
@@ -102,7 +104,7 @@ namespace Ketum.Web.Controllers
         }
 
         [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute]Guid? id)
+        public async Task<IActionResult> Get([FromRoute] Guid? id)
         {
             if (id.HasValue)
             {
@@ -128,7 +130,7 @@ namespace Ketum.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]KTMMonitorSave value)
+        public async Task<IActionResult> Post([FromBody] KTMMonitorSave value)
         {
             if (string.IsNullOrEmpty(value.Name))
             {
@@ -137,8 +139,8 @@ namespace Ketum.Web.Controllers
 
             var monitorCheck = await Db.Monitors.AnyAsync(
                 x => x.MonitorId != value.Id &&
-                x.Name.Equals(value.Name) &&
-                x.UserId == UserId);
+                     x.Name.Equals(value.Name) &&
+                     x.UserId == UserId);
 
             if (monitorCheck)
             {
@@ -171,7 +173,8 @@ namespace Ketum.Web.Controllers
                 Url = value.Url
             };
 
-            var step = await Db.MonitorSteps.FirstOrDefaultAsync(x => x.MonitorId == data.MonitorId && x.Type == KTDMonitorStepTypes.Request);
+            var step = await Db.MonitorSteps.FirstOrDefaultAsync(x =>
+                x.MonitorId == data.MonitorId && x.Type == KTDMonitorStepTypes.Request);
             if (step != null)
             {
                 var requestSettings = step.SettingsAsRequest() ?? new KTDSMonitorStepSettingsRequest();
@@ -189,7 +192,9 @@ namespace Ketum.Web.Controllers
                     Interval = 10
                 };
                 Db.MonitorSteps.Add(step);
-            };
+            }
+
+            ;
 
             var result = await Db.SaveChangesAsync();
             if (result > 0)
@@ -199,6 +204,87 @@ namespace Ketum.Web.Controllers
                 });
             else
                 return Error("Something is wrong with your model.");
+        }
+
+        [HttpGet("steps/{id}")] //routing
+        public async Task<IActionResult> Steps(Guid id)
+        {
+            var monitor = await Db.Monitors
+                .FirstOrDefaultAsync(x => x.MonitorId == id && x.UserId == UserId);
+
+            if (monitor == null)
+                return Error("Monitor not found.");
+
+            var steps = await Db.MonitorSteps
+                .Where(x => x.MonitorId == monitor.MonitorId).ToListAsync();
+
+            var list = steps.Select(x =>
+                new
+                {
+                    x.MonitorStepId,
+                    x.Interval,
+                    x.Status,
+                    StatusText = x.Status.ToString(),
+                    x.LastCheckDate,
+                    x.Type,
+                    TypeText = x.Type.ToString()
+                }).ToList();
+
+            return Success(null, list);
+        }
+
+        [HttpGet("steplogs/{id}")]
+
+        public async Task<IActionResult> StepLogs(Guid id, [FromQuery] int page)
+        {
+            var step = await Db.MonitorSteps.FirstOrDefaultAsync(x => x.MonitorStepId == id);
+            if (step == null)
+            {
+                return Error("Monitor step not found.");
+            }
+            var monitor = await Db.Monitors
+                .FirstOrDefaultAsync(x => x.MonitorId == step.MonitorId && x.UserId == UserId);
+
+            if (monitor == null)
+                return Error("Monitor not found.");
+
+            var itemCount = await Db.MonitorStepLogs
+                .CountAsync(x => x.MonitorStepId == step.MonitorStepId);
+
+            var perPageItem = 10;
+
+            var currentPage = page;
+
+            var logs = await Db.MonitorStepLogs
+                .Where(x => x.MonitorStepId == step.MonitorStepId)
+                .OrderByDescending(x => x.StartDate)
+                .Skip(currentPage * perPageItem)
+                .Take(perPageItem)
+                .ToListAsync();
+
+            var pagedResult = new KTReturnPagedData<dynamic>();
+            pagedResult.ItemCount = itemCount;
+            pagedResult.PageCount = (int) Math.Ceiling(itemCount / (decimal)perPageItem);
+            pagedResult.CurrentPage = currentPage;
+
+            pagedResult.Items = new List<dynamic>();
+
+            foreach (var log in logs)
+            {
+                pagedResult.Items.Add(
+                    new
+                    {
+                        log.MonitorStepLogId,
+                        log.Log,
+                        log.Interval,
+                        log.StartDate,
+                        log.EndDate,
+                        log.Status,
+                        StatusText = log.Status.ToString()
+                    });
+            }
+
+            return Success(null, pagedResult);
         }
     }
 
