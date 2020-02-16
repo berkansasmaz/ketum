@@ -8,9 +8,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "cd ./Console/src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run",
-    "db-migrate": "cd ./Console/src/Ketum.Entity/ && dotnet ef migrations add --startup-project=../Ketum.Web",
-    "db-update": "cd ./Console/src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web"
+    "dev": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run",
+    "db-migrate": "cd ./src/Ketum.Entity/ && dotnet ef migrations add --startup-project=../Ketum.Web",
+    "db-update": "cd ./src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"

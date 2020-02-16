@@ -2,8 +2,477 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a54f7f2-638b-44e7-b22f-e2faa8434cae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docs/subscription.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Ketum.Entity.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20190930151452_Create-Identity-Tables.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20190930151452_Create-Identity-Tables.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20191002192142_Added-New-Tables-for-Monitor.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20191002192142_Added-New-Tables-for-Monitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20191202233641_Added-New-Fields-to-Monitor.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20191202233641_Added-New-Fields-to-Monitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200123121321_New-Columns-To-Tables.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200123121321_New-Columns-To-Tables.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200130222126_LastCheckDate-to-MonitorStep.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200130222126_LastCheckDate-to-MonitorStep.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitorStep.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitorStepLog.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionFeature.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Objects/KTUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/AccessDenied.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/AccessDenied.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ConfirmEmail.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ConfirmEmail.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ExternalLogin.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ForgotPassword.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ForgotPassword.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Lockout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Lockout.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Login.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Login.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/LoginWith2fa.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/LoginWith2fa.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Logout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Logout.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ManageNavPages.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Register.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/Register.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ResetPassword.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ResetPassword.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Account/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Error.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/Error.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Areas/Identity/Pages/_ViewStart.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Base/ApiController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Base/DbController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Base/SecureController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Base/SecureDbController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/boot-app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/boot-server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/Input/text.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/list.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/save.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/view.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/root/app-root.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/root/forbidden.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/root/nav-menu.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/shared/monitor-status.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/components/shared/page-head.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/icons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/router/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/services/monitoring.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/store/api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ClientApp/utils/http.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Controllers/HomeController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Ketum.Web.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Models/Client/KTMMonitorSave.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/ScaffoldingReadme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Services/KTBSMonitoring.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Home/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Shared/Error.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Shared/_CookieConsentPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Shared/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Shared/_LoginPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/Shared/_NonLoginLayout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/Views/_ViewStart.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/repo-example.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/webpack.config.vendor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/appwork-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/appwork.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/bootstrap-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/colors-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/colors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/migrate/appwork-130.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/account.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/authentication.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/chat.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/clients.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/contacts.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/file-manager.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/messages.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/products.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/projects.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/search.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/tasks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/tickets.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/pages/users.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/appwork-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/appwork.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/bootstrap-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/colors-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/colors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-air-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-air.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-corporate-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-corporate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-cotton-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-cotton.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-gradient-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-gradient.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-paper-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-paper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-shadow-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-shadow.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-soft-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-soft.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-sunrise-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-sunrise.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-twitlight-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-twitlight.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-vibrant-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/theme-vibrant.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/rtl/uikit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-air-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-air.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-corporate-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-corporate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-cotton-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-cotton.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-gradient-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-gradient.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-paper-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-paper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-shadow-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-shadow.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-soft-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-soft.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-sunrise-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-sunrise.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-twitlight-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-twitlight.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-vibrant-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/theme-vibrant.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/css/uikit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/fontawesome/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons/ionicons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons/ionicons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons/ionicons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons/ionicons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/ionicons/ionicons.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons/Linearicons-Free.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons/Linearicons-Free.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons/Linearicons-Free.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons/Linearicons-Free.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/linearicons/Linearicons-Free.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic/open-iconic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic/open-iconic.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic/open-iconic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic/open-iconic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/open-iconic/open-iconic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/pe-icon-7-stroke.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/dropdown-hover.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/layout-helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/material-ripple.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/mega-dropdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/pace.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/polyfills.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/sidenav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/js/theme-settings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/animate-css/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/autosize/autosize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/block-ui/block-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-fullscreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-indicator.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-indicator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-video.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-video.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-vimeo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery-youtube.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/gallery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/error.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/play-pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/play-pause.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/video-play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/img/video-play.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/blueimp-gallery/jquery.gallery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootbox/bootbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-duallistbox/bootstrap-duallistbox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-duallistbox/bootstrap-duallistbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-markdown/bootstrap-markdown.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-markdown/bootstrap-markdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-menu/bootstrap-menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-multiselect/bootstrap-multiselect.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-multiselect/bootstrap-multiselect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-select/bootstrap-select.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-select/bootstrap-select.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-slider/bootstrap-slider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-slider/bootstrap-slider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-sortable/bootstrap-sortable.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-sortable/bootstrap-sortable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/bootstrap-table.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/bootstrap-table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/accent-neutralise/accent-neutralise.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/addrbar/addrbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/auto-refresh/auto-refresh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/cookie/cookie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/copy-rows/copy-rows.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/defer-url/defer-url.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/editable/editable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/export/export.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/filter-control/filter-control.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/filter-control/filter-control.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/fixed-columns/fixed-columns.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/fixed-columns/fixed-columns.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/group-by-v2/group-by-v2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/group-by-v2/group-by-v2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/group-by/group-by.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/group-by/group-by.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/i18n-enhance/i18n-enhance.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/key-events/key-events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/mobile/mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/multi-column-toggle/multi-column-toggle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/multiple-search/multiple-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/multiple-selection-row/multiple-selection-row.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/multiple-selection-row/multiple-selection-row.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/multiple-sort/multiple-sort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/natural-sorting/natural-sorting.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/page-jump-to/page-jump-to.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/page-jump-to/page-jump-to.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/pipeline/pipeline.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/print/print.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/reorder-columns/reorder-columns.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/reorder-rows/reorder-rows.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/reorder-rows/reorder-rows.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/resizable/resizable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/select2-filter/select2-filter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/sticky-header/sticky-header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/sticky-header/sticky-header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/toolbar/toolbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/tree-column/tree-column.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/tree-column/tree-column.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-table/extensions/treegrid/treegrid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/bootstrap-tagsinput/bootstrap-tagsinput.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/c3/c3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/c3/c3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/chartist/chartist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/chartist/chartist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/chartjs/chartjs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/clipboard/clipboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/cropper/cropper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/cropper/cropper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/d3/d3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/datatables/datatables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/datatables/datatables.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/dragula/dragula.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/dragula/dragula.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/dropzone/dropzone.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/dropzone/dropzone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/eve/eve.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flatpickr/flatpickr.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flatpickr/flatpickr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flot/flot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flot/flot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flot/tooltip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flow-js/flow.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/flow-js/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/fullcalendar/fullcalendar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/fullcalendar/fullcalendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/fullcalendar/locale-all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/gmaps/gmaps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/growl/growl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/growl/growl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/idletimer/idletimer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/jstree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default-dark/32px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default-dark/40px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default-dark/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default-dark/throbber.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default/32px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default/40px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/jstree/themes/default/throbber.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/knob/knob.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/ladda/ladda.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/ladda/ladda.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/mapael.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/maps/france_departments.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/maps/usa_states.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/maps/world_countries.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/maps/world_countries_mercator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/mapael/maps/world_countries_miller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/markdown/markdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/masonry/masonry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/minicolors/jquery.minicolors.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/minicolors/minicolors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/minicolors/minicolors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/moment/moment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/morris/morris.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/morris/morris.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/nestable/nestable.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/nestable/nestable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/nouislider/nouislider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/nouislider/nouislider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/numeral/numeral.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/photoswipe/default-skin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/photoswipe/default-skin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/photoswipe/photoswipe.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/photoswipe/photoswipe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/photoswipe/preloader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/plyr/plyr.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/plyr/plyr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/popper/popper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/pwstrength-bootstrap/pwstrength-bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/quill/editor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/quill/quill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/quill/typography.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/raphael/raphael.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/select2/select2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/select2/select2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/shepherd/shepherd.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/shepherd/shepherd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/smartwizard/smartwizard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/smartwizard/smartwizard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/sortablejs/sortable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/sparkline/sparkline.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/spin/spin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/spinkit/spinkit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/sweetalert2/sweetalert2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/sweetalert2/sweetalert2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/swiper/swiper.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/swiper/swiper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/tableexport/tableexport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/timepicker/timepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/timepicker/timepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/toastr/toastr.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/toastr/toastr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/typeahead-js/typeahead.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/typeahead-js/typeahead.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/validate/validate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vanilla-text-mask/text-mask-addons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vanilla-text-mask/vanilla-text-mask.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/overlays/09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/vegas.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/wwwroot/assets/vendor/libs/vegas/vegas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Web/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,25 +551,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/package.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Base/ApiController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitorStep.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.Designer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Services/KTBSMonitoring.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/Client/KTMMonitorSave.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionFeature.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../package.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -108,7 +558,6 @@
       <list>
         <option value="$PROJECT_DIR$/Ketum.Web/Startup.cs" />
         <option value="$PROJECT_DIR$/../../.gitignore" />
-        <option value="$PROJECT_DIR$/../../package.json" />
         <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/icons.js" />
         <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/app.js" />
         <option value="$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" />
@@ -123,11 +572,11 @@
         <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" />
         <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" />
         <option value="$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" />
+        <option value="$PROJECT_DIR$/../../package.json" />
       </list>
     </option>
   </component>
   <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/Ketum.Web/package.json" />
     <dismissed value="$PROJECT_DIR$/../../package.json" />
   </component>
   <component name="ProjectId" id="1XamgBP52YtCqI3kNRqEvciTVOo" />
@@ -147,7 +596,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Ketum.Web" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -199,7 +648,7 @@
       <workItem from="1581668977637" duration="288000" />
       <workItem from="1581669501222" duration="3095000" />
       <workItem from="1581790420314" duration="4365000" />
-      <workItem from="1581855296000" duration="1269000" />
+      <workItem from="1581855296000" duration="1772000" />
     </task>
     <task id="LOCAL-00001" summary="Added rider.">
       <created>1581450405388</created>
@@ -257,7 +706,28 @@
       <option name="project" value="LOCAL" />
       <updated>1581451090796</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added Subscription models/entities to database.">
+      <created>1581856977709</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1581856977709</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added Subscription models/entities to database.">
+      <created>1581856984913</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1581856984913</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Rider ide.">
+      <created>1581856997057</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1581856997057</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +757,9 @@
     <MESSAGE value="I switched from VSCode to Rider." />
     <MESSAGE value="Added and updated pages with new features (list, view, detail logs)." />
     <MESSAGE value="Updated database connection string." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated database connection string." />
+    <MESSAGE value="Added Subscription models/entities to database." />
+    <MESSAGE value="Rider ide." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rider ide." />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Deployment" timestamp="1581451224301">
@@ -318,25 +790,29 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="457" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581856691718" />
-    <state x="152" y="120" key="SettingsEditor" timestamp="1581794670068">
+    <state x="152" y="120" key="SettingsEditor" timestamp="1581857215851">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="152" y="120" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581794670068" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581451377599">
+    <state x="152" y="120" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581857215851" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581857242329">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581451377599" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581857242329" />
     <state x="449" y="140" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1581332459888">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="449" y="140" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.900@0.0.1440.900" timestamp="1581332459888" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581857252427">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1581857252427" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1581413944853">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1581413944853" />
-    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup" timestamp="1581677569207">
+    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup" timestamp="1581857227166">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581677569207" />
+    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581857227166" />
   </component>
 </project>
