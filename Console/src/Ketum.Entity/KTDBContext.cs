@@ -15,5 +15,9 @@ namespace Ketum.Entity
         public DbSet<KTDMonitor> Monitors {get; set;}
         public DbSet<KTDMonitorStep> MonitorSteps { get; set; }
         public DbSet<KTDMonitorStepLog> MonitorStepLogs { get; set; }
+        public DbSet<KTDSubscription> Subscriptions { get; set; }
+        public DbSet<KTDSubscriptionType> SubscriptionTypes { get; set; }
+        public DbSet<KTDSubscriptionFeature> SubscriptionFeatures { get; set; }
+        public DbSet<KTDSubscriptionTypeFeature> SubscriptionTypeFeatures { get; set; }
     }
 }
