@@ -1,0 +1,46 @@
+﻿@page
+@model RegisterModel
+@{
+ViewData["Title"] = "Register";
+}
+
+<div class="authentication-wrapper authentication-1 px-4">
+    <div class="authentication-inner py-5">
+        <section class="my-5">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-4">Register</button>
+                <div class="bg-lightest text-muted small p-2 mt-4">
+                    By clicking "Sign Up", you agree to our
+                    <a href="javascript:void(0)">terms of service and privacy policy</a>. We’ll occasionally send you
+                    account related emails.
+                </div>
+            </form>
+
+             <div class="text-center text-muted mt-4">
+                    Already have an account? <a  asp-page="./Login">Sign In</a>
+                </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

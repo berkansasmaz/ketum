@@ -1,0 +1,17 @@
+.monitor-card{
+	width: 340px;
+}
+
+.hover-show{
+	display: none;
+}
+
+.card:hover .hover-show{
+	display: initial;
+}
+
+.text-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
