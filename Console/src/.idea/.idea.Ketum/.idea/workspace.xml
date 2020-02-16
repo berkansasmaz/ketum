@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a54f7f2-638b-44e7-b22f-e2faa8434cae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,14 +83,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Ketum.Web/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Web/Base/ApiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitorStep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Services/KTBSMonitoring.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/Base/ApiController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../package.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Ketum.Web/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/Client/KTMMonitorSave.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionFeature.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../package.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -109,9 +111,16 @@
         <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/app.js" />
         <option value="$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" />
         <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/services/monitoring.js" />
-        <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/list.vue" />
         <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/view.vue" />
         <option value="$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" />
+        <option value="$PROJECT_DIR$/../docs/subscription.md" />
+        <option value="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" />
+        <option value="$PROJECT_DIR$/Ketum.Web/ClientApp/components/pages/monitoring/list.vue" />
+        <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionFeature.cs" />
+        <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionType.cs" />
+        <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" />
+        <option value="$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" />
+        <option value="$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" />
       </list>
     </option>
   </component>
@@ -120,6 +129,9 @@
     <dismissed value="$PROJECT_DIR$/../../package.json" />
   </component>
   <component name="ProjectId" id="1XamgBP52YtCqI3kNRqEvciTVOo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -131,8 +143,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Console" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
   </component>
   <component name="RunManager">
     <configuration name="Ketum.Web" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -180,6 +193,11 @@
       <workItem from="1581414969743" duration="1005000" />
       <workItem from="1581416121651" duration="810000" />
       <workItem from="1581416978237" duration="15219000" />
+      <workItem from="1581539025431" duration="121000" />
+      <workItem from="1581668977637" duration="288000" />
+      <workItem from="1581669501222" duration="3095000" />
+      <workItem from="1581790420314" duration="4365000" />
+      <workItem from="1581855296000" duration="928000" />
     </task>
     <task id="LOCAL-00001" summary="Added rider.">
       <created>1581450405388</created>
@@ -282,18 +300,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="459" y="293" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1440.900@0.0.1440.900" timestamp="1581333520334" />
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581669063891">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.900@0.0.1440.900" timestamp="1581669063891" />
+    <state x="464" y="303" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1581791640267">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="464" y="303" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1440.900@0.0.1440.900" timestamp="1581791640267" />
     <state x="475" y="297" width="200" height="202" key="LayersDialog" timestamp="1581414906401">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="475" y="297" width="200" height="202" key="LayersDialog/0.0.1440.900@0.0.1440.900" timestamp="1581414906401" />
-    <state x="457" y="168" key="RollbackChangesDialog" timestamp="1581450632364">
+    <state x="457" y="168" key="RollbackChangesDialog" timestamp="1581856691718">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="457" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581450632364" />
-    <state x="186" y="132" key="SettingsEditor" timestamp="1581431589677">
+    <state x="457" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581856691718" />
+    <state x="152" y="120" key="SettingsEditor" timestamp="1581794670068">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="186" y="132" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581431589677" />
+    <state x="152" y="120" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581794670068" />
     <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581451377599">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -306,9 +332,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1581413944853" />
-    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup" timestamp="1581448374929">
+    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup" timestamp="1581677569207">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581448374929" />
+    <state x="383" y="194" width="672" height="678" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581677569207" />
   </component>
 </project>
