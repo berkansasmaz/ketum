@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a54f7f2-638b-44e7-b22f-e2faa8434cae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Ketum/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" afterDir="false" />
     </list>
@@ -87,13 +86,16 @@
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Base/ApiController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDMonitorStep.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Services/KTBSMonitoring.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/KTReturn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/KTDBContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/20200216122227_Added-Subscription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/MonitoringController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Models/Client/KTMMonitorSave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Web/Controllers/SetupController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Ketum.Entity/Migrations/KTDBContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionFeature.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Ketum.Entity/Objects/KTDSubscriptionTypeFeature.cs" root0="FORCE_HIGHLIGHTING" />
@@ -197,7 +199,7 @@
       <workItem from="1581668977637" duration="288000" />
       <workItem from="1581669501222" duration="3095000" />
       <workItem from="1581790420314" duration="4365000" />
-      <workItem from="1581855296000" duration="928000" />
+      <workItem from="1581855296000" duration="1269000" />
     </task>
     <task id="LOCAL-00001" summary="Added rider.">
       <created>1581450405388</created>
