@@ -6,8 +6,9 @@ export const http = axios.create({
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
-    "X-Application-Name": "vue"
-  }
+    "X-Application-Name": "vue",
+    "Accept-Type": "application/json"
+  },
 });
 
 http.interceptors.response.use(
@@ -24,7 +25,7 @@ http.interceptors.response.use(
 	//interceptors ilk parametre olarak response iletimeden önceki halini alır bu kısmı olduğu gibi bırakıtoruz
   },
   function (error) {
-	  //İkinci parametre olarak response' un iletildikten sonra ki halini alır. 
+	  //İkinci parametre olarak response' un iletildikten sonra ki halini alır.
     const statusCode = error.response.status;
     if (statusCode === 401) {
       window.location.href = "/Identity/Account/Login?ReturnUrl=" + encodeURIComponent(window.location.pathname); // Login olduğumda mevcutte bulunduğum adresi tutup giriş yapınca yine o adrese yönlendirmesi için ?ReturnUrl= " + encodeURIComponent(window.location.pathname) kısmını yazdık.

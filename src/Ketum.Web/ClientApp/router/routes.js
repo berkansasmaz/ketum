@@ -1,6 +1,7 @@
 import MonitoringList from 'components/pages/monitoring/list';
 import MonitoringSave from 'components/pages/monitoring/save';
 import MonitoringView from 'components/pages/monitoring/view';
+import SubscriptionView from 'components/pages/subscription/view';
 import Forbidden from 'components/root/forbidden';
 
 export const routes = [{
@@ -24,8 +25,8 @@ export const routes = [{
     name: 'monitoring-view',
     path: '/monitoring/view/:id',
     component: MonitoringView,
-	display: 'View Monitoring',
-	hidden: true, 
+    display: 'View Monitoring',
+    hidden: true,
   },
   {
     divider: true,
@@ -39,7 +40,8 @@ export const routes = [{
   },
   {
     name: 'account-subscription',
-    path: '/Subscription',
+    path: '/subscription',
+    component: SubscriptionView,
     display: 'Subscription',
     icon: 'credit-card'
   },
