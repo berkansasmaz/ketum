@@ -8,8 +8,8 @@ namespace Ketum.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<Guid>(
-                name: "UserId",
-                table: "Monitor",
+                "UserId",
+                "Monitor",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
         }
@@ -17,8 +17,8 @@ namespace Ketum.Entity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "Monitor");
+                "UserId",
+                "Monitor");
         }
     }
 }

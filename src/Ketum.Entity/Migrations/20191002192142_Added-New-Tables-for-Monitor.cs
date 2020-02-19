@@ -8,67 +8,58 @@ namespace Ketum.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Monitor",
-                columns: table => new
+                "Monitor",
+                table => new
                 {
-                    MonitorId = table.Column<Guid>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    MonitorId = table.Column<Guid>(),
+                    CreatedDate = table.Column<DateTime>(),
+                    UpdatedDate = table.Column<DateTime>(),
                     Name = table.Column<string>(nullable: true),
-                    MonitorStatus = table.Column<short>(nullable: false),
-                    TestStatus = table.Column<short>(nullable: false),
-                    LastCheckDate = table.Column<DateTime>(nullable: false),
-                    UpTime = table.Column<decimal>(nullable: false),
-                    LoadTime = table.Column<int>(nullable: false),
-                    MonitorTime = table.Column<short>(nullable: false)
+                    MonitorStatus = table.Column<short>(),
+                    TestStatus = table.Column<short>(),
+                    LastCheckDate = table.Column<DateTime>(),
+                    UpTime = table.Column<decimal>(),
+                    LoadTime = table.Column<int>(),
+                    MonitorTime = table.Column<short>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Monitor", x => x.MonitorId);
-                });
+                constraints: table => { table.PrimaryKey("PK_Monitor", x => x.MonitorId); });
 
             migrationBuilder.CreateTable(
-                name: "MonitorStep",
-                columns: table => new
+                "MonitorStep",
+                table => new
                 {
-                    MonitorStepId = table.Column<Guid>(nullable: false),
-                    MonitorId = table.Column<Guid>(nullable: false),
-                    Type = table.Column<short>(nullable: false),
+                    MonitorStepId = table.Column<Guid>(),
+                    MonitorId = table.Column<Guid>(),
+                    Type = table.Column<short>(),
                     Settings = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MonitorStep", x => x.MonitorStepId);
-                });
+                constraints: table => { table.PrimaryKey("PK_MonitorStep", x => x.MonitorStepId); });
 
             migrationBuilder.CreateTable(
-                name: "MonitorStepLog",
-                columns: table => new
+                "MonitorStepLog",
+                table => new
                 {
-                    MonitorStepLogId = table.Column<Guid>(nullable: false),
-                    MonitorStepId = table.Column<Guid>(nullable: false),
-                    MonitorId = table.Column<Guid>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    Status = table.Column<short>(nullable: false),
+                    MonitorStepLogId = table.Column<Guid>(),
+                    MonitorStepId = table.Column<Guid>(),
+                    MonitorId = table.Column<Guid>(),
+                    StartDate = table.Column<DateTime>(),
+                    EndDate = table.Column<DateTime>(),
+                    Status = table.Column<short>(),
                     Log = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MonitorStepLog", x => x.MonitorStepLogId);
-                });
+                constraints: table => { table.PrimaryKey("PK_MonitorStepLog", x => x.MonitorStepLogId); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Monitor");
+                "Monitor");
 
             migrationBuilder.DropTable(
-                name: "MonitorStep");
+                "MonitorStep");
 
             migrationBuilder.DropTable(
-                name: "MonitorStepLog");
+                "MonitorStepLog");
         }
     }
 }

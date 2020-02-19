@@ -8,28 +8,25 @@ namespace Ketum.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Subscription",
-                columns: table => new
+                "Subscription",
+                table => new
                 {
-                    SubscriptionId = table.Column<Guid>(nullable: false),
-                    SubscriptionTypeId = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<Guid>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    PaymentPeriod = table.Column<short>(nullable: false)
+                    SubscriptionId = table.Column<Guid>(),
+                    SubscriptionTypeId = table.Column<Guid>(),
+                    UserId = table.Column<Guid>(),
+                    StartDate = table.Column<DateTime>(),
+                    EndDate = table.Column<DateTime>(),
+                    PaymentPeriod = table.Column<short>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subscription", x => x.SubscriptionId);
-                });
+                constraints: table => { table.PrimaryKey("PK_Subscription", x => x.SubscriptionId); });
 
             migrationBuilder.CreateTable(
-                name: "SubscriptionFeature",
-                columns: table => new
+                "SubscriptionFeature",
+                table => new
                 {
-                    SubscriptionFeatureId = table.Column<Guid>(nullable: false),
-                    SubscriptionTypeFeatureId = table.Column<Guid>(nullable: false),
-                    SubscriptionTypeId = table.Column<Guid>(nullable: false),
+                    SubscriptionFeatureId = table.Column<Guid>(),
+                    SubscriptionTypeFeatureId = table.Column<Guid>(),
+                    SubscriptionTypeId = table.Column<Guid>(),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
@@ -37,38 +34,32 @@ namespace Ketum.Entity.Migrations
                     ValueUsed = table.Column<string>(nullable: true),
                     ValueRemained = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubscriptionFeature", x => x.SubscriptionFeatureId);
-                });
+                constraints: table => { table.PrimaryKey("PK_SubscriptionFeature", x => x.SubscriptionFeatureId); });
 
             migrationBuilder.CreateTable(
-                name: "SubscriptionType",
-                columns: table => new
+                "SubscriptionType",
+                table => new
                 {
-                    SubscriptionTypeId = table.Column<Guid>(nullable: false),
+                    SubscriptionTypeId = table.Column<Guid>(),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    IsPaid = table.Column<bool>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false)
+                    IsPaid = table.Column<bool>(),
+                    Price = table.Column<decimal>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubscriptionType", x => x.SubscriptionTypeId);
-                });
+                constraints: table => { table.PrimaryKey("PK_SubscriptionType", x => x.SubscriptionTypeId); });
 
             migrationBuilder.CreateTable(
-                name: "SubscriptionTypeFeature",
-                columns: table => new
+                "SubscriptionTypeFeature",
+                table => new
                 {
-                    SubscriptionTypeFeatureId = table.Column<Guid>(nullable: false),
-                    SubscriptionTypeId = table.Column<Guid>(nullable: false),
+                    SubscriptionTypeFeatureId = table.Column<Guid>(),
+                    SubscriptionTypeId = table.Column<Guid>(),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Value = table.Column<string>(nullable: true),
-                    IsFeature = table.Column<bool>(nullable: false)
+                    IsFeature = table.Column<bool>()
                 },
                 constraints: table =>
                 {
@@ -79,16 +70,16 @@ namespace Ketum.Entity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Subscription");
+                "Subscription");
 
             migrationBuilder.DropTable(
-                name: "SubscriptionFeature");
+                "SubscriptionFeature");
 
             migrationBuilder.DropTable(
-                name: "SubscriptionType");
+                "SubscriptionType");
 
             migrationBuilder.DropTable(
-                name: "SubscriptionTypeFeature");
+                "SubscriptionTypeFeature");
         }
     }
 }

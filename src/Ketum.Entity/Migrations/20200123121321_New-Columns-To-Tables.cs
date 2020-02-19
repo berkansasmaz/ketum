@@ -7,26 +7,26 @@ namespace Ketum.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "Interval",
-                table: "MonitorStepLog",
+                "Interval",
+                "MonitorStepLog",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
-                name: "Interval",
-                table: "MonitorStep",
+                "Interval",
+                "MonitorStep",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<short>(
-                name: "Status",
-                table: "MonitorStep",
+                "Status",
+                "MonitorStep",
                 nullable: false,
-                defaultValue: (short)0);
+                defaultValue: (short) 0);
 
             migrationBuilder.AlterColumn<int>(
-                name: "MonitorTime",
-                table: "Monitor",
+                "MonitorTime",
+                "Monitor",
                 nullable: false,
                 oldClrType: typeof(short));
         }
@@ -34,20 +34,20 @@ namespace Ketum.Entity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Interval",
-                table: "MonitorStepLog");
+                "Interval",
+                "MonitorStepLog");
 
             migrationBuilder.DropColumn(
-                name: "Interval",
-                table: "MonitorStep");
+                "Interval",
+                "MonitorStep");
 
             migrationBuilder.DropColumn(
-                name: "Status",
-                table: "MonitorStep");
+                "Status",
+                "MonitorStep");
 
             migrationBuilder.AlterColumn<short>(
-                name: "MonitorTime",
-                table: "Monitor",
+                "MonitorTime",
+                "Monitor",
                 nullable: false,
                 oldClrType: typeof(int));
         }
