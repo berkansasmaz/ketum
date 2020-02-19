@@ -124,6 +124,8 @@ namespace Ketum.Entity.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<Guid>("SubscriptionId");
+
                     b.Property<Guid>("SubscriptionTypeFeatureId");
 
                     b.Property<Guid>("SubscriptionTypeId");

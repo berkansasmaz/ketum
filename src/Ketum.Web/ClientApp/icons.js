@@ -16,7 +16,8 @@ import {
   faUserCircle,
   faEdit,
   faExternalLinkAlt,
-  faSearch
+  faSearch,
+  faBriefcase, faStore, faBuilding,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faMicrosoft, faVuejs } from '@fortawesome/free-brands-svg-icons'
 
@@ -43,8 +44,11 @@ library.add(
   faChartLine,
   faEdit,
   faExternalLinkAlt,
-  faSearch
-)
+  faSearch,
+  faBriefcase,
+  faStore,
+  faBuilding
+);
 
 export {
   FontAwesomeIcon

@@ -1,5 +1,4 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,7 @@ namespace Ketum.Entity
         {
         }
 
-        public DbSet<KTDMonitor> Monitors {get; set;}
+        public DbSet<KTDMonitor> Monitors { get; set; }
         public DbSet<KTDMonitorStep> MonitorSteps { get; set; }
         public DbSet<KTDMonitorStepLog> MonitorStepLogs { get; set; }
         public DbSet<KTDSubscription> Subscriptions { get; set; }

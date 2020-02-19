@@ -14,7 +14,7 @@ namespace Ketum.Web.Controllers
             if (!await Db.SubscriptionTypes.AnyAsync())
             {
                 //Free
-                var subscriptionTypeFree = new KTDSubscriptionType()
+                var subscriptionTypeFree = new KTDSubscriptionType
                 {
                     SubscriptionTypeId = Guid.NewGuid(),
                     IsPaid = false,
@@ -31,7 +31,7 @@ namespace Ketum.Web.Controllers
                 await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "1");
 
                 // Startup
-                var subscriptionTypeStartup = new KTDSubscriptionType()
+                var subscriptionTypeStartup = new KTDSubscriptionType
                 {
                     SubscriptionTypeId = Guid.NewGuid(),
                     IsPaid = true,
@@ -49,7 +49,7 @@ namespace Ketum.Web.Controllers
 
 
                 // Premium
-                var subscriptionTypePremium = new KTDSubscriptionType()
+                var subscriptionTypePremium = new KTDSubscriptionType
                 {
                     SubscriptionTypeId = Guid.NewGuid(),
                     IsPaid = true,
@@ -67,7 +67,7 @@ namespace Ketum.Web.Controllers
 
 
                 // enterprise
-                var subscriptionTypeEnterprise = new KTDSubscriptionType()
+                var subscriptionTypeEnterprise = new KTDSubscriptionType
                 {
                     SubscriptionTypeId = Guid.NewGuid(),
                     IsPaid = true,
@@ -84,19 +84,16 @@ namespace Ketum.Web.Controllers
                 await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "*");
 
 
-                if (await Db.SaveChangesAsync() > 0)
-                {
-                    return Success("I have bootstrapped successfully.");
-                }
-
+                if (await Db.SaveChangesAsync() > 0) return Success("I have bootstrapped successfully.");
             }
+
             return BadRequest("Done.");
         }
 
         [NonAction]
         private async Task AddFeature(Guid subscriptionTypeId, string title, string name, string value)
         {
-            await Db.AddAsync(new KTDSubscriptionTypeFeature()
+            await Db.AddAsync(new KTDSubscriptionTypeFeature
             {
                 SubscriptionTypeFeatureId = Guid.NewGuid(),
                 SubscriptionTypeId = subscriptionTypeId,

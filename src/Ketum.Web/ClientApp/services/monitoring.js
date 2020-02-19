@@ -52,6 +52,6 @@ const MonitoringService = {
       throw result.error;
     }
   }
-}
+};
 
 export default MonitoringService;

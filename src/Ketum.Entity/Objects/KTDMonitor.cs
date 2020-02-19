@@ -7,9 +7,9 @@ namespace Ketum.Entity
     [Table("Monitor")]
     public class KTDMonitor
     {
-        [Key]
-        public Guid MonitorId { get; set; }
-		public Guid UserId { get; set; }
+        [Key] public Guid MonitorId { get; set; }
+
+        public Guid UserId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string Name { get; set; }
@@ -19,22 +19,21 @@ namespace Ketum.Entity
         public decimal UpTime { get; set; }
         public int LoadTime { get; set; }
         public int MonitorTime { get; set; }
-
     }
 
     public enum KTDMonitorStatusTypes : short
     {
-		Unknown = 0,
+        Unknown = 0,
         Up = 1,
-		 Down = 2,
+        Down = 2,
         Warning = 3
     }
+
     public enum KTDTestStatusTypes : short
     {
-		Unknown = 0,
-		AllPassed = 1,
+        Unknown = 0,
+        AllPassed = 1,
         Fail = 2,
         Warning = 3
-
     }
 }

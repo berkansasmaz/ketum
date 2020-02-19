@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.gitignore_global" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$/../.git/info/exclude" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$/../node_modules/cross-env" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Ketum.Entity" t="IncludeRecursive">
@@ -21,6 +22,8 @@
           <e p="20200130222126_LastCheckDate-to-MonitorStep.Designer.cs" t="Include" />
           <e p="20200216122227_Added-Subscription.cs" t="Include" />
           <e p="20200216122227_Added-Subscription.Designer.cs" t="Include" />
+          <e p="20200218121231_Added-SubscriptionId-SubscriptionFeature.cs" t="Include" />
+          <e p="20200218121231_Added-SubscriptionId-SubscriptionFeature.Designer.cs" t="Include" />
           <e p="KTDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -141,6 +144,9 @@
                 <e p="save.vue" t="Include" />
                 <e p="view.vue" t="Include" />
               </e>
+              <e p="subscription" t="Include">
+                <e p="view.vue" t="Include" />
+              </e>
             </e>
             <e p="root" t="Include">
               <e p="app-root.vue" t="Include" />
@@ -162,6 +168,7 @@
           </e>
           <e p="Services" t="Include">
             <e p="monitoring.js" t="Include" />
+            <e p="subscription.js" t="Include" />
           </e>
           <e p="store" t="Include">
             <e p="api.js" t="Include" />
@@ -175,6 +182,7 @@
           <e p="HomeController.cs" t="Include" />
           <e p="MonitoringController.cs" t="Include" />
           <e p="SetupController.cs" t="Include" />
+          <e p="SubscriptionController.cs" t="Include" />
         </e>
         <e p="Dockerfile" t="Include" />
         <e p="Ketum.Web.csproj" t="IncludeRecursive" />

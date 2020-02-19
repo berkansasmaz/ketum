@@ -7,8 +7,8 @@ namespace Ketum.Entity
     [Table("Subscription")]
     public class KTDSubscription
     {
-        [Key]
-        public Guid SubscriptionId { get; set; }
+        [Key] public Guid SubscriptionId { get; set; }
+
         public Guid SubscriptionTypeId { get; set; }
         public Guid UserId { get; set; }
         public DateTime StartDate { get; set; }
@@ -21,7 +21,6 @@ namespace Ketum.Entity
     {
         Unknown = 0,
         Monthly = 1,
-        Yearly = 12,
-        
+        Yearly = 12
     }
 }

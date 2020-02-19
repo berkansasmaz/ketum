@@ -10,37 +10,48 @@ using Microsoft.Extensions.Hosting;
 
 namespace Ketum.Web
 {
-	public class KTBSMonitoring : IHostedService,	IDisposable
-	{
-   		public IServiceProvider Services { get; }    
-		private	CancellationToken _token;
-	
-		public KTBSMonitoring(IServiceProvider services)
-		{
-			this.Services = services;
-		}
+    public class KTBSMonitoring : IHostedService, IDisposable
+    {
+        private CancellationToken _token;
 
-		public Task StartAsync(CancellationToken cancellationToken)
-		{
-			_token = cancellationToken;
-			DoWorkAsync();
-			return Task.CompletedTask;
-		}
+        public KTBSMonitoring(IServiceProvider services)
+        {
+            Services = services;
+        }
 
-		private async void DoWorkAsync()
-		{
-			 while (true)
+        public IServiceProvider Services { get; }
+
+        public void Dispose()
+        {
+            //Return
+        }
+
+        public Task StartAsync(CancellationToken cancellationToken)
+        {
+            _token = cancellationToken;
+            DoWorkAsync();
+            return Task.CompletedTask;
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
+        private async void DoWorkAsync()
+        {
+            while (true)
             {
                 using (var scope = Services.CreateScope())
                 {
                     var db = scope.ServiceProvider.GetRequiredService<KTDBContext>();
                     var steps = await db.MonitorSteps
-                                        .Where(x =>
-                                            x.Type == KTDMonitorStepTypes.Request && x.Status != KTDMonitorStepStatusTypes.Processing
-                                        )
-                                        .OrderBy(x => x.LastCheckDate)
-                                        .Take(20)
-                                        .ToListAsync();
+                        .Where(x =>
+                            x.Type == KTDMonitorStepTypes.Request && x.Status != KTDMonitorStepStatusTypes.Processing
+                        )
+                        .OrderBy(x => x.LastCheckDate)
+                        .Take(20)
+                        .ToListAsync();
 
                     foreach (var step in steps)
                     {
@@ -64,13 +75,9 @@ namespace Ketum.Web
                                 client.Timeout = TimeSpan.FromSeconds(15);
                                 var result = await client.GetAsync(settings.Url, _token);
                                 if (result.IsSuccessStatusCode)
-                                {
                                     log.Status = KTDMonitorStepStatusTypes.Success;
-                                }
                                 else
-                                {
                                     log.Status = KTDMonitorStepStatusTypes.Fail;
-                                }
                             }
                             catch (HttpRequestException rex)
                             {
@@ -94,22 +101,14 @@ namespace Ketum.Web
                             else
                                 step.Status = KTDMonitorStepStatusTypes.Fail;
                         }
+
                         step.LastCheckDate = DateTime.UtcNow;
                         await db.SaveChangesAsync(_token);
                     }
                 }
+
                 await Task.Delay(500, _token);
             }
-		}
-
-		public Task StopAsync(CancellationToken cancellationToken)
-		{
-			return Task.CompletedTask;
-		}
-
-		public void Dispose()
-		{
-			//Return
-		}
-	}
+        }
+    }
 }

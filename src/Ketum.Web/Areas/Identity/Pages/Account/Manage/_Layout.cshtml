@@ -1,13 +1,13 @@
 @{
-Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<partial name="_ManageNav" />
+<partial name="_ManageNav"/>
 <div class="col-md-12">
     @RenderBody()
 </div>
 
 
 @section Scripts {
-@RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 }

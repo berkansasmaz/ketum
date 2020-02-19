@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ketum.Web
 {
-	[Authorize]
+    [Authorize]
     public class SecureController : Controller
     {
-        
     }
 }

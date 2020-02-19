@@ -4,4 +4,4 @@ import 'core-js/es6/array'
 
 import { app } from './app'
 
-app.$mount('#app')
+app.$mount('#app');

@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
 using Ketum.Entity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ketum.Web
 {
     public class DbController : Controller
     {
         private KTDBContext _db;
-        public KTDBContext Db => _db ?? (KTDBContext)HttpContext?.RequestServices.GetService(typeof(KTDBContext));
+        public KTDBContext Db => _db ?? (KTDBContext) HttpContext?.RequestServices.GetService(typeof(KTDBContext));
     }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Ketum.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,8 +11,8 @@ namespace Ketum.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<KTUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
+        private readonly SignInManager<KTUser> _signInManager;
 
         public LogoutModel(SignInManager<KTUser> signInManager, ILogger<LogoutModel> logger)
         {
@@ -32,13 +29,8 @@ namespace Ketum.Web.Areas.Identity.Pages.Account
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
-            {
                 return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return Page();
-            }
+            return Page();
         }
     }
 }

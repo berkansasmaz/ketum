@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Ketum.Entity;
 using Ketum.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Ketum.Web.Controllers
@@ -34,10 +33,7 @@ namespace Ketum.Web.Controllers
             if (monitorStepRequest != null)
             {
                 var requestSettings = monitorStepRequest.SettingsAsRequest();
-                if (requestSettings != null)
-                {
-                    url = requestSettings.Url;
-                }
+                if (requestSettings != null) url = requestSettings.Url;
 
                 var week = DateTime.UtcNow.AddDays(-14);
                 var logs = await Db.MonitorStepLogs
@@ -49,11 +45,9 @@ namespace Ketum.Web.Controllers
                 logs = logs.OrderBy(x => x.StartDate).ToList();
 
                 if (logs.Any(x => x.Status == KTDMonitorStepStatusTypes.Success))
-                {
                     loadTime = logs
                         .Where(x => x.Status == KTDMonitorStepStatusTypes.Success)
                         .Average(x => x.EndDate.Subtract(x.StartDate).TotalMilliseconds);
-                }
 
                 foreach (var log in logs)
                 {
@@ -64,7 +58,7 @@ namespace Ketum.Web.Controllers
                     if (log.Status == KTDMonitorStepStatusTypes.Fail)
                         downTime += log.Interval;
 
-                    var currentDowntimePercent = (downTime / totalMonitoredTime) * 100;
+                    var currentDowntimePercent = downTime / totalMonitoredTime * 100;
                     var currentUptimePercent = 100 - currentDowntimePercent;
 
                     upTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
@@ -74,7 +68,7 @@ namespace Ketum.Web.Controllers
                 if (lastLog != null)
                     stepStatus = lastLog.Status;
 
-                downTimePercent = (downTime / totalMonitoredTime) * 100;
+                downTimePercent = downTime / totalMonitoredTime * 100;
                 upTime = 100 - downTimePercent;
             }
 
@@ -108,10 +102,7 @@ namespace Ketum.Web.Controllers
         {
             if (id.HasValue)
             {
-                if (id.Value == Guid.Empty)
-                {
-                    return Error("You must send monitor id to get.");
-                }
+                if (id.Value == Guid.Empty) return Error("You must send monitor id to get.");
 
                 var monitor = await Db.Monitors.FirstOrDefaultAsync(x => x.MonitorId == id.Value && x.UserId == UserId);
                 if (monitor == null)
@@ -132,20 +123,14 @@ namespace Ketum.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] KTMMonitorSave value)
         {
-            if (string.IsNullOrEmpty(value.Name))
-            {
-                return Error("Name is required.");
-            }
+            if (string.IsNullOrEmpty(value.Name)) return Error("Name is required.");
 
             var monitorCheck = await Db.Monitors.AnyAsync(
                 x => x.MonitorId != value.Id &&
                      x.Name.Equals(value.Name) &&
                      x.UserId == UserId);
 
-            if (monitorCheck)
-            {
-                return Error("This project name is already in use. Please choose a different name.");
-            }
+            if (monitorCheck) return Error("This project name is already in use. Please choose a different name.");
 
             KTDMonitor data = null;
             if (value.Id != Guid.Empty)
@@ -202,8 +187,7 @@ namespace Ketum.Web.Controllers
                 {
                     Id = data.MonitorId
                 });
-            else
-                return Error("Something is wrong with your model.");
+            return Error("Something is wrong with your model.");
         }
 
         [HttpGet("steps/{id}")] //routing
@@ -234,14 +218,10 @@ namespace Ketum.Web.Controllers
         }
 
         [HttpGet("steplogs/{id}")]
-
         public async Task<IActionResult> StepLogs(Guid id, [FromQuery] int page)
         {
             var step = await Db.MonitorSteps.FirstOrDefaultAsync(x => x.MonitorStepId == id);
-            if (step == null)
-            {
-                return Error("Monitor step not found.");
-            }
+            if (step == null) return Error("Monitor step not found.");
             var monitor = await Db.Monitors
                 .FirstOrDefaultAsync(x => x.MonitorId == step.MonitorId && x.UserId == UserId);
 
@@ -264,13 +244,12 @@ namespace Ketum.Web.Controllers
 
             var pagedResult = new KTReturnPagedData<dynamic>();
             pagedResult.ItemCount = itemCount;
-            pagedResult.PageCount = (int) Math.Ceiling(itemCount / (decimal)perPageItem);
+            pagedResult.PageCount = (int) Math.Ceiling(itemCount / (decimal) perPageItem);
             pagedResult.CurrentPage = currentPage;
 
             pagedResult.Items = new List<dynamic>();
 
             foreach (var log in logs)
-            {
                 pagedResult.Items.Add(
                     new
                     {
@@ -282,7 +261,6 @@ namespace Ketum.Web.Controllers
                         log.Status,
                         StatusText = log.Status.ToString()
                     });
-            }
 
             return Success(null, pagedResult);
         }

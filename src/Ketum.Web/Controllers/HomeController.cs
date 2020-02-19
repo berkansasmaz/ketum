@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Authorization;
+using System;
 using Microsoft.AspNetCore.Mvc;
-using Ketum.Entity;
 
 namespace Ketum.Web.Controllers
 {
@@ -8,7 +7,7 @@ namespace Ketum.Web.Controllers
     {
         public IActionResult Index()
         {
-            System.Console.WriteLine("Hola!");
+            Console.WriteLine("Hola!");
             return View();
         }
 
