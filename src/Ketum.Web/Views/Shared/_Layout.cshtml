@@ -5,14 +5,16 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
         <title>@ViewData["Title"] - Ketum</title>
 
-        <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
 
         <!-- Main font -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900"
+            rel="stylesheet">
 
         <!-- Icons. Uncomment required icon fonts -->
         <!-- <link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css"> -->
@@ -37,71 +39,77 @@
         <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
 
         <environment names="Staging,Production">
-            <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true"/>
+            <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
         </environment>
     </head>
 
     <body>
 
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-1">
-        <!-- Layout inner -->
-        <div class="layout-inner">
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-1">
+            <!-- Layout inner -->
+            <div class="layout-inner">
 
-            <!-- Layout navbar -->
-            <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-navbar-theme container-p-x" id="layout-navbar">
-                <a href="/" class="navbar-brand">Ketum</a>
+                <!-- Layout navbar -->
+                <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-navbar-theme container-p-x"
+                    id="layout-navbar">
+                    <a href="/" class="navbar-brand">Ketum</a>
 
-                <!-- Sidenav toggle -->
-                <div class="layout-sidenav-toggle navbar-nav align-items-lg-center mr-auto mr-lg-4">
-                    <a class="nav-item nav-link px-0 ml-2" href="javascript:void(0)">
-                        <i class="ion ion-md-menu text-large align-middle"></i>
-                    </a>
-                </div>
+                    <!-- Sidenav toggle -->
+                    <div class="layout-sidenav-toggle navbar-nav align-items-lg-center mr-auto mr-lg-4">
+                        <a class="nav-item nav-link px-0 ml-2" href="javascript:void(0)">
+                            <i class="ion ion-md-menu text-large align-middle"></i>
+                        </a>
+                    </div>
 
-                <!-- Navbar toggle -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <!-- Navbar toggle -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#layout-navbar-collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="navbar-collapse collapse" id="layout-navbar-collapse">
-                    <div class="navbar-nav align-items-lg-center d-none">
-                        <div class="nav-item">
-                            <a class="nav-link" href="#">Link 1</a>
-                        </div>
-                        <div class="nav-item">
-                            <a class="nav-link" href="#">Link 2</a>
+                    <div class="navbar-collapse collapse" id="layout-navbar-collapse">
+                        <div class="navbar-nav align-items-lg-center d-none">
+                            <div class="nav-item">
+                                <a class="nav-link" href="#">Link 1</a>
+                            </div>
+                            <div class="nav-item">
+                                <a class="nav-link" href="#">Link 2</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </nav>
-            @RenderBody()
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+
+                    </div>
+                </nav>
+                @RenderBody()
+            </div>
+            <!-- Layout inner -->
+            <div class="layout-overlay layout-sidenav-toggle"></div>
         </div>
-        <!-- Layout inner -->
-        <div class="layout-overlay layout-sidenav-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
+        <!-- / Layout wrapper -->
 
 
-    <script src="~/dist/vendor.js" asp-append-version="true"></script>
+        <script src="~/dist/vendor.js" asp-append-version="true"></script>
 
-    <!-- Core scripts -->
+        <!-- Core scripts -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="~/assets/vendor/libs/popper/popper.js"></script>
-    <script src="~/assets/vendor/js/bootstrap.js"></script>
-    <script src="~/assets/vendor/js/sidenav.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="~/assets/vendor/libs/popper/popper.js"></script>
+        <script src="~/assets/vendor/js/bootstrap.js"></script>
+        <script src="~/assets/vendor/js/sidenav.js"></script>
 
-    <!-- Libs -->
+        <!-- Libs -->
 
-    <!-- `perfect-scrollbar` library required by SideNav plugin -->
-    <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <!-- `perfect-scrollbar` library required by SideNav plugin -->
+        <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <!-- Main script -->
+        <!-- Main script -->
 
-    <script src="~/assets/js/main.js"></script>
+        <script src="~/assets/js/main.js"></script>
 
-    @RenderSection("scripts", false)
+        @RenderSection("scripts", false)
     </body>
 
 </div>
