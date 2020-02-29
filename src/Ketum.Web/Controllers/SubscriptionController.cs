@@ -47,13 +47,14 @@ namespace Ketum.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var subscriptionTypes = await Db.SubscriptionTypes.ToListAsync();
+            var subscriptionTypes = await Db.SubscriptionTypes.OrderBy(x => x.Price).ToListAsync();
             var list = new List<dynamic>();
 
             foreach (var subscription in subscriptionTypes)
             {
                 var featureList = await Db.SubscriptionTypeFeatures
                     .Where(x => x.SubscriptionTypeId == subscription.SubscriptionTypeId)
+                    .OrderBy(x => x.Sort)
                     .ToListAsync();
 
                 var features = new List<dynamic>();

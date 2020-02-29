@@ -24,11 +24,11 @@ namespace Ketum.Web.Controllers
                     Description = "Free for starter users."
                 };
                 await Db.SubscriptionTypes.AddAsync(subscriptionTypeFree);
-                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "monitor", "MONITOR", "1");
-                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "monitor step", "MONITOR_Step", "1");
-                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "user", "USER", "1");
-                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "interval", "INTERVAL", "300");
-                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "1");
+                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, 1, "monitor", "MONITOR", "1");
+                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, 2, "monitor step", "MONITOR_Step", "1");
+                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, 3, "user", "USER", "1");
+                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, 4, "interval", "INTERVAL", "300");
+                await AddFeature(subscriptionTypeFree.SubscriptionTypeId, 5, "alert channel", "ALERT_CHANNEL", "1");
 
                 // Startup
                 var subscriptionTypeStartup = new KTDSubscriptionType
@@ -41,11 +41,11 @@ namespace Ketum.Web.Controllers
                     Description = "For Startup."
                 };
                 await Db.SubscriptionTypes.AddAsync(subscriptionTypeStartup);
-                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, "monitor", "MONITOR", "5");
-                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, "monitor step", "MONITOR_Step", "10");
-                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, "user", "USER", "1");
-                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, "interval", "INTERVAL", "300");
-                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "2");
+                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, 1,"monitor", "MONITOR", "5");
+                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, 2,"monitor step", "MONITOR_Step", "10");
+                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, 3,"user", "USER", "1");
+                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, 4,"interval", "INTERVAL", "300");
+                await AddFeature(subscriptionTypeStartup.SubscriptionTypeId, 5,"alert channel", "ALERT_CHANNEL", "2");
 
 
                 // Premium
@@ -59,11 +59,11 @@ namespace Ketum.Web.Controllers
                     Description = "For growing companies."
                 };
                 await Db.SubscriptionTypes.AddAsync(subscriptionTypePremium);
-                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, "monitor", "MONITOR", "25");
-                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, "monitor step", "MONITOR_Step", "100");
-                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, "user", "USER", "5");
-                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, "interval", "INTERVAL", "60");
-                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "5");
+                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, 1, "monitor", "MONITOR", "25");
+                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, 2, "monitor step", "MONITOR_Step", "100");
+                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, 3, "user", "USER", "5");
+                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, 4, "interval", "INTERVAL", "60");
+                await AddFeature(subscriptionTypePremium.SubscriptionTypeId, 5, "alert channel", "ALERT_CHANNEL", "5");
 
 
                 // enterprise
@@ -77,11 +77,11 @@ namespace Ketum.Web.Controllers
                     Description = "For enterprise companies."
                 };
                 await Db.SubscriptionTypes.AddAsync(subscriptionTypeEnterprise);
-                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "monitor", "MONITOR", "100");
-                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "monitor step", "MONITOR_Step", "250");
-                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "user", "USER", "25");
-                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "interval", "INTERVAL", "60");
-                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, "alert channel", "ALERT_CHANNEL", "*");
+                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, 1, "monitor", "MONITOR", "100");
+                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, 2, "monitor step", "MONITOR_Step", "250");
+                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, 3, "user", "USER", "25");
+                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, 4, "interval", "INTERVAL", "60");
+                await AddFeature(subscriptionTypeEnterprise.SubscriptionTypeId, 5, "alert channel", "ALERT_CHANNEL", "*");
 
 
                 if (await Db.SaveChangesAsync() > 0) return Success("I have bootstrapped successfully.");
@@ -91,7 +91,7 @@ namespace Ketum.Web.Controllers
         }
 
         [NonAction]
-        private async Task AddFeature(Guid subscriptionTypeId, string title, string name, string value)
+        private async Task AddFeature(Guid subscriptionTypeId, short sort, string title, string name, string value)
         {
             await Db.AddAsync(new KTDSubscriptionTypeFeature
             {
@@ -101,7 +101,8 @@ namespace Ketum.Web.Controllers
                 IsFeature = true,
                 Name = name,
                 Title = title,
-                Value = value
+                Value = value,
+                Sort = sort
             });
         }
     }
