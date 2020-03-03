@@ -1,7 +1,7 @@
 ## What this is about?
 
 This project help you to monitor your websites and send and alert to you if something goes wrong.
-
+Ketum, web sitenizin sağlığını kolayca test etmenizi ve izlemenizi sağlayan bir platformdur. Bedavaya deneyin
 ## Docker
 
 ## Test
