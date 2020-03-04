@@ -53,7 +53,7 @@ yarn test (feature v1.0.0)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/berkansasmaz/Ketum/issues). You can also take a look at the [contributing guide](https://dev.to/janessatran/a-beginner-s-guide-to-contributing-to-open-source-4fen)
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/berkansasmaz/Ketum/issues). You can also take a look at the [contributing guide](https://dev.to/janessatran/a-beginner-s-guide-to-contributing-to-open-source-4fen).
 
 ## Show your support
 
