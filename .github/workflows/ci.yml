@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+      - development
+  push:
+    branches:
+      - master
+      - development
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
+        node-version: [ 12.x, 10.x ]
+        dotnet: [ '2.2.107', '3.1.101', '3.1.100' ]
+    name: Test on node ${{ matrix.node-version }} and os ${{ matrix.operating-system }} and dotnet ${{ matrix.dotnet }}
+    runs-on: ${{ matrix.operating-system }}
+
+    steps:
+    - name: Checkout from repository
+      uses: actions/checkout@master
+
+    - name: Setup Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node-version }}
+
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
+    - name: Install dependencies
+      run: yarn install --audit --non-interactive # --frozen-lockfile
+    - name: Run tests
+      run: yarn dev
+      env:
+        CI: true
+
+  deploy:
+    needs: [ build ]
+    name: Deployment
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+
+    steps:
+    - name: Checkout from repository
+      uses: actions/checkout@master
+
+    - name: Setup Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 12.x
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
+    - name: Install dependencies
+      run: yarn install --non-interactive # --frozen-lockfile
