@@ -17,17 +17,10 @@ jobs:
         operating-system: [ ubuntu-latest, windows-latest, macOS-latest ]
         node-version: [ 12.x, 10.x ]
         dotnet: [ '2.2.107', '3.1.101', '3.1.100' ]
-    name: Test on node ${{ matrix.node-version }} and ${{ matrix.operating-system }} and Dotnet ${{ matrix.dotnet }}
+    name: Test on node ${{ matrix.node-version }} and ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
 
     steps:
-      - uses: actions/checkout@master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ matrix.dotnet }}
-      - run: dotnet build src/Ketum.Web
-    
     - name: Checkout from repository
       uses: actions/checkout@master
 
