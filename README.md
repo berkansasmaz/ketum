@@ -15,7 +15,6 @@
 > Ketum is a platform that enables you to easily test and monitor your website’s health.
 
 ### ✨ [Demo](https://berkansasmaz.com/comingsoon/)
-
 <p align="center">
   <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/75912820-da454480-5e62-11ea-9190-92c6b5a9e642.gif" alt="demo"/>
 </p>
