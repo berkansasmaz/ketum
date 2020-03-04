@@ -12,7 +12,9 @@ import KTIText from 'components/Input/text';
 import VueApexCharts from 'vue-apexcharts';
 import KTVMonitorStatus from 'components/shared/monitor-status';
 import { BootstrapVue} from 'bootstrap-vue';
+import VueStripeCheckout from 'vue-stripe-checkout';
 
+Vue.use(VueStripeCheckout, 'pk_test_WosCGsOkA5rIQqvvpDILwb2q');
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 Vue.use(VueContentPlaceholders);

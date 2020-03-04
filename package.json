@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0"
+  },
+  "dependencies": {
+    "vue-stripe-checkout": "1.2.6"
   }
 }

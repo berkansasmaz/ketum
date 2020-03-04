@@ -41,7 +41,7 @@
         <div class="col-md-12">
           <div class="card mb-4">
             <h6 class="card-header with-elements">
-              <div class="card-header-title">Sale stats</div>
+              <div class="card-header-title">Stats</div>
               <div class="card-header-elements ml-auto d-none">
                 <button type="button" class="btn btn-default btn-xs md-btn-flat">Show more</button>
               </div>

@@ -4,6 +4,7 @@
     <e p="$USER_HOME$/.gitignore_global" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$/../.git/info/exclude" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$/../node_modules/cross-env" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$/../node_modules/vue-stripe-checkout" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Ketum.Entity" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
