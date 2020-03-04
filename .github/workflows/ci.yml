@@ -56,7 +56,7 @@ jobs:
     - name: Checkout from repository
       uses: actions/checkout@master
 
-    - name: Setup Node.js
+    - name: Setup Node.js and DotnetCore
       uses: actions/setup-node@master
       with:
         node-version: 12.x
