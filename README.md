@@ -46,7 +46,7 @@ yarn test (feature v1.0.0)
 
 👤 **Berkan**
 
-* Website: https://berkansasmaz.com/
+* Website: https://berkansasmaz.com
 * Twitter: [@berkansasmazz](https://twitter.com/berkansasmazz)
 * Github: [@berkansasmaz](https://github.com/berkansasmaz)
 * LinkedIn: [@berkansasmaz](https://linkedin.com/in/berkansasmaz)
