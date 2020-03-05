@@ -1,6 +1,6 @@
 {
   "name": "ketum",
-  "version": "1.0.0",
+  "version": "0.6.5",
   "author": {
     "email": "berkansasmazz@gmail.com",
     "name": "Ketum, Inc.",
@@ -10,12 +10,13 @@
   "scripts": {
     "dev": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet build",
     "db-migrate": "cd ./src/Ketum.Entity/ && dotnet ef migrations add --startup-project=../Ketum.Web",
-    "db-update": "cd ./src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web"
+    "db-update": "cd ./src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web",
+    "run": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0"
+    "cross-env": "^7.0.1"
   },
   "dependencies": {
-    "vue-stripe-checkout": "1.2.6"
+    "vue-stripe-checkout": "3.1.6"
   }
 }

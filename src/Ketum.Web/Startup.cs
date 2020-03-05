@@ -33,8 +33,7 @@ namespace Ketum.Web
                 .AddEntityFrameworkStores<KTDBContext>()
                 .AddDefaultTokenProviders();
             // Add framework services.
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers(options => options.EnableEndpointRouting = false); //https://stackoverflow.com/questions/57684093/using-usemvc-to-configure-mvc-is-not-supported-while-using-endpoint-routing
 
             services
                 .AddHostedService<KTBSMonitoring
@@ -81,12 +80,6 @@ namespace Ketum.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Webpack initialization with hot-reload.
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true
-                });
             }
             else
             {
