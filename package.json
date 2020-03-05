@@ -11,7 +11,7 @@
     "dev": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet build",
     "db-migrate": "cd ./src/Ketum.Entity/ && dotnet ef migrations add --startup-project=../Ketum.Web",
     "db-update": "cd ./src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web",
-    "run": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run"
+    "start": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run"
   },
   "devDependencies": {
     "cross-env": "^7.0.1"
