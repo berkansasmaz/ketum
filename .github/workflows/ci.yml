@@ -16,7 +16,7 @@ jobs:
       matrix:
         operating-system: [ ubuntu-latest ]
         node-version: [ 12.x, 10.x ]
-        dotnet: [ '2.2.107' ]
+        dotnet: [ '3.1.1' ]
     name: Test on node ${{ matrix.node-version }} and os ${{ matrix.operating-system }} and dotnet ${{ matrix.dotnet }}
     runs-on: ${{ matrix.operating-system }}
 
