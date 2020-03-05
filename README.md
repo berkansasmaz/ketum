@@ -33,7 +33,7 @@ yarn install
 ## Usage
 
 ```sh
-yarn run
+yarn start
 ```
 
 ## Run tests
