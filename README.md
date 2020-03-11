@@ -1,5 +1,6 @@
 <h1 align="center">Welcome to ketum 👋</h1>
 <p>
+  <img alt="CI" src="https://github.com/berkansasmaz/Ketum/workflows/CI/badge.svg" /> 
   <img alt="Version" src="https://img.shields.io/badge/version-0.6.5-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/berkansasmaz/Ketum/tree/master/docs" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
