@@ -8,7 +8,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-    <PackageReference Include="Stripe.net" Version="35.3.0" />
+    <PackageReference Include="Stripe.net" Version="35.5.0" />
   </ItemGroup>
   <ItemGroup>
     <!-- Files not to show in IDE -->
