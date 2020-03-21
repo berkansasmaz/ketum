@@ -1,13 +1,13 @@
 {
-  "name": "aspnetcore-vuejs",
-  "description": "ASP.NET Core & VueJS Starter project - Brought to you by Trilon.io",
+  "name": "ketum",
+  "description": "Ketum is a platform that enables you to easily test and monitor your website’s health.",
   "author": {
-    "name": "Mark Pieszak | Trilon Consulting",
-    "email": "hello@trilon.io",
-    "url": "https://trilon.io"
+    "name": "Ketum, Inc",
+    "email": "berkansasmazz@gmail.com",
+    "url": "https://berkansasmaz.com"
   },
   "repository": {
-    "url": "https://github.com/TrilonIO/aspnetcore-Vue-starter"
+    "url": "https://github.com/berkansasmaz/Ketum"
   },
   "license": "MIT",
   "scripts": {
@@ -26,6 +26,7 @@
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.4.0",
     "core-js": "^2.5.3",
+    "vue-stripe-checkout": "1.2.6",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.5.1",
     "vue-content-placeholders": "^0.2.1",

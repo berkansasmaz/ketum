@@ -4,7 +4,6 @@
     <e p="$USER_HOME$/.gitignore_global" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$/../.git/info/exclude" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$/../node_modules/cross-env" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$/../node_modules/vue-stripe-checkout" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Ketum.Entity" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -27,6 +26,8 @@
           <e p="20200218121231_Added-SubscriptionId-SubscriptionFeature.Designer.cs" t="Include" />
           <e p="20200228185050_Added-Sort-SubscriptionType.cs" t="Include" />
           <e p="20200228185050_Added-Sort-SubscriptionType.Designer.cs" t="Include" />
+          <e p="20200320185637_Added-Payment-Table.cs" t="Include" />
+          <e p="20200320185637_Added-Payment-Table.Designer.cs" t="Include" />
           <e p="KTDBContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -40,6 +41,7 @@
           <e p="KTDMonitor.cs" t="Include" />
           <e p="KTDMonitorStep.cs" t="Include" />
           <e p="KTDMonitorStepLog.cs" t="Include" />
+          <e p="KTDPayment.cs" t="Include" />
           <e p="KTDSubscription.cs" t="Include" />
           <e p="KTDSubscriptionFeature.cs" t="Include" />
           <e p="KTDSubscriptionType.cs" t="Include" />
@@ -267,6 +269,7 @@
         <e p="node_modules/vue-notification" t="IncludeRecursive" />
         <e p="node_modules/vue-router" t="IncludeRecursive" />
         <e p="node_modules/vue-server-renderer" t="IncludeRecursive" />
+        <e p="node_modules/vue-stripe-checkout" t="IncludeRecursive" />
         <e p="node_modules/vue-template-compiler" t="IncludeRecursive" />
         <e p="node_modules/vuex" t="IncludeRecursive" />
         <e p="node_modules/vuex-router-sync" t="IncludeRecursive" />
@@ -287,8 +290,6 @@
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
-        <e p="repo-example.png" t="Include" />
-        <e p="ScaffoldingReadme.txt" t="Include" />
         <e p="Services" t="Include">
           <e p="KTBSMonitoring.cs" t="Include" />
         </e>

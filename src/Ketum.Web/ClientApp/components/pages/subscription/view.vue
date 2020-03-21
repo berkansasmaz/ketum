@@ -123,7 +123,7 @@ export default {
       this.selectedSubscription.description = subscription.description;
       setTimeout(async () => {
         const { token, args } = await this.$refs.checkoutRef.open();
-      }, 100);
+      }, 50);
     },
     async current() {
       const current = await service.current();
