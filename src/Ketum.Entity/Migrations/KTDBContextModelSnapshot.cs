@@ -95,6 +95,32 @@ namespace Ketum.Entity.Migrations
                     b.ToTable("MonitorStepLog");
                 });
 
+            modelBuilder.Entity("Ketum.Entity.KTDPayment", b =>
+                {
+                    b.Property<Guid>("PaymetId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Amount");
+
+                    b.Property<string>("Currency");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Provider");
+
+                    b.Property<Guid>("SubscriptionId");
+
+                    b.Property<string>("Token");
+
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("PaymetId");
+
+                    b.ToTable("Payment");
+                });
+
             modelBuilder.Entity("Ketum.Entity.KTDSubscription", b =>
                 {
                     b.Property<Guid>("SubscriptionId")

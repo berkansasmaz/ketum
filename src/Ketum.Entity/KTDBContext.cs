@@ -18,5 +18,6 @@ namespace Ketum.Entity
         public DbSet<KTDSubscriptionType> SubscriptionTypes { get; set; }
         public DbSet<KTDSubscriptionFeature> SubscriptionFeatures { get; set; }
         public DbSet<KTDSubscriptionTypeFeature> SubscriptionTypeFeatures { get; set; }
+        public DbSet<KTDPayment> Payments { get; set; }
     }
 }
