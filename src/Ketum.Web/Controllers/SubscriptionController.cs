@@ -6,6 +6,7 @@ using Ketum.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Operations;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 namespace Ketum.Web.Controllers
 {
@@ -19,7 +20,9 @@ namespace Ketum.Web.Controllers
             {
                 return Error("Subscription not found.", code: 404);
             }
-            var featureList = await Db.SubscriptionFeatures.Where(x => x.SubscriptionId == subscription.SubscriptionId).ToListAsync();
+
+            var featureList = await Db.SubscriptionFeatures.Where(x => x.SubscriptionId == subscription.SubscriptionId)
+                .ToListAsync();
             var features = new List<dynamic>();
             foreach (var feature in featureList)
             {
@@ -32,6 +35,7 @@ namespace Ketum.Web.Controllers
                     feature.ValueRemained
                 });
             }
+
             return Success(data: new
             {
                 id = subscription.SubscriptionId,
@@ -80,11 +84,12 @@ namespace Ketum.Web.Controllers
                     features
                 });
             }
+
             return Success(null, list);
         }
 
         [HttpPost("{id}")]
-        public async Task<IActionResult> Post([FromRoute]Guid id)
+        public async Task<IActionResult> Post([FromRoute] Guid id, [FromQuery] string token)
         {
             if (id != Guid.Empty)
             {
@@ -118,7 +123,8 @@ namespace Ketum.Web.Controllers
                     };
                     await Db.AddAsync(subscription);
 
-                    var features = await Db.SubscriptionTypeFeatures.Where(x => x.SubscriptionTypeId == subscriptionType.SubscriptionTypeId).ToListAsync();
+                    var features = await Db.SubscriptionTypeFeatures
+                        .Where(x => x.SubscriptionTypeId == subscriptionType.SubscriptionTypeId).ToListAsync();
                     foreach (var feature in features)
                     {
                         await Db.AddAsync(new KTDSubscriptionFeature
@@ -137,12 +143,66 @@ namespace Ketum.Web.Controllers
                     }
                 }
 
+                if (subscriptionType.Price > 0)
+                {
+                    try
+                    {
+                        var user = Db.Users.FirstOrDefaultAsync(x => x.Id == UserId).Result;
+                        var customerService = new CustomerService();
+                        var customerResult = await customerService.CreateAsync(new CustomerCreateOptions()
+                        {
+                            Email = user.Email,
+                            Source = token, // todo  SourceToken in old version
+                        });
+
+                        var items = new List<SubscriptionItemOptions>
+                            {new SubscriptionItemOptions {Plan = "plan_Gwl6BaydA3X4J6"}};
+
+                        var subscriptionService = new SubscriptionService();
+                        var subscriptionOption = new SubscriptionCreateOptions
+                        {
+                            Customer = customerResult.Id, // todo  CustomerId in old version
+                            Items = items
+                        };
+
+                        var subscriptionResult =  await subscriptionService.CreateAsync(subscriptionOption);
+
+                        if (subscriptionResult.Status == "active")
+                        {
+                            var payment = new KTDPayment()
+                            {
+                                PaymetId = Guid.NewGuid(),
+                                Provider = "stripe",
+                                SubscriptionId = subscription.SubscriptionId,
+                                UserId = UserId,
+                                Token = subscriptionResult.LatestInvoiceId,
+                                Amount = subscriptionType.Price,
+                                Currency = "usd",
+                                Date = DateTime.UtcNow,
+                                Description = $"{subscriptionType.Title} {subscriptionType.Description}",
+                            };
+                            await Db.AddAsync(payment);
+                        }
+                        else
+                        {
+                            return Error("Payment not completed!", code: 400);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return Error("Payment error. Please check your card and details.", internalMessage: ex.Message,
+                            code: 400);
+                    }
+                }
+
                 if (await Db.SaveChangesAsync() > 0)
                 {
                     return Success("Your subscription has been updated.");
                 }
+
                 return Error("There is nothing to save.");
             }
+
             return Error("You must send subscription id.");
         }
     }

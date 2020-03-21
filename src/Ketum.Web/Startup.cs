@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Stripe;
 
 namespace Ketum.Web
 {
@@ -23,6 +24,8 @@ namespace Ketum.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            StripeConfiguration.SetApiKey("sk_test_VC6BqWBxNlcnu6mdFn8OnCLU006MJGWHgx");
+
             services.AddDbContext<KTDBContext>(
                 options => options.UseNpgsql(
                     "Server=localhost; Port=5432; Database= ketum; User Id= postgres; Password=123456789;")
