@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Stripe.net" Version="34.26.0" />
+    <PackageReference Include="Stripe.net" Version="35.7.0" />
   </ItemGroup>
   <ItemGroup>
     <!-- Files not to show in IDE -->
