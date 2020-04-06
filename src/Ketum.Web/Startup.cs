@@ -24,14 +24,35 @@ namespace Ketum.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            StripeConfiguration.SetApiKey("sk_test_VC6BqWBxNlcnu6mdFn8OnCLU006MJGWHgx");
+            var connectionString = Environment.GetEnvironmentVariable(Keys.ConnectionString);
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                Console.WriteLine("Connection string is not found in environment variables 'KETUM_CONNECTIONSTRING'. I'm using default connection string.");
+                connectionString = "Server=localhost; Port=5432; Database=ketum; User Id=postgres; Password=123456789;";
+            }
+
+            if (string.IsNullOrEmpty(Keys.StripeAPIKey))
+            {
+                Console.WriteLine("Stripe api key is not found in environment variables 'STRIPEAPIKEY'. I'm using default stripe api key string.");
+                StripeConfiguration.SetApiKey("sk_test_VC6BqWBxNlcnu6mdFn8OnCLU006MJGWHgx");
+            }
+            else
+            {
+                StripeConfiguration.SetApiKey(Keys.StripeAPIKey);
+            }
 
             services.AddDbContext<KTDBContext>(
-                options => options.UseNpgsql(
-                    "Server=localhost; Port=5432; Database= ketum; User Id= postgres; Password=123456789;")
+                options => options.UseNpgsql(connectionString)
             );
 
-            services
+            var scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
+            using (var scope = scopeFactory.CreateScope())
+            using (var db = scope.ServiceProvider.GetRequiredService<KTDBContext>())
+            {
+                db.Database.Migrate();
+            }
+
+                services
                 .AddDefaultIdentity<KTUser>()
                 .AddEntityFrameworkStores<KTDBContext>()
                 .AddDefaultTokenProviders();
