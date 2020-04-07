@@ -47,7 +47,8 @@ namespace Ketum.Web
                     var db = scope.ServiceProvider.GetRequiredService<KTDBContext>();
                     var steps = await db.MonitorSteps
                         .Where(x =>
-                            x.Type == KTDMonitorStepTypes.Request && x.Status != KTDMonitorStepStatusTypes.Processing
+                            x.Type == KTDMonitorStepTypes.Request && x.Status != KTDMonitorStepStatusTypes.Processing &&
+                            DateTime.UtcNow > x.LastCheckDate.AddSeconds(x.Interval)
                         )
                         .OrderBy(x => x.LastCheckDate)
                         .Take(20)

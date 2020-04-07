@@ -26,11 +26,13 @@ We understand that when your website goes down, you need to know right away. Our
 ### ✨ [Demo](https://berkansasmaz.com/comingsoon/)
 
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/75912820-da454480-5e62-11ea-9190-92c6b5a9e642.gif" alt="demo"/>
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703711-5b38a580-7913-11ea-9bda-e6540dd2e6f8.gif" alt="demo-one"/>
 </p>
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/75921672-92c6b480-5e72-11ea-9d73-3a43304c3d0d.gif"
-" alt="demo"/>
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703715-5d026900-7913-11ea-8531-dca3d641d37e.gif" alt="demo-two"/>
+</p>
+<p align="center">
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703719-5e339600-7913-11ea-8eea-061d28491f4f.gif" alt="demo-two"/>
 </p>
             
 ## Install

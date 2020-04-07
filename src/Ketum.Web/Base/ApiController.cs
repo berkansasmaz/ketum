@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Ketum.Entity;
 using Ketum.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ketum.Web
 {
@@ -23,6 +25,29 @@ namespace Ketum.Web
                 var userId = UserManager.GetUserId(User);
                 return Guid.Parse(userId);
             }
+        }
+
+        [NonAction]
+        public async Task<bool> CheckSubscription(Guid userId, string featureName)
+        {
+            var user = await Db.Users.FirstOrDefaultAsync(x => x.Id == UserId);
+            if (user == null)
+                return false;
+
+            var subscription = await Db.Subscriptions.FirstOrDefaultAsync(x => x.UserId == userId);
+            if (subscription == null)
+                return false;
+
+            var subscriptionFeature = await Db.SubscriptionFeatures.FirstOrDefaultAsync(x => x.Name == featureName && x.SubscriptionId == subscription.SubscriptionId);
+            if (subscriptionFeature == null)
+                return false;
+
+            if (string.IsNullOrEmpty(subscriptionFeature.Value))
+                return false;
+
+            int.TryParse(subscriptionFeature.ValueRemained, out var valueRemained);
+
+            return valueRemained > 0;
         }
 
         [NonAction] // Bu non action belirtmezsek eğer asp.net bunu action olarak algılar ve .../Success miş gibi davranmasını sağlar.

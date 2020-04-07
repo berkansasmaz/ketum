@@ -18,5 +18,7 @@ namespace Ketum.Entity
         public string Value { get; set; }
         public string ValueUsed { get; set; }
         public string ValueRemained { get; set; }
+        
+        public virtual KTDSubscriptionTypeFeature SubscriptionTypeFeature { get; set; }
     }
 }

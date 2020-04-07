@@ -1,6 +1,7 @@
 import MonitoringList from 'components/pages/monitoring/list';
 import MonitoringSave from 'components/pages/monitoring/save';
 import MonitoringView from 'components/pages/monitoring/view';
+import MonitoringAlerts from 'components/pages/monitoring/alerts';
 import SubscriptionView from 'components/pages/subscription/view';
 import Forbidden from 'components/root/forbidden';
 
@@ -27,6 +28,13 @@ export const routes = [{
     component: MonitoringView,
     display: 'View Monitoring',
     hidden: true,
+  },
+  {
+    name: 'monitoring-alerts',
+    path: '/monitoring/alerts/:id',
+    component: MonitoringAlerts,
+    display: 'View Monitoring Alerts',
+    hidden: true
   },
   {
     divider: true,

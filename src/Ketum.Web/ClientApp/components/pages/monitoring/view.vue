@@ -1,39 +1,33 @@
 <template>
   <div>
-    <template v-if="!item">
-      <div>
-        <content-placeholders>
-          <content-placeholders-heading :img="true"/>
-          <content-placeholders-text :lines="15"/>
-        </content-placeholders>
-      </div>
-    </template>
-    <template v-if="item">
-      <page-head :prefix="this.item.name" title="Dashboard"/>
+    <div v-if="!item">
+      <content-placeholders>
+        <content-placeholders-text :lines="3"/>
+      </content-placeholders>
+    </div>
+    <div v-if="item">
+      <page-head title="Dashboard" :prefix="item.name"/>
       <div class="row">
         <div class="col-sm-6 col-xl-6">
-
           <div class="card mb-4">
-              <apexchart
-                type="area"
-                :options="item.uptimeChart"
-                :series="item.uptimeChart.series"
-                class="m-2 mt-4"
-                height="140"
-              />
+            <apexchart
+              type="area"
+              :options="item.uptimeChart"
+              :series="item.uptimeChart.series"
+              class="m-2 mt-4"
+              height="140"
+            />
           </div>
-
         </div>
         <div class="col-sm-6 col-xl-6">
-
           <div class="card mb-4">
-              <apexchart
-                type="area"
-                :options="item.loadtimeChart"
-                :series="item.loadtimeChart.series"
-                class="m-2 mt-4"
-                height="140"
-              />
+            <apexchart
+              type="area"
+              :options="item.loadtimeChart"
+              :series="item.loadtimeChart.series"
+              class="m-2 mt-4"
+              height="140"
+            />
           </div>
         </div>
       </div>
@@ -41,16 +35,16 @@
         <div class="col-md-12">
           <div class="card mb-4">
             <h6 class="card-header with-elements">
-              <div class="card-header-title">Stats</div>
+              <div class="card-header-title">Monitoring Steps</div>
               <div class="card-header-elements ml-auto d-none">
                 <button type="button" class="btn btn-default btn-xs md-btn-flat">Show more</button>
               </div>
             </h6>
-            <div class="table-responsive" v-if="steps">
-              <table class="table card-table">
+            <div class="table-responsive">
+              <table class="table card-table" v-if="steps">
                 <thead>
                 <tr>
-                  <th class="text-center">#</th>
+                  <th class="text-center">...</th>
                   <th>Type</th>
                   <th>Last Check Date</th>
                   <th>Status</th>
@@ -58,21 +52,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(step, index) in steps" :key="'monitorstep' + index">
+                <tr v-for="(item, index) in steps" :key="'monitorstep'+index">
                   <td class="text-center">
-                    <button v-b-modal.modal-xl @click="details(step.monitorStepId)"
-                            class="btn btn-sm btn-outline-primary">
-                      <icon icon="search"></icon>
+                    <button
+                      v-b-modal.modallg
+                      @click="details(item.monitorStepId)"
+                      class="btn btn-sm btn-secondary"
+                    >
+                      <icon icon="search"/>
                     </button>
                   </td>
-                  <td>{{step.typeText}}</td>
+                  <td>{{ item.typeText }}</td>
                   <td>
-                    <span :title="step.lastCheckDate">{{step.lastCheckDate | moment("from", "now")}} </span>
+                      <span
+                        :title="item.lastCheckDate"
+                      >{{ item.lastCheckDate | moment("from", "now") }}</span>
                   </td>
                   <td>
-                    <ktv-monitor-status :status="step.status" :title="step.statusText"/>
+                    <mvv-monitor-status :status="item.status" :title="item.statusText"/>
                   </td>
-                  <td>{{step.interval}} (seconds)</td>
+                  <td>{{ item.interval }} (seconds)</td>
                 </tr>
                 </tbody>
               </table>
@@ -80,52 +79,48 @@
           </div>
         </div>
       </div>
-    </template>
-    <b-modal id="modal-xl" size="xl" title="Logs">
-      <div v-if="!logs">
-        <content-placeholders>
-          <content-placeholders-heading :img="true"/>
-          <content-placeholders-text :lines="15"/>
-        </content-placeholders>
-      </div>
-      <div class="table-responsive" v-if="logs">
-        <table class="table card-table">
+    </div>
+    <b-modal id="modallg" size="lg" title="Logs">
+      <div class="table-responsive">
+        <table class="table card-table" v-if="logs">
           <thead>
           <tr>
             <th>Start</th>
             <th>End</th>
             <th>Status</th>
             <th>Interval</th>
-            <th>Logs</th>
-
+            <th>Log</th>
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(log, index) in logs.items" :key="'monitorsteplog' + index">
+          <tr v-for="(item, index) in logs.items" :key="'monitorsteplog'+index">
             <td>
-              <span :title="log.startDate">{{log.startDate | moment("dddd, MMMM YYYY, h:mm:ss a")}} </span>
+              <span>{{ item.startDate | moment() }}</span>
             </td>
             <td>
-              <span :title="log.endDate">{{log.endDate | moment(`dddd, MMMM YYYY, h:mm:ss a`)}} </span>
+              <span>{{ item.endDate | moment() }}</span>
             </td>
             <td>
-              <ktv-monitor-status :status="log.status" :title="log.statusText"/>
+              <mvv-monitor-status :status="item.status" :title="item.statusText"/>
             </td>
-            <td>{{log.interval}} (seconds)</td>
-            <td>{{log.log}}</td>
+            <td>{{ item.interval }} (seconds)</td>
+            <td>{{ item.log }}</td>
           </tr>
           </tbody>
         </table>
+        <b-pagination
+          v-if="logs"
+          :total-rows="logs.itemCount"
+          v-model="logsCurrentPage"
+          :per-page="10"
+        />
       </div>
-      <b-pagination v-if="logs" class="mt-4" align="center" pills v-model="logsCurrentPage" :total-rows="logs.itemCount"
-                    :per-page="10"/>
     </b-modal>
   </div>
 </template>
 
 <script>
   import service from "service/monitoring";
-
   export default {
     data() {
       return {
@@ -135,15 +130,15 @@
         logs: null,
         logsCurrentPage: 1,
         currentStepId: null
-      }
+      };
     },
     watch: {
-      logsCurrentPage(newValue) {
+      async logsCurrentPage(newValue) {
         this.logPageChanged(newValue);
       }
     },
     async mounted() {
-      var result = await service.get(this.$route.params.id);
+      const result = await service.get(this.$route.params.id);
       if (result.success) {
         let item = result.data;
         item.loadtimeChart = this.chart(
@@ -158,11 +153,8 @@
         );
         this.item = item;
       }
-
-      var steps = await service.steps(this.$route.params.id);
-      if (steps.success) {
-        this.steps = steps.data;
-      }
+      const steps = await service.steps(this.$route.params.id);
+      this.steps = steps.data;
     },
     methods: {
       async details(id) {
@@ -184,14 +176,10 @@
             }
           },
           stroke: {
-            curve: "smooth"
+            curve: "straight"
           },
           fill: {
-            opacity: 0.3,
-            type: 'gradient' / 'solid' / 'pattern' / 'image'
-          },
-          markers: {
-            size: 0,
+            opacity: 0.3
           },
           series: [
             {
@@ -202,8 +190,7 @@
           yaxis: {
             min: 0
           },
-
-          colors: ["#2E93fA"],
+          colors: ["#DCE6EC"],
           title: {
             text: title,
             offsetX: 0,

@@ -31,7 +31,8 @@ namespace Ketum.Web
                 connectionString = "Server=localhost; Port=5432; Database=ketum; User Id=postgres; Password=123456789;";
             }
 
-            if (string.IsNullOrEmpty(Keys.StripeAPIKey))
+            var stripeApiKey = Environment.GetEnvironmentVariable(Keys.StripeAPIKey);
+            if (string.IsNullOrEmpty(stripeApiKey))
             {
                 Console.WriteLine("Stripe api key is not found in environment variables 'STRIPEAPIKEY'. I'm using default stripe api key string.");
                 StripeConfiguration.SetApiKey("sk_test_VC6BqWBxNlcnu6mdFn8OnCLU006MJGWHgx");
