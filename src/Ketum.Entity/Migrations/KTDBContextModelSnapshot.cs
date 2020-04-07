@@ -49,6 +49,46 @@ namespace Ketum.Entity.Migrations
                     b.ToTable("Monitor");
                 });
 
+            modelBuilder.Entity("Ketum.Entity.KTDMonitorAlert", b =>
+                {
+                    b.Property<Guid>("MonitorAlertId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<short>("ChannelType");
+
+                    b.Property<Guid>("MonitorId");
+
+                    b.Property<string>("Settings");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("MonitorAlertId");
+
+                    b.ToTable("MonitorAlerts");
+                });
+
+            modelBuilder.Entity("Ketum.Entity.KTDMonitorAlertLog", b =>
+                {
+                    b.Property<Guid>("MonitorAlertLogId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Log");
+
+                    b.Property<Guid>("MonitorAlertId");
+
+                    b.Property<Guid>("MonitorId");
+
+                    b.Property<short>("Status");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("MonitorAlertLogId");
+
+                    b.ToTable("MonitorAlertLog");
+                });
+
             modelBuilder.Entity("Ketum.Entity.KTDMonitorStep", b =>
                 {
                     b.Property<Guid>("MonitorStepId")
@@ -165,6 +205,8 @@ namespace Ketum.Entity.Migrations
                     b.Property<string>("ValueUsed");
 
                     b.HasKey("SubscriptionFeatureId");
+
+                    b.HasIndex("SubscriptionTypeFeatureId");
 
                     b.ToTable("SubscriptionFeature");
                 });
@@ -369,6 +411,14 @@ namespace Ketum.Entity.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Ketum.Entity.KTDSubscriptionFeature", b =>
+                {
+                    b.HasOne("Ketum.Entity.KTDSubscriptionTypeFeature", "SubscriptionTypeFeature")
+                        .WithMany()
+                        .HasForeignKey("SubscriptionTypeFeatureId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
