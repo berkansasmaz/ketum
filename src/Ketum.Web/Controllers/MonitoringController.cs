@@ -7,6 +7,8 @@ using Ketum.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Remotion.Linq.Parsing;
+using Stripe;
 
 namespace Ketum.Web.Controllers
 {
@@ -143,6 +145,12 @@ namespace Ketum.Web.Controllers
             }
             else
             {
+                if (!await CheckSubscription(UserId, "MONITOR"))
+                {
+                    return Error("You don't have enough quota to do that.");
+                }
+
+
                 data = new KTDMonitor
                 {
                     MonitorId = Guid.NewGuid(),
