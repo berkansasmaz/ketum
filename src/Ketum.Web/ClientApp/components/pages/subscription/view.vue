@@ -87,7 +87,7 @@
           price: 0,
           description: "",
           title: "",
-          email: "selcukermaya@gmail.com"
+          email: "berkansasmaz@gmail.com"
         },
         subscriptions: []
       };

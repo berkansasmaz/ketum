@@ -26,17 +26,17 @@ We understand that when your website goes down, you need to know right away. Our
 ### ✨ [Demo](https://berkansasmaz.com/comingsoon/)
 <h5>Payment / Stripe API</h5>
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703711-5b38a580-7913-11ea-9bda-e6540dd2e6f8.gif" alt="demo-one"/>
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78706426-b53b6a00-7917-11ea-8a0f-ecba5ffa8e03.gif" alt="demo-Payment"/>
 </p>
 
 <h5>New monitoring and dashboard</h5>
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703715-5d026900-7913-11ea-8531-dca3d641d37e.gif" alt="demo-two"/>
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703715-5d026900-7913-11ea-8531-dca3d641d37e.gif" alt="demo-Dashboard"/>
 </p>
 
 <h5>Alert channel</h5>
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703719-5e339600-7913-11ea-8eea-061d28491f4f.gif" alt="demo-two"/>
+  <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703719-5e339600-7913-11ea-8eea-061d28491f4f.gif" alt="demo-Alert"/>
 </p>
             
 ## Install
