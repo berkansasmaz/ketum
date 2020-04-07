@@ -24,13 +24,17 @@ Ketum provides you with simple and easy-to-read charts that track your websiteâ€
 We understand that when your website goes down, you need to know right away. Our alert system will have you notified before your users ever notice; ultimately helping you act swiftly to mitigate any damage!
 
 ### âœ¨ [Demo](https://berkansasmaz.com/comingsoon/)
-
+<h5>Payment / Stripe API</h5>
 <p align="center">
   <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703711-5b38a580-7913-11ea-9bda-e6540dd2e6f8.gif" alt="demo-one"/>
 </p>
+
+<h5>New monitoring and dashboard</h5>
 <p align="center">
   <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703715-5d026900-7913-11ea-8531-dca3d641d37e.gif" alt="demo-two"/>
 </p>
+
+<h5>Alert channel</h5>
 <p align="center">
   <img width="700" align="center" src="https://user-images.githubusercontent.com/31216880/78703719-5e339600-7913-11ea-8eea-061d28491f4f.gif" alt="demo-two"/>
 </p>
