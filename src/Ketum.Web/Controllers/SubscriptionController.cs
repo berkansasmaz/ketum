@@ -21,13 +21,18 @@ namespace Ketum.Web.Controllers
                 return Error("Subscription not found.", code: 404);
             }
 
-            var featureList = await Db.SubscriptionFeatures.Where(x => x.SubscriptionId == subscription.SubscriptionId)
+            var featureList = await Db.SubscriptionFeatures
+                .Include(x => x.SubscriptionTypeFeature)
+                .Where(x => x.SubscriptionId == subscription.SubscriptionId)
+                .OrderBy(x => x.SubscriptionTypeFeature.Sort)
                 .ToListAsync();
+
             var features = new List<dynamic>();
             foreach (var feature in featureList)
             {
                 features.Add(new
                 {
+                    feature.Name,
                     feature.Title,
                     feature.Description,
                     feature.Value,
@@ -36,8 +41,17 @@ namespace Ketum.Web.Controllers
                 });
             }
 
+
+            var subscriptionType =
+               await Db.SubscriptionTypes.FirstOrDefaultAsync(x => x.SubscriptionTypeId == subscription.SubscriptionTypeId);
+
+            if (subscriptionType == null)
+            {
+                return Error("There is no such subscription type.");
+            }
             return Success(data: new
             {
+                title = subscriptionType.Title,
                 id = subscription.SubscriptionId,
                 typeId = subscription.SubscriptionTypeId,
                 subscription.StartDate,
