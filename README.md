@@ -55,6 +55,7 @@ yarn dev
 
 ```sh
 yarn test
+```
 
 ## Author
 
