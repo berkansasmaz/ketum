@@ -13,7 +13,9 @@
     "db-update": "cd ./src/Ketum.Entity/ && dotnet ef database update --startup-project=../Ketum.Web",
     "start": "cd ./src/Ketum.Web && cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run",
     "docker-build": "docker build -t berkansasmaz/ketum .",
-    "docker-run": "docker run -it --rm -p 5000:80 --link=postgres --name ketum berkansasmaz/ketum"
+    "docker-run": "docker run -it --rm -p 5000:80 --link=postgres --name ketum berkansasmaz/ketum",
+    "test": "cd ./test/Ketum.Web.Tests/ && dotnet test"
+
   },
   "devDependencies": {
     "cross-env": "^5.2.0"
