@@ -42,18 +42,26 @@ namespace Ketum.Web
                 StripeConfiguration.SetApiKey(Keys.StripeAPIKey);
             }
 
-            services.AddDbContext<KTDBContext>(
-                options => options.UseNpgsql(connectionString)
-            );
+            bool.TryParse(Environment.GetEnvironmentVariable(Keys.TestProject), out var isTestProject);
 
-            var scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
-            using (var scope = scopeFactory.CreateScope())
-            using (var db = scope.ServiceProvider.GetRequiredService<KTDBContext>())
+            if (!isTestProject)
             {
-                db.Database.Migrate();
+                services.AddDbContext<KTDBContext>(
+                    options => options.UseNpgsql(connectionString)
+                );
+                var scopeFactory = services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
+                using (var scope = scopeFactory.CreateScope())
+                using (var db = scope.ServiceProvider.GetRequiredService<KTDBContext>())
+                {
+                    db.Database.Migrate();
+                }
+            }
+            else
+            {
+                services.AddDbContext<KTDBContext>(options => options.UseInMemoryDatabase("ketum_test"));
             }
 
-                services
+            services
                 .AddDefaultIdentity<KTUser>()
                 .AddEntityFrameworkStores<KTDBContext>()
                 .AddDefaultTokenProviders();
