@@ -5,7 +5,7 @@ using Ketum.Web.Tests.Helpers;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
-namespace Ketum.Web.Tests
+namespace Ketum.Web.Tests.Integration
 {
     public class HomeControllerTest : IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -17,12 +17,15 @@ namespace Ketum.Web.Tests
             _factory = factory;
             _client = Helper.GetClient(_factory);
         }
-
+        
+        // Integration Test çünkü proje ayağa kalkıyor ve client tarafından dönen cevap üzerinden hareket ediyoruz. Çalışan bir proje üzerinden yapılır. Süreç test edilmiş olur.
         [Fact]
-        public async Task HomeIndexShouldReturnAction()
+        public async Task HomeIndexShouldRedirectToLogin()
         {
             var response = await _client.GetAsync("/Home/Index");
-            response.Headers.Should().Contain("X-Ketum-ResponseId");
+            response.IsSuccessStatusCode.Should().BeFalse();
+            response.Headers.Location.AbsoluteUri.Should().StartWith("http://localhost/Identity/Account/Login");
+            response.StatusCode.Should().Be(302);
         }
     }
 }
