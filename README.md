@@ -12,7 +12,8 @@
   </a>
 </p>
 
-> Ketum is a platform that enables you to easily test and monitor your website’s health.
+> <b> Ketum is a platform that enables you to easily test and monitor your website’s health. </b>
+
 #### WEBSITE TESTING
 Our convenient platform allows you to monitor the health of your website effortlessly. The testing process is quick, reliable, and simple. You can receive your results in no time so that you don’t have to wonder about the status of your site!
 #### TRACK HEALTH
@@ -22,6 +23,10 @@ Ketum provides you with simple and easy-to-read charts that track your website�
 #### GET ALERTED
 
 We understand that when your website goes down, you need to know right away. Our alert system will have you notified before your users ever notice; ultimately helping you act swiftly to mitigate any damage!
+
+## Warning
+
+This project is still under development and its is not stable. Please use it with caution or wait until this message is removed and the second version is released. Feel free to <b>[contribute](https://github.com/berkansasmaz/Ketum/issues)</b> if you want the second version to be released faster. I spent a lot of time on this project, I learned a lot, but I have to spend less time due to my density, so I need your contribution. <b>[Feel free to contact me!](mailto:berkansasmazz@gmail.com?subject=Ketum&body=Hi,)</b>
 
 ### ✨ [Demo](https://berkansasmaz.com/comingsoon/)
 <h5>Payment / Stripe API</h5>
