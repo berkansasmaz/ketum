@@ -7,7 +7,6 @@ namespace Ketum.Web.Controllers
     {
         public IActionResult Index()
         {
-            Console.WriteLine("Hola!");
             return View();
         }
 

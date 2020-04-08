@@ -8,6 +8,10 @@ template/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Test
+lcov.info
+TestResults/
+
 *.swp
 *.*~
 project.lock.json
