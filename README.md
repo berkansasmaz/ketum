@@ -14,8 +14,6 @@
 
 > <b> Ketum is a platform that enables you to easily test and monitor your website’s health. </b>
 
-> <b> This project is still under development. </b>
-
 #### WEBSITE TESTING
 Our convenient platform allows you to monitor the health of your website effortlessly. The testing process is quick, reliable, and simple. You can receive your results in no time so that you don’t have to wonder about the status of your site!
 #### TRACK HEALTH
