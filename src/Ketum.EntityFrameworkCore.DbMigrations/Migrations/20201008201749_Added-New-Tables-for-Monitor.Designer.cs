@@ -4,15 +4,17 @@ using Ketum.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace Ketum.Migrations
 {
     [DbContext(typeof(KetumMigrationsDbContext))]
-    partial class KetumMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201008201749_Added-New-Tables-for-Monitor")]
+    partial class AddedNewTablesforMonitor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

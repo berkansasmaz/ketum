@@ -2,7 +2,7 @@
 {
     public static class KetumConsts
     {
-        public const string DbTablePrefix = "App";
+        public const string DbTablePrefix = "Ktm";
 
         public const string DbSchema = null;
     }
