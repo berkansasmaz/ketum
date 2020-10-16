@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ketum.EntityFrameworkCore;
+using Ketum.Monitors;
 using Ketum.MultiTenancy;
 using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
@@ -19,6 +20,7 @@ using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
+using Volo.Abp.BackgroundWorkers;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Localization;
@@ -34,7 +36,8 @@ namespace Ketum
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(KetumApplicationModule),
         typeof(KetumEntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpBackgroundWorkersModule)
         )]
     public class KetumHttpApiHostModule : AbpModule
     {
@@ -195,7 +198,7 @@ namespace Ketum
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API");
             });
-
+            context.AddBackgroundWorker<MonitoringWorker>();
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();

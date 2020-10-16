@@ -71,7 +71,7 @@ namespace Ketum.Monitors
 
             if (monitor.Name == name)
             {
-                throw  new BusinessException(message: "This project name is exist.");
+                throw  new BusinessException(message: "This monitor name already exists.");
             }
 
             monitor.SetName(name);
