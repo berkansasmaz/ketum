@@ -25,9 +25,9 @@ namespace Ketum.Migrations
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     MonitorStatus = table.Column<byte>(nullable: false),
                     TestStatus = table.Column<byte>(nullable: false),
-                    UpTime = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LoadTime = table.Column<int>(nullable: false),
-                    MonitorTime = table.Column<int>(nullable: false)
+                    UpTime = table.Column<decimal>(type: "decimal(18,2)", nullable: false, defaultValue: 0.00m),
+                    LoadTime = table.Column<int>(nullable: false, defaultValue: 0),
+                    MonitorTime = table.Column<int>(nullable: false, defaultValue: 0)
                 },
                 constraints: table =>
                 {
@@ -39,17 +39,10 @@ namespace Ketum.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(nullable: true),
-                    DeletionTime = table.Column<DateTime>(nullable: true),
                     TenantId = table.Column<Guid>(nullable: true),
                     MonitorId = table.Column<Guid>(nullable: false),
                     Url = table.Column<string>(maxLength: 256, nullable: false),
-                    Interval = table.Column<int>(nullable: false),
+                    Interval = table.Column<int>(nullable: false, defaultValue: 0),
                     Type = table.Column<byte>(nullable: false),
                     Status = table.Column<byte>(nullable: false)
                 },
@@ -72,10 +65,10 @@ namespace Ketum.Migrations
                     TenantId = table.Column<Guid>(nullable: true),
                     MonitorStepId = table.Column<Guid>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: true),
                     Status = table.Column<byte>(nullable: false),
                     Log = table.Column<string>(maxLength: 512, nullable: true),
-                    Interval = table.Column<int>(nullable: false)
+                    Interval = table.Column<int>(nullable: false, defaultValue: 0)
                 },
                 constraints: table =>
                 {
@@ -96,8 +89,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorStepLogs_MonitorStepId",
                 table: "KtmMonitorStepLogs",
-                column: "MonitorStepId",
-                unique: true);
+                column: "MonitorStepId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorStepLogs_TenantId",
@@ -107,7 +99,8 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorSteps_MonitorId",
                 table: "KtmMonitorSteps",
-                column: "MonitorId");
+                column: "MonitorId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorSteps_TenantId_Url",

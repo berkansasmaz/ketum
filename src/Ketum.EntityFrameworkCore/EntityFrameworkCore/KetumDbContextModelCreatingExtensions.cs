@@ -19,13 +19,13 @@ namespace Ketum.EntityFrameworkCore
                 b.Property(n => n.Name).HasMaxLength(MonitorConsts.MaxNameLength).IsRequired().HasColumnName(nameof(Monitor.Name));
                 b.Property(n => n.MonitorStatus).HasColumnName(nameof(Monitor.MonitorStatus));
                 b.Property(n => n.TestStatus).HasColumnName(nameof(Monitor.TestStatus));
-                b.Property(n => n.UpTime).HasColumnType("decimal(18,2)").HasColumnName(nameof(Monitor.UpTime));
-                b.Property(n => n.LoadTime).HasColumnName(nameof(Monitor.LoadTime));
-                b.Property(n => n.MonitorTime).HasColumnName(nameof(Monitor.MonitorTime));
+                b.Property(n => n.UpTime).HasDefaultValue(0.00M).HasColumnType("decimal(18,2)").HasColumnName(nameof(Monitor.UpTime));
+                b.Property(n => n.LoadTime).HasDefaultValue(0).HasColumnName(nameof(Monitor.LoadTime));
+                b.Property(n => n.MonitorTime).HasDefaultValue(0).HasColumnName(nameof(Monitor.MonitorTime));
 
                 b.HasIndex(n => new {n.TenantId, n.Name});
 
-                b.HasMany(n => n.MonitorSteps).WithOne().HasForeignKey(x => x.MonitorId).IsRequired();
+                b.HasOne(n => n.MonitorStep).WithOne().HasForeignKey<MonitorStep>(x => x.MonitorId).IsRequired();
             });
 
             builder.Entity<MonitorStep>(b =>
@@ -34,13 +34,13 @@ namespace Ketum.EntityFrameworkCore
                 b.ConfigureByConvention();
 
                 b.Property(n => n.Url).HasMaxLength(MonitorStepConsts.MaxUrLength).IsRequired().HasColumnName(nameof(MonitorStep.Url));
-                b.Property(n => n.Interval).HasColumnName(nameof(MonitorStep.Interval));
+                b.Property(n => n.Interval).HasDefaultValue(0).HasColumnName(nameof(MonitorStep.Interval));
                 b.Property(n => n.Type).HasColumnName(nameof(MonitorStep.Type));
                 b.Property(n => n.Status).HasColumnName(nameof(MonitorStep.Status));
 
                 b.HasIndex(n => new {n.TenantId, n.Url});
 
-                b.HasOne(n => n.MonitorStepLog).WithOne().HasForeignKey<MonitorStepLog>(x => x.MonitorStepId).IsRequired();
+                b.HasMany(n => n.MonitorStepLogs).WithOne().HasForeignKey(x => x.MonitorStepId).IsRequired();
             });
 
             builder.Entity<MonitorStepLog>(b =>
@@ -52,7 +52,7 @@ namespace Ketum.EntityFrameworkCore
                 b.Property(n => n.EndDate).HasColumnName(nameof(MonitorStepLog.EndDate));
                 b.Property(n => n.Status).HasColumnName(nameof(MonitorStepLog.Status));
                 b.Property(n => n.Log).HasMaxLength(MonitorStepLogConsts.MaxLogLength).HasColumnName(nameof(MonitorStepLog.Log));
-                b.Property(n => n.Interval).HasColumnName(nameof(MonitorStep.Interval));
+                b.Property(n => n.Interval).HasDefaultValue(0).HasColumnName(nameof(MonitorStep.Interval));
 
                 b.HasIndex(n => new {n.TenantId});
             });

@@ -68,16 +68,20 @@ namespace Ketum.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("LoadTime")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("LoadTime")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<byte>("MonitorStatus")
                         .HasColumnName("MonitorStatus")
                         .HasColumnType("tinyint");
 
                     b.Property<int>("MonitorTime")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("MonitorTime")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -94,8 +98,10 @@ namespace Ketum.Migrations
                         .HasColumnType("tinyint");
 
                     b.Property<decimal>("UpTime")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("UpTime")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0.00m);
 
                     b.HasKey("Id");
 
@@ -110,39 +116,11 @@ namespace Ketum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Interval")
-                        .HasColumnName("Interval")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnName("Interval")
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<Guid>("MonitorId")
                         .HasColumnType("uniqueidentifier");
@@ -167,7 +145,8 @@ namespace Ketum.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MonitorId");
+                    b.HasIndex("MonitorId")
+                        .IsUnique();
 
                     b.HasIndex("TenantId", "Url");
 
@@ -180,13 +159,15 @@ namespace Ketum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnName("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Interval")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("Interval")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("Log")
                         .HasColumnName("Log")
@@ -210,8 +191,7 @@ namespace Ketum.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MonitorStepId")
-                        .IsUnique();
+                    b.HasIndex("MonitorStepId");
 
                     b.HasIndex("TenantId");
 
@@ -1974,8 +1954,8 @@ namespace Ketum.Migrations
             modelBuilder.Entity("Ketum.Monitors.MonitorStep", b =>
                 {
                     b.HasOne("Ketum.Monitors.Monitor", null)
-                        .WithMany("MonitorSteps")
-                        .HasForeignKey("MonitorId")
+                        .WithOne("MonitorStep")
+                        .HasForeignKey("Ketum.Monitors.MonitorStep", "MonitorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1983,8 +1963,8 @@ namespace Ketum.Migrations
             modelBuilder.Entity("Ketum.Monitors.MonitorStepLog", b =>
                 {
                     b.HasOne("Ketum.Monitors.MonitorStep", null)
-                        .WithOne("MonitorStepLog")
-                        .HasForeignKey("Ketum.Monitors.MonitorStepLog", "MonitorStepId")
+                        .WithMany("MonitorStepLogs")
+                        .HasForeignKey("MonitorStepId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -10,7 +10,7 @@ using Volo.Abp.Users.EntityFrameworkCore;
 namespace Ketum.EntityFrameworkCore
 {
     [ConnectionStringName("Default")]
-    public class KetumDbContext : AbpDbContext<KetumDbContext>
+    public class KetumDbContext : AbpDbContext<KetumDbContext>, IKetumDbContext
     {
         public DbSet<AppUser> Users { get; set; }
 

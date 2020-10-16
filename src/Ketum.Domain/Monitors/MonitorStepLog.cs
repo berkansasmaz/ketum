@@ -12,7 +12,7 @@ namespace Ketum.Monitors
 
         public DateTime StartDate { get; protected set; }
         
-        public DateTime EndDate { get; protected set; }
+        public DateTime? EndDate { get; set; }
         
         public MonitorStepStatusTypes Status { get; protected set; }
         
@@ -23,6 +23,23 @@ namespace Ketum.Monitors
         protected MonitorStepLog()
         {
 
+        }
+
+        public MonitorStepLog(
+            Guid id,
+            Guid monitorStepId,
+            DateTime startDate,
+            MonitorStepStatusTypes status,
+            int interval,
+            DateTime? endDate = null,
+            Guid? tenantId = null)
+            : base(id)
+        {
+            MonitorStepId = monitorStepId;
+            StartDate = startDate;
+            Status = status;
+            Interval = interval;
+            TenantId = tenantId;
         }
     }
 }
