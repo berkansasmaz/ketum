@@ -1,4 +1,6 @@
 using System;
+using JetBrains.Annotations;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
@@ -14,9 +16,9 @@ namespace Ketum.Monitors
         
         public DateTime? EndDate { get; set; }
         
-        public MonitorStepStatusTypes Status { get; protected set; }
+        public MonitorStepStatusTypes Status { get; set; }
         
-        public string Log { get; set; }
+        public string Log { get; protected set; }
         
         public int Interval { get; protected set; }
 
@@ -40,6 +42,15 @@ namespace Ketum.Monitors
             Status = status;
             Interval = interval;
             TenantId = tenantId;
+        }
+
+        public MonitorStepLog SetLog([NotNull] string log)
+        {
+            Check.NotNullOrWhiteSpace(log, nameof(log));
+
+            Log = log;
+
+            return this;
         }
     }
 }

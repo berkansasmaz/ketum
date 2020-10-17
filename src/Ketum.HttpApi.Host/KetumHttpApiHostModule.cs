@@ -198,7 +198,7 @@ namespace Ketum
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API");
             });
-            context.AddBackgroundWorker<MonitoringWorker>();
+            context.AddBackgroundWorker<MonitoringService>();
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();

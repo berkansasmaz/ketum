@@ -11,7 +11,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Ketum.Migrations
 {
     [DbContext(typeof(KetumMigrationsDbContext))]
-    [Migration("20201015205736_Added-New-Tables-for-Monitor")]
+    [Migration("20201017213347_Added-New-Tables-for-Monitor")]
     partial class AddedNewTablesforMonitor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
