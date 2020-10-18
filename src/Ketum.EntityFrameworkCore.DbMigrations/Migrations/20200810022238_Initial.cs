@@ -34,10 +34,7 @@ namespace Ketum.Migrations
                     Comments = table.Column<string>(maxLength: 256, nullable: true),
                     HttpStatusCode = table.Column<int>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpAuditLogs", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpAuditLogs", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpBackgroundJobs",
@@ -48,17 +45,14 @@ namespace Ketum.Migrations
                     ConcurrencyStamp = table.Column<string>(maxLength: 40, nullable: true),
                     JobName = table.Column<string>(maxLength: 128, nullable: false),
                     JobArgs = table.Column<string>(maxLength: 1048576, nullable: false),
-                    TryCount = table.Column<short>(nullable: false, defaultValue: (short)0),
+                    TryCount = table.Column<short>(nullable: false, defaultValue: (short) 0),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     NextTryTime = table.Column<DateTime>(nullable: false),
                     LastTryTime = table.Column<DateTime>(nullable: true),
                     IsAbandoned = table.Column<bool>(nullable: false, defaultValue: false),
-                    Priority = table.Column<byte>(nullable: false, defaultValue: (byte)15)
+                    Priority = table.Column<byte>(nullable: false, defaultValue: (byte) 15)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpBackgroundJobs", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpBackgroundJobs", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpClaimTypes",
@@ -75,10 +69,7 @@ namespace Ketum.Migrations
                     Description = table.Column<string>(maxLength: 256, nullable: true),
                     ValueType = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpClaimTypes", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpClaimTypes", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpFeatureValues",
@@ -90,10 +81,7 @@ namespace Ketum.Migrations
                     ProviderName = table.Column<string>(maxLength: 64, nullable: true),
                     ProviderKey = table.Column<string>(maxLength: 64, nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpFeatureValues", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpFeatureValues", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpOrganizationUnits",
@@ -135,10 +123,7 @@ namespace Ketum.Migrations
                     ProviderName = table.Column<string>(maxLength: 64, nullable: false),
                     ProviderKey = table.Column<string>(maxLength: 64, nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpPermissionGrants", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpPermissionGrants", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpRoles",
@@ -154,10 +139,7 @@ namespace Ketum.Migrations
                     IsStatic = table.Column<bool>(nullable: false),
                     IsPublic = table.Column<bool>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpRoles", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpRoles", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpSecurityLogs",
@@ -179,10 +161,7 @@ namespace Ketum.Migrations
                     BrowserInfo = table.Column<string>(maxLength: 512, nullable: true),
                     CreationTime = table.Column<DateTime>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpSecurityLogs", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpSecurityLogs", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpSettings",
@@ -194,10 +173,7 @@ namespace Ketum.Migrations
                     ProviderName = table.Column<string>(maxLength: 64, nullable: true),
                     ProviderKey = table.Column<string>(maxLength: 64, nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpSettings", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpSettings", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpTenants",
@@ -215,10 +191,7 @@ namespace Ketum.Migrations
                     DeletionTime = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 64, nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpTenants", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpTenants", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "AbpUsers",
@@ -252,10 +225,7 @@ namespace Ketum.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false, defaultValue: false),
                     AccessFailedCount = table.Column<int>(nullable: false, defaultValue: 0)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpUsers", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AbpUsers", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "IdentityServerApiResources",
@@ -277,10 +247,7 @@ namespace Ketum.Migrations
                     Enabled = table.Column<bool>(nullable: false),
                     Properties = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityServerApiResources", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_IdentityServerApiResources", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "IdentityServerClients",
@@ -334,10 +301,7 @@ namespace Ketum.Migrations
                     UserCodeType = table.Column<string>(maxLength: 100, nullable: true),
                     DeviceCodeLifetime = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityServerClients", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_IdentityServerClients", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "IdentityServerDeviceFlowCodes",
@@ -355,10 +319,7 @@ namespace Ketum.Migrations
                     Expiration = table.Column<DateTime>(nullable: false),
                     Data = table.Column<string>(maxLength: 50000, nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityServerDeviceFlowCodes", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_IdentityServerDeviceFlowCodes", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "IdentityServerIdentityResources",
@@ -383,10 +344,7 @@ namespace Ketum.Migrations
                     ShowInDiscoveryDocument = table.Column<bool>(nullable: false),
                     Properties = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityServerIdentityResources", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_IdentityServerIdentityResources", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "IdentityServerPersistedGrants",
@@ -403,10 +361,7 @@ namespace Ketum.Migrations
                     Expiration = table.Column<DateTime>(nullable: true),
                     Data = table.Column<string>(maxLength: 50000, nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityServerPersistedGrants", x => x.Key);
-                });
+                constraints: table => { table.PrimaryKey("PK_IdentityServerPersistedGrants", x => x.Key); });
 
             migrationBuilder.CreateTable(
                 name: "AbpAuditLogActions",
@@ -470,7 +425,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpOrganizationUnitRoles", x => new { x.OrganizationUnitId, x.RoleId });
+                    table.PrimaryKey("PK_AbpOrganizationUnitRoles", x => new {x.OrganizationUnitId, x.RoleId});
                     table.ForeignKey(
                         name: "FK_AbpOrganizationUnitRoles_AbpOrganizationUnits_OrganizationUnitId",
                         column: x => x.OrganizationUnitId,
@@ -516,7 +471,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpTenantConnectionStrings", x => new { x.TenantId, x.Name });
+                    table.PrimaryKey("PK_AbpTenantConnectionStrings", x => new {x.TenantId, x.Name});
                     table.ForeignKey(
                         name: "FK_AbpTenantConnectionStrings_AbpTenants_TenantId",
                         column: x => x.TenantId,
@@ -558,7 +513,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpUserLogins", x => new { x.UserId, x.LoginProvider });
+                    table.PrimaryKey("PK_AbpUserLogins", x => new {x.UserId, x.LoginProvider});
                     table.ForeignKey(
                         name: "FK_AbpUserLogins_AbpUsers_UserId",
                         column: x => x.UserId,
@@ -579,7 +534,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpUserOrganizationUnits", x => new { x.OrganizationUnitId, x.UserId });
+                    table.PrimaryKey("PK_AbpUserOrganizationUnits", x => new {x.OrganizationUnitId, x.UserId});
                     table.ForeignKey(
                         name: "FK_AbpUserOrganizationUnits_AbpOrganizationUnits_OrganizationUnitId",
                         column: x => x.OrganizationUnitId,
@@ -604,7 +559,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpUserRoles", x => new { x.UserId, x.RoleId });
+                    table.PrimaryKey("PK_AbpUserRoles", x => new {x.UserId, x.RoleId});
                     table.ForeignKey(
                         name: "FK_AbpUserRoles_AbpRoles_RoleId",
                         column: x => x.RoleId,
@@ -631,7 +586,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.PrimaryKey("PK_AbpUserTokens", x => new {x.UserId, x.LoginProvider, x.Name});
                     table.ForeignKey(
                         name: "FK_AbpUserTokens_AbpUsers_UserId",
                         column: x => x.UserId,
@@ -649,7 +604,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerApiClaims", x => new { x.ApiResourceId, x.Type });
+                    table.PrimaryKey("PK_IdentityServerApiClaims", x => new {x.ApiResourceId, x.Type});
                     table.ForeignKey(
                         name: "FK_IdentityServerApiClaims_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
@@ -672,7 +627,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerApiScopes", x => new { x.ApiResourceId, x.Name });
+                    table.PrimaryKey("PK_IdentityServerApiScopes", x => new {x.ApiResourceId, x.Name});
                     table.ForeignKey(
                         name: "FK_IdentityServerApiScopes_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
@@ -693,7 +648,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerApiSecrets", x => new { x.ApiResourceId, x.Type, x.Value });
+                    table.PrimaryKey("PK_IdentityServerApiSecrets", x => new {x.ApiResourceId, x.Type, x.Value});
                     table.ForeignKey(
                         name: "FK_IdentityServerApiSecrets_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
@@ -712,7 +667,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientClaims", x => new { x.ClientId, x.Type, x.Value });
+                    table.PrimaryKey("PK_IdentityServerClientClaims", x => new {x.ClientId, x.Type, x.Value});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientClaims_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -730,7 +685,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientCorsOrigins", x => new { x.ClientId, x.Origin });
+                    table.PrimaryKey("PK_IdentityServerClientCorsOrigins", x => new {x.ClientId, x.Origin});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientCorsOrigins_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -748,7 +703,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientGrantTypes", x => new { x.ClientId, x.GrantType });
+                    table.PrimaryKey("PK_IdentityServerClientGrantTypes", x => new {x.ClientId, x.GrantType});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientGrantTypes_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -766,7 +721,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientIdPRestrictions", x => new { x.ClientId, x.Provider });
+                    table.PrimaryKey("PK_IdentityServerClientIdPRestrictions", x => new {x.ClientId, x.Provider});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientIdPRestrictions_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -784,7 +739,8 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientPostLogoutRedirectUris", x => new { x.ClientId, x.PostLogoutRedirectUri });
+                    table.PrimaryKey("PK_IdentityServerClientPostLogoutRedirectUris",
+                        x => new {x.ClientId, x.PostLogoutRedirectUri});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientPostLogoutRedirectUris_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -803,7 +759,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientProperties", x => new { x.ClientId, x.Key });
+                    table.PrimaryKey("PK_IdentityServerClientProperties", x => new {x.ClientId, x.Key});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientProperties_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -821,7 +777,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientRedirectUris", x => new { x.ClientId, x.RedirectUri });
+                    table.PrimaryKey("PK_IdentityServerClientRedirectUris", x => new {x.ClientId, x.RedirectUri});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientRedirectUris_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -839,7 +795,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientScopes", x => new { x.ClientId, x.Scope });
+                    table.PrimaryKey("PK_IdentityServerClientScopes", x => new {x.ClientId, x.Scope});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientScopes_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -860,7 +816,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerClientSecrets", x => new { x.ClientId, x.Type, x.Value });
+                    table.PrimaryKey("PK_IdentityServerClientSecrets", x => new {x.ClientId, x.Type, x.Value});
                     table.ForeignKey(
                         name: "FK_IdentityServerClientSecrets_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
@@ -878,7 +834,7 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerIdentityClaims", x => new { x.IdentityResourceId, x.Type });
+                    table.PrimaryKey("PK_IdentityServerIdentityClaims", x => new {x.IdentityResourceId, x.Type});
                     table.ForeignKey(
                         name: "FK_IdentityServerIdentityClaims_IdentityServerIdentityResources_IdentityResourceId",
                         column: x => x.IdentityResourceId,
@@ -920,12 +876,12 @@ namespace Ketum.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityServerApiScopeClaims", x => new { x.ApiResourceId, x.Name, x.Type });
+                    table.PrimaryKey("PK_IdentityServerApiScopeClaims", x => new {x.ApiResourceId, x.Name, x.Type});
                     table.ForeignKey(
                         name: "FK_IdentityServerApiScopeClaims_IdentityServerApiScopes_ApiResourceId_Name",
-                        columns: x => new { x.ApiResourceId, x.Name },
+                        columns: x => new {x.ApiResourceId, x.Name},
                         principalTable: "IdentityServerApiScopes",
-                        principalColumns: new[] { "ApiResourceId", "Name" },
+                        principalColumns: new[] {"ApiResourceId", "Name"},
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -937,22 +893,22 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogActions_TenantId_ServiceName_MethodName_ExecutionTime",
                 table: "AbpAuditLogActions",
-                columns: new[] { "TenantId", "ServiceName", "MethodName", "ExecutionTime" });
+                columns: new[] {"TenantId", "ServiceName", "MethodName", "ExecutionTime"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogs_TenantId_ExecutionTime",
                 table: "AbpAuditLogs",
-                columns: new[] { "TenantId", "ExecutionTime" });
+                columns: new[] {"TenantId", "ExecutionTime"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpAuditLogs_TenantId_UserId_ExecutionTime",
                 table: "AbpAuditLogs",
-                columns: new[] { "TenantId", "UserId", "ExecutionTime" });
+                columns: new[] {"TenantId", "UserId", "ExecutionTime"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpBackgroundJobs_IsAbandoned_NextTryTime",
                 table: "AbpBackgroundJobs",
-                columns: new[] { "IsAbandoned", "NextTryTime" });
+                columns: new[] {"IsAbandoned", "NextTryTime"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpEntityChanges_AuditLogId",
@@ -962,7 +918,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpEntityChanges_TenantId_EntityTypeFullName_EntityId",
                 table: "AbpEntityChanges",
-                columns: new[] { "TenantId", "EntityTypeFullName", "EntityId" });
+                columns: new[] {"TenantId", "EntityTypeFullName", "EntityId"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpEntityPropertyChanges_EntityChangeId",
@@ -972,12 +928,12 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpFeatureValues_Name_ProviderName_ProviderKey",
                 table: "AbpFeatureValues",
-                columns: new[] { "Name", "ProviderName", "ProviderKey" });
+                columns: new[] {"Name", "ProviderName", "ProviderKey"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpOrganizationUnitRoles_RoleId_OrganizationUnitId",
                 table: "AbpOrganizationUnitRoles",
-                columns: new[] { "RoleId", "OrganizationUnitId" });
+                columns: new[] {"RoleId", "OrganizationUnitId"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpOrganizationUnits_Code",
@@ -992,7 +948,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpPermissionGrants_Name_ProviderName_ProviderKey",
                 table: "AbpPermissionGrants",
-                columns: new[] { "Name", "ProviderName", "ProviderKey" });
+                columns: new[] {"Name", "ProviderName", "ProviderKey"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpRoleClaims_RoleId",
@@ -1007,27 +963,27 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpSecurityLogs_TenantId_Action",
                 table: "AbpSecurityLogs",
-                columns: new[] { "TenantId", "Action" });
+                columns: new[] {"TenantId", "Action"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpSecurityLogs_TenantId_ApplicationName",
                 table: "AbpSecurityLogs",
-                columns: new[] { "TenantId", "ApplicationName" });
+                columns: new[] {"TenantId", "ApplicationName"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpSecurityLogs_TenantId_Identity",
                 table: "AbpSecurityLogs",
-                columns: new[] { "TenantId", "Identity" });
+                columns: new[] {"TenantId", "Identity"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpSecurityLogs_TenantId_UserId",
                 table: "AbpSecurityLogs",
-                columns: new[] { "TenantId", "UserId" });
+                columns: new[] {"TenantId", "UserId"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpSettings_Name_ProviderName_ProviderKey",
                 table: "AbpSettings",
-                columns: new[] { "Name", "ProviderName", "ProviderKey" });
+                columns: new[] {"Name", "ProviderName", "ProviderKey"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpTenants_Name",
@@ -1042,17 +998,17 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserLogins_LoginProvider_ProviderKey",
                 table: "AbpUserLogins",
-                columns: new[] { "LoginProvider", "ProviderKey" });
+                columns: new[] {"LoginProvider", "ProviderKey"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserOrganizationUnits_UserId_OrganizationUnitId",
                 table: "AbpUserOrganizationUnits",
-                columns: new[] { "UserId", "OrganizationUnitId" });
+                columns: new[] {"UserId", "OrganizationUnitId"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserRoles_RoleId_UserId",
                 table: "AbpUserRoles",
-                columns: new[] { "RoleId", "UserId" });
+                columns: new[] {"RoleId", "UserId"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUsers_Email",
@@ -1104,7 +1060,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_IdentityServerPersistedGrants_SubjectId_ClientId_Type",
                 table: "IdentityServerPersistedGrants",
-                columns: new[] { "SubjectId", "ClientId", "Type" });
+                columns: new[] {"SubjectId", "ClientId", "Type"});
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

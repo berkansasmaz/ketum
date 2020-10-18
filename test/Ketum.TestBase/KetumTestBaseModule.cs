@@ -15,7 +15,7 @@ namespace Ketum
         typeof(AbpTestBaseModule),
         typeof(AbpAuthorizationModule),
         typeof(KetumDomainModule)
-        )]
+    )]
     public class KetumTestBaseModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -33,10 +33,7 @@ namespace Ketum
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpBackgroundJobOptions>(options =>
-            {
-                options.IsJobExecutionEnabled = false;
-            });
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = false; });
 
             context.Services.AddAlwaysAllowAuthorization();
         }

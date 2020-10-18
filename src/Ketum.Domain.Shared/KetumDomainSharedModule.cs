@@ -24,7 +24,7 @@ namespace Ketum
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
         typeof(AbpTenantManagementDomainSharedModule)
-        )]
+    )]
     public class KetumDomainSharedModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

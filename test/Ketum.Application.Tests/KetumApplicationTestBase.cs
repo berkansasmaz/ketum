@@ -1,7 +1,6 @@
 ﻿namespace Ketum
 {
-    public abstract class KetumApplicationTestBase : KetumTestBase<KetumApplicationTestModule> 
+    public abstract class KetumApplicationTestBase : KetumTestBase<KetumApplicationTestModule>
     {
-
     }
 }

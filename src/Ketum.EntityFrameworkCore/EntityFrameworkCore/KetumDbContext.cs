@@ -24,7 +24,6 @@ namespace Ketum.EntityFrameworkCore
         public KetumDbContext(DbContextOptions<KetumDbContext> options)
             : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -35,8 +34,9 @@ namespace Ketum.EntityFrameworkCore
 
             builder.Entity<AppUser>(b =>
             {
-                b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
-                
+                b.ToTable(AbpIdentityDbProperties.DbTablePrefix +
+                          "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
+
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
 

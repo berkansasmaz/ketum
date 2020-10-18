@@ -6,9 +6,8 @@ namespace Ketum.HttpApi.Client.ConsoleTestApp
     [DependsOn(
         typeof(KetumHttpApiClientModule),
         typeof(AbpHttpClientIdentityModelModule)
-        )]
+    )]
     public class KetumConsoleApiClientModule : AbpModule
     {
-        
     }
 }

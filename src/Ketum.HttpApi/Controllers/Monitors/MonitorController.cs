@@ -44,7 +44,7 @@ namespace Ketum.Controllers.Monitors
         [HttpPut("{id}")]
         public async Task UpdateAsync(Guid id, UpdateMonitorDto input)
         {
-            await _monitorAppService.UpdateAsync(id,input);
+            await _monitorAppService.UpdateAsync(id, input);
         }
 
         [HttpDelete("{id}")]

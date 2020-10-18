@@ -13,7 +13,7 @@ namespace Ketum.Monitors
         public decimal UpTime { get; set; }
 
         public int LoadTime { get; set; }
-                                                 
+
         public int MonitorTime { get; set; }
     }
 }

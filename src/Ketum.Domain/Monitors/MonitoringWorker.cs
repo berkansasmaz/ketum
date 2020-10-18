@@ -40,14 +40,15 @@ namespace Ketum.Monitors
                 .Where(x =>
                     x.LastModificationTime == null
                         ? x.CreationTime.ToUniversalTime().AddSeconds(x.MonitorStep.Interval) < DateTime.UtcNow
-                        : x.LastModificationTime?.ToUniversalTime().AddMinutes(x.MonitorStep.Interval) < DateTime.UtcNow)
+                        : x.LastModificationTime?.ToUniversalTime().AddMinutes(x.MonitorStep.Interval) <
+                          DateTime.UtcNow)
                 .ToList();
 
             foreach (var monitor in monitors)
             {
                 if (!monitor.MonitorStep.Url.IsNullOrEmpty())
                 {
-                    var logInterval = monitor.MonitorStep.Interval + TimeSpan.FromMilliseconds(Timer.Period).Minutes; 
+                    var logInterval = monitor.MonitorStep.Interval + TimeSpan.FromMilliseconds(Timer.Period).Minutes;
                     var monitorStepLog = new MonitorStepLog(
                         guidGenerator.Create(),
                         monitor.Id,

@@ -38,7 +38,7 @@ namespace Ketum
         typeof(KetumEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpBackgroundWorkersModule)
-        )]
+    )]
     public class KetumHttpApiHostModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
@@ -60,10 +60,7 @@ namespace Ketum
 
         private void ConfigureCache(IConfiguration configuration)
         {
-            Configure<AbpDistributedCacheOptions>(options =>
-            {
-                options.KeyPrefix = "Ketum:";
-            });
+            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "Ketum:"; });
         }
 
         private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
@@ -74,10 +71,18 @@ namespace Ketum
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationContractsModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Application"));
                 });
             }
         }
@@ -194,10 +199,7 @@ namespace Ketum
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API");
-            });
+            app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API"); });
             context.AddBackgroundWorker<MonitoringWorker>();
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();

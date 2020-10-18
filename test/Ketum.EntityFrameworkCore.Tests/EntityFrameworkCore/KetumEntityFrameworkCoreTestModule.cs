@@ -14,7 +14,7 @@ namespace Ketum.EntityFrameworkCore
         typeof(KetumEntityFrameworkCoreDbMigrationsModule),
         typeof(KetumTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
-        )]
+    )]
     public class KetumEntityFrameworkCoreTestModule : AbpModule
     {
         private SqliteConnection _sqliteConnection;
@@ -30,10 +30,7 @@ namespace Ketum.EntityFrameworkCore
 
             services.Configure<AbpDbContextOptions>(options =>
             {
-                options.Configure(context =>
-                {
-                    context.DbContextOptions.UseSqlite(_sqliteConnection);
-                });
+                options.Configure(context => { context.DbContextOptions.UseSqlite(_sqliteConnection); });
             });
         }
 

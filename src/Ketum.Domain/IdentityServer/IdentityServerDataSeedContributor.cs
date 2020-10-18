@@ -152,7 +152,7 @@ namespace Ketum.IdentityServer
                 await CreateClientAsync(
                     name: blazorClientId,
                     scopes: commonScopes,
-                    grantTypes: new[] { "authorization_code" },
+                    grantTypes: new[] {"authorization_code"},
                     secret: configurationSection["Ketum_Blazor:ClientSecret"]?.Sha256(),
                     requireClientSecret: false,
                     redirectUri: $"{blazorRootUrl}/authentication/login-callback",

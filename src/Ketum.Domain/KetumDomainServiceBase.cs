@@ -4,6 +4,5 @@ namespace Ketum
 {
     public abstract class KetumDomainServiceBase : DomainService
     {
-        
     }
 }

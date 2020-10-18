@@ -25,10 +25,7 @@ namespace Ketum.Migrations
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     MonitorStatus = table.Column<byte>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_KtmMonitors", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_KtmMonitors", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 name: "KtmMonitorSteps",
@@ -80,7 +77,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitors_TenantId_Name",
                 table: "KtmMonitors",
-                columns: new[] { "TenantId", "Name" });
+                columns: new[] {"TenantId", "Name"});
 
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorStepLogs_MonitorStepId",
@@ -101,7 +98,7 @@ namespace Ketum.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_KtmMonitorSteps_TenantId_Url",
                 table: "KtmMonitorSteps",
-                columns: new[] { "TenantId", "Url" });
+                columns: new[] {"TenantId", "Url"});
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

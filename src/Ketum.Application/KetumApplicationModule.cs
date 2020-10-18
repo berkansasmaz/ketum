@@ -16,15 +16,12 @@ namespace Ketum
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpTenantManagementApplicationModule),
         typeof(AbpFeatureManagementApplicationModule)
-        )]
+    )]
     public class KetumApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<KetumApplicationModule>();
-            });
+            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<KetumApplicationModule>(); });
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Ketum.DbMigrator
         typeof(AbpAutofacModule),
         typeof(KetumEntityFrameworkCoreDbMigrationsModule),
         typeof(KetumApplicationContractsModule)
-        )]
+    )]
     public class KetumDbMigratorModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

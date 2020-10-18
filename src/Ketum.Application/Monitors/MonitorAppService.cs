@@ -20,7 +20,7 @@ namespace Ketum.Monitors
 
         public MonitorAppService(
             MonitorManager monitorManager,
-            IMonitorRepository monitorRepository, 
+            IMonitorRepository monitorRepository,
             IDistributedCache<MonitorWithDetailsDto> cache)
         {
             _monitorManager = monitorManager;
@@ -87,9 +87,9 @@ namespace Ketum.Monitors
 
             if (CurrentUser.Id!.Value != monitor.CreatorId)
             {
-               return; 
+                return;
             }
-            
+
             await _monitorRepository.DeleteAsync(id);
         }
 

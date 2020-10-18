@@ -7,7 +7,6 @@ namespace Ketum.Web.Pages
     {
         public void OnGet()
         {
-            
         }
 
         public async Task OnPostLoginAsync()

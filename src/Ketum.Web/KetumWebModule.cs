@@ -60,7 +60,7 @@ namespace Ketum.Web
         typeof(AbpIdentityWebModule),
         typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule)
-        )]
+    )]
     public class KetumWebModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -94,10 +94,7 @@ namespace Ketum.Web
 
         private void ConfigureCache(IConfiguration configuration)
         {
-            Configure<AbpDistributedCacheOptions>(options =>
-            {
-                options.KeyPrefix = "Ketum:";
-            });
+            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "Ketum:"; });
         }
 
         private void ConfigureUrls(IConfiguration configuration)
@@ -110,10 +107,7 @@ namespace Ketum.Web
 
         private void ConfigureMultiTenancy()
         {
-            Configure<AbpMultiTenancyOptions>(options =>
-            {
-                options.IsEnabled = MultiTenancyConsts.IsEnabled;
-            });
+            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
         }
 
         private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
@@ -123,10 +117,7 @@ namespace Ketum.Web
                     options.DefaultScheme = "Cookies";
                     options.DefaultChallengeScheme = "oidc";
                 })
-                .AddCookie("Cookies", options =>
-                {
-                    options.ExpireTimeSpan = TimeSpan.FromDays(365);
-                })
+                .AddCookie("Cookies", options => { options.ExpireTimeSpan = TimeSpan.FromDays(365); })
                 .AddAbpOpenIdConnect("oidc", options =>
                 {
                     options.Authority = configuration["AuthServer:Authority"];
@@ -148,10 +139,7 @@ namespace Ketum.Web
 
         private void ConfigureAutoMapper()
         {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<KetumWebModule>();
-            });
+            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<KetumWebModule>(); });
         }
 
         private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
@@ -160,8 +148,12 @@ namespace Ketum.Web
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumApplicationContractsModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Application.Contracts"));
                     options.FileSets.ReplaceEmbeddedByPhysical<KetumWebModule>(hostingEnvironment.ContentRootPath);
                 });
             }
@@ -180,7 +172,7 @@ namespace Ketum.Web
             services.AddSwaggerGen(
                 options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Ketum API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo {Title = "Ketum API", Version = "v1"});
                     options.DocInclusionPredicate((docName, description) => true);
                     options.CustomSchemaIds(type => type.FullName);
                 }
@@ -231,10 +223,7 @@ namespace Ketum.Web
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API");
-            });
+            app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ketum API"); });
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();

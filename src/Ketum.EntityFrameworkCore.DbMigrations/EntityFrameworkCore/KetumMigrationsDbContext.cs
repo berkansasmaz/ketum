@@ -19,10 +19,9 @@ namespace Ketum.EntityFrameworkCore
      */
     public class KetumMigrationsDbContext : AbpDbContext<KetumMigrationsDbContext>
     {
-        public KetumMigrationsDbContext(DbContextOptions<KetumMigrationsDbContext> options) 
+        public KetumMigrationsDbContext(DbContextOptions<KetumMigrationsDbContext> options)
             : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -33,10 +33,7 @@ namespace Ketum
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpMultiTenancyOptions>(options =>
-            {
-                options.IsEnabled = MultiTenancyConsts.IsEnabled;
-            });
+            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
 
 #if DEBUG
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());

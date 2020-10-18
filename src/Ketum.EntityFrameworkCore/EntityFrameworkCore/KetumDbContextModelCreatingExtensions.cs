@@ -16,7 +16,8 @@ namespace Ketum.EntityFrameworkCore
                 b.ToTable(KetumConsts.DbTablePrefix + "Monitors", KetumConsts.DbSchema);
                 b.ConfigureByConvention();
 
-                b.Property(n => n.Name).HasMaxLength(MonitorConsts.MaxNameLength).IsRequired().HasColumnName(nameof(Monitor.Name));
+                b.Property(n => n.Name).HasMaxLength(MonitorConsts.MaxNameLength).IsRequired()
+                    .HasColumnName(nameof(Monitor.Name));
                 b.Property(n => n.MonitorStatus).HasColumnName(nameof(Monitor.MonitorStatus));
 
                 b.HasIndex(n => new {n.TenantId, n.Name});
@@ -29,8 +30,10 @@ namespace Ketum.EntityFrameworkCore
                 b.ToTable(KetumConsts.DbTablePrefix + "MonitorSteps", KetumConsts.DbSchema);
                 b.ConfigureByConvention();
 
-                b.Property(n => n.Url).HasMaxLength(MonitorStepConsts.MaxUrLength).IsRequired().HasColumnName(nameof(MonitorStep.Url));
-                b.Property(n => n.Interval).HasDefaultValue(KetumConsts.MonitorWorkerPeriod.TotalMinutes).HasColumnName(nameof(MonitorStep.Interval));
+                b.Property(n => n.Url).HasMaxLength(MonitorStepConsts.MaxUrLength).IsRequired()
+                    .HasColumnName(nameof(MonitorStep.Url));
+                b.Property(n => n.Interval).HasDefaultValue(KetumConsts.MonitorWorkerPeriod.TotalMinutes)
+                    .HasColumnName(nameof(MonitorStep.Interval));
                 b.Property(n => n.Type).HasColumnName(nameof(MonitorStep.Type));
                 b.Property(n => n.Status).HasColumnName(nameof(MonitorStep.Status));
 
@@ -47,8 +50,10 @@ namespace Ketum.EntityFrameworkCore
                 b.Property(n => n.StartDate).HasColumnName(nameof(MonitorStepLog.StartDate));
                 b.Property(n => n.EndDate).HasColumnName(nameof(MonitorStepLog.EndDate));
                 b.Property(n => n.Status).HasColumnName(nameof(MonitorStepLog.Status));
-                b.Property(n => n.Log).HasMaxLength(MonitorStepLogConsts.MaxLogLength).HasColumnName(nameof(MonitorStepLog.Log));
-                b.Property(n => n.Interval).HasDefaultValue(KetumConsts.MonitorWorkerPeriod.TotalMinutes).HasColumnName(nameof(MonitorStep.Interval));
+                b.Property(n => n.Log).HasMaxLength(MonitorStepLogConsts.MaxLogLength)
+                    .HasColumnName(nameof(MonitorStepLog.Log));
+                b.Property(n => n.Interval).HasDefaultValue(KetumConsts.MonitorWorkerPeriod.TotalMinutes)
+                    .HasColumnName(nameof(MonitorStep.Interval));
 
                 b.HasIndex(n => new {n.TenantId});
             });

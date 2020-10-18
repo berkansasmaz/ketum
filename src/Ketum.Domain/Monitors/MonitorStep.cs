@@ -18,24 +18,23 @@ namespace Ketum.Monitors
         public int Interval { get; protected set; }
 
         public MonitorStepTypes Type { get; protected set; }
-       
+
         public MonitorStepStatusTypes Status { get; set; }
 
         public List<MonitorStepLog> MonitorStepLogs { get; protected set; }
 
         protected MonitorStep()
         {
-            
         }
 
         public MonitorStep(
-            Guid id, 
-            Guid monitorId, 
-            string url, 
-            int interval, 
-            MonitorStepTypes type, 
+            Guid id,
+            Guid monitorId,
+            string url,
+            int interval,
+            MonitorStepTypes type,
             MonitorStepStatusTypes status)
-            :base(id)
+            : base(id)
         {
             MonitorId = monitorId;
             Url = url;

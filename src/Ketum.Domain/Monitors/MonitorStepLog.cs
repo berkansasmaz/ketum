@@ -7,24 +7,23 @@ using Volo.Abp.MultiTenancy;
 namespace Ketum.Monitors
 {
     public class MonitorStepLog : Entity<Guid>, IMultiTenant
-    {      
+    {
         public Guid? TenantId { get; }
 
         public Guid MonitorStepId { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
-        
+
         public DateTime? EndDate { get; set; }
-        
+
         public MonitorStepStatusTypes Status { get; set; }
-        
+
         public string Log { get; protected set; }
-        
+
         public int Interval { get; protected set; }
 
         protected MonitorStepLog()
         {
-
         }
 
         public MonitorStepLog(

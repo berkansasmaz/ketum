@@ -17,7 +17,7 @@ namespace Ketum
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
         typeof(AbpFeatureManagementHttpApiModule)
-        )]
+    )]
     public class KetumHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

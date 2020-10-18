@@ -48,12 +48,12 @@ namespace Ketum.Monitors
 
             if (monitor.MonitorStatus == MonitorStatusTypes.Down)
             {
-                return prefix + monitor.Name + " ( " +monitor.MonitorStep.Url + " ) " + "is DOWN!";
+                return prefix + monitor.Name + " ( " + monitor.MonitorStep.Url + " ) " + "is DOWN!";
             }
 
             if (monitor.MonitorStatus == MonitorStatusTypes.Warning)
             {
-                return prefix + monitor.Name + " ( " +monitor.MonitorStep.Url + " ) " + "is WARNING!";
+                return prefix + monitor.Name + " ( " + monitor.MonitorStep.Url + " ) " + "is WARNING!";
             }
 
             throw new ApplicationException("Unexpected status: " + monitor.MonitorStatus);
@@ -65,8 +65,8 @@ namespace Ketum.Monitors
             {
                 return "Hello!<br/><br/>" +
                        $"<strong>Uptime monitor {monitor.Name} {monitor.MonitorStep.Url} is down.</strong><br/>" +
-                       $"Time: {monitor.LastModificationTime!.Value.ToLongDateString() + " " + monitor.LastModificationTime!.Value.ToLongTimeString()} <br/>" + 
-                       "We will inform you when it's up again! <br/></br>" + 
+                       $"Time: {monitor.LastModificationTime!.Value.ToLongDateString() + " " + monitor.LastModificationTime!.Value.ToLongTimeString()} <br/>" +
+                       "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
 
@@ -74,8 +74,8 @@ namespace Ketum.Monitors
             {
                 return "Hello!<br/><br/>" +
                        $"<strong>Uptime monitor {monitor.Name} {monitor.MonitorStep.Url} is warning.</strong><br/>" +
-                       $"Time: {monitor.LastModificationTime!.Value.ToLongDateString() + " " + monitor.LastModificationTime!.Value.ToLongTimeString()} <br/>" + 
-                       "We will inform you when it's up again! <br/></br>" + 
+                       $"Time: {monitor.LastModificationTime!.Value.ToLongDateString() + " " + monitor.LastModificationTime!.Value.ToLongTimeString()} <br/>" +
+                       "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
 

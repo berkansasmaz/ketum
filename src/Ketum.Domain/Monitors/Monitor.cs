@@ -21,16 +21,15 @@ namespace Ketum.Monitors
 
         protected Monitor()
         {
-
         }
 
         public Monitor(
             Guid id,
-            [NotNull] string name, 
-            MonitorStatusTypes monitorStatus, 
+            [NotNull] string name,
+            MonitorStatusTypes monitorStatus,
             MonitorStep monitorStep,
             Guid? tenantId = null)
-            :base(id)
+            : base(id)
         {
             Name = Check.NotNullOrWhiteSpace(name, nameof(name));
             MonitorStatus = monitorStatus;

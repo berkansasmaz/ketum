@@ -10,7 +10,8 @@ namespace Ketum.Permissions
         {
             var monitor = context.AddGroup(KetumPermissions.Monitoring.MonitorGroup, L("Permission:Monitoring"));
 
-            var communityArticles = monitor.AddPermission(KetumPermissions.Monitoring.Default, L("Permission:Monitoring"));
+            var communityArticles =
+                monitor.AddPermission(KetumPermissions.Monitoring.Default, L("Permission:Monitoring"));
             communityArticles.AddChild(KetumPermissions.Monitoring.Create, L("Permission:Create"));
             communityArticles.AddChild(KetumPermissions.Monitoring.Update, L("Permission:Edit"));
             communityArticles.AddChild(KetumPermissions.Monitoring.Delete, L("Permission:Delete"));

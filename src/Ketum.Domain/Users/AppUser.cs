@@ -57,7 +57,6 @@ namespace Ketum.Users
 
         private AppUser()
         {
-            
         }
     }
 }

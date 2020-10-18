@@ -5,6 +5,5 @@ namespace Ketum.Localization
     [LocalizationResourceName("Ketum")]
     public class KetumResource
     {
-
     }
 }

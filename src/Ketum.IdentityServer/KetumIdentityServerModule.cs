@@ -40,7 +40,7 @@ namespace Ketum
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(KetumEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAspNetCoreSerilogModule)
-        )]
+    )]
     public class KetumIdentityServerModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
@@ -79,8 +79,12 @@ namespace Ketum
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainSharedModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<KetumDomainModule>(
+                        Path.Combine(hostingEnvironment.ContentRootPath,
+                            $"..{Path.DirectorySeparatorChar}Ketum.Domain"));
                 });
             }
 
@@ -89,15 +93,9 @@ namespace Ketum
                 options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
             });
 
-            Configure<AbpBackgroundJobOptions>(options =>
-            {
-                options.IsJobExecutionEnabled = false;
-            });
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = false; });
 
-            Configure<AbpDistributedCacheOptions>(options =>
-            {
-                options.KeyPrefix = "Ketum:";
-            });
+            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "Ketum:"; });
 
             if (!hostingEnvironment.IsDevelopment())
             {

@@ -8,7 +8,7 @@ namespace Ketum.Monitors
     public interface IMonitorAppService : IApplicationService
     {
         Task<PagedResultDto<MonitorDto>> GetListAsync(GetMonitorsRequestInput input);
-        
+
         Task<MonitorWithDetailsDto> GetAsync(Guid id);
 
         Task CreateAsync(CreateMonitorDto input);

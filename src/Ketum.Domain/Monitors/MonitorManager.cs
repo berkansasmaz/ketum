@@ -19,7 +19,7 @@ namespace Ketum.Monitors
         public async Task<Monitor> CreateAsync(
             Guid monitorId,
             Guid monitorStepId,
-            [NotNull] string name, 
+            [NotNull] string name,
             [NotNull] string url,
             int interval)
         {

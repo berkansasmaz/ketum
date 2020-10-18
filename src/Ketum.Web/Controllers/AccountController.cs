@@ -4,6 +4,5 @@ namespace Ketum.Web.Controllers
 {
     public class AccountController : ChallengeAccountController
     {
-
     }
 }

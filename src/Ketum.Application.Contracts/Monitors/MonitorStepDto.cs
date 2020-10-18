@@ -9,7 +9,7 @@ namespace Ketum.Monitors
         public int Interval { get; set; }
 
         public MonitorStepTypes Type { get; set; }
-       
+
         public MonitorStepStatusTypes Status { get; set; }
 
         public List<MonitorStepLogDto> MonitorStepLogs { get; set; }

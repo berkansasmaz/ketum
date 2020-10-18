@@ -2,8 +2,7 @@
 
 namespace Ketum.EntityFrameworkCore
 {
-    public abstract class KetumEntityFrameworkCoreTestBase : KetumTestBase<KetumEntityFrameworkCoreTestModule> 
+    public abstract class KetumEntityFrameworkCoreTestBase : KetumTestBase<KetumEntityFrameworkCoreTestModule>
     {
-
     }
 }
