@@ -17,14 +17,6 @@ namespace Ketum.Monitors
 
         public MonitorStatusTypes MonitorStatus { get; set; }
 
-        public TestStatusTypes TestStatus { get; protected set; }
-
-        public decimal UpTime { get; set; }
-
-        public int LoadTime { get; set; }
-
-        public int MonitorTime { get; set; }
-
         public MonitorStep MonitorStep { get; protected set; }
 
         protected Monitor()
@@ -36,14 +28,12 @@ namespace Ketum.Monitors
             Guid id,
             [NotNull] string name, 
             MonitorStatusTypes monitorStatus, 
-            TestStatusTypes testStatus,
             MonitorStep monitorStep,
             Guid? tenantId = null)
             :base(id)
         {
             Name = Check.NotNullOrWhiteSpace(name, nameof(name));
             MonitorStatus = monitorStatus;
-            TestStatus = testStatus;
             MonitorStep = monitorStep;
             TenantId = tenantId;
         }

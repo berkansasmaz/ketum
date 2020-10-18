@@ -11,9 +11,9 @@ using Volo.Abp.Uow;
 
 namespace Ketum.Monitors
 {
-    public class MonitoringService : AsyncPeriodicBackgroundWorkerBase
+    public class MonitoringWorker : AsyncPeriodicBackgroundWorkerBase
     {
-        public MonitoringService(
+        public MonitoringWorker(
             AbpTimer timer,
             IServiceScopeFactory serviceScopeFactory)
             : base(timer, serviceScopeFactory)
@@ -33,7 +33,7 @@ namespace Ketum.Monitors
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
 
             var monitors = await monitorRepository.GetListByStepFilterAsync(
-                20,
+                KetumConsts.MaxMonitorWorkerService,
                 MonitorStepTypes.Request);
 
             monitors = monitors

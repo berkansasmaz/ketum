@@ -23,11 +23,7 @@ namespace Ketum.Migrations
                     DeletionTime = table.Column<DateTime>(nullable: true),
                     TenantId = table.Column<Guid>(nullable: true),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
-                    MonitorStatus = table.Column<byte>(nullable: false),
-                    TestStatus = table.Column<byte>(nullable: false),
-                    UpTime = table.Column<decimal>(type: "decimal(18,2)", nullable: false, defaultValue: 0.00m),
-                    LoadTime = table.Column<int>(nullable: false, defaultValue: 0),
-                    MonitorTime = table.Column<int>(nullable: false, defaultValue: 0)
+                    MonitorStatus = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +38,7 @@ namespace Ketum.Migrations
                     TenantId = table.Column<Guid>(nullable: true),
                     MonitorId = table.Column<Guid>(nullable: false),
                     Url = table.Column<string>(maxLength: 256, nullable: false),
-                    Interval = table.Column<int>(nullable: false, defaultValue: 0),
+                    Interval = table.Column<int>(nullable: false, defaultValue: 1),
                     Type = table.Column<byte>(nullable: false),
                     Status = table.Column<byte>(nullable: false)
                 },
@@ -68,7 +64,7 @@ namespace Ketum.Migrations
                     EndDate = table.Column<DateTime>(nullable: true),
                     Status = table.Column<byte>(nullable: false),
                     Log = table.Column<string>(maxLength: 512, nullable: true),
-                    Interval = table.Column<int>(nullable: false, defaultValue: 0)
+                    Interval = table.Column<int>(nullable: false, defaultValue: 1)
                 },
                 constraints: table =>
                 {

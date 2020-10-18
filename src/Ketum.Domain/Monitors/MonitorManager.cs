@@ -48,7 +48,6 @@ namespace Ketum.Monitors
                 monitorId,
                 name,
                 MonitorStatusTypes.Unknown,
-                TestStatusTypes.Unknown,
                 newMonitorStep);
 
             return await _monitorRepository.InsertAsync(newMonitor);

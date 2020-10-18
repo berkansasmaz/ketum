@@ -11,7 +11,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Ketum.Migrations
 {
     [DbContext(typeof(KetumMigrationsDbContext))]
-    [Migration("20201017213347_Added-New-Tables-for-Monitor")]
+    [Migration("20201018172922_Added-New-Tables-for-Monitor")]
     partial class AddedNewTablesforMonitor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,21 +69,9 @@ namespace Ketum.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("LoadTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("LoadTime")
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
                     b.Property<byte>("MonitorStatus")
                         .HasColumnName("MonitorStatus")
                         .HasColumnType("tinyint");
-
-                    b.Property<int>("MonitorTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("MonitorTime")
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -94,16 +82,6 @@ namespace Ketum.Migrations
                     b.Property<Guid?>("TenantId")
                         .HasColumnName("TenantId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte>("TestStatus")
-                        .HasColumnName("TestStatus")
-                        .HasColumnType("tinyint");
-
-                    b.Property<decimal>("UpTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("UpTime")
-                        .HasColumnType("decimal(18,2)")
-                        .HasDefaultValue(0.00m);
 
                     b.HasKey("Id");
 
@@ -122,7 +100,7 @@ namespace Ketum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Interval")
                         .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasDefaultValue(1);
 
                     b.Property<Guid>("MonitorId")
                         .HasColumnType("uniqueidentifier");
@@ -169,7 +147,7 @@ namespace Ketum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Interval")
                         .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasDefaultValue(1);
 
                     b.Property<string>("Log")
                         .HasColumnName("Log")

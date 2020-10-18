@@ -16,7 +16,7 @@ namespace Ketum.Monitors
             CancellationToken cancellationToken = default);
 
         Task<List<Monitor>> GetListByStepFilterAsync(
-            int resultCount,
+            int maxResultCount,
             MonitorStepTypes monitorStepTypes,
             CancellationToken cancellationToken = default);
 
