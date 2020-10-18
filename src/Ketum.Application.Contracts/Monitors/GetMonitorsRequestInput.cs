@@ -4,6 +4,5 @@ namespace Ketum.Monitors
 {
     public class GetMonitorsRequestInput : PagedAndSortedResultRequestDto
     {
-        public string Name { get; set; }
     }
 }

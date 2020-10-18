@@ -10,11 +10,7 @@ namespace Ketum.Monitors
 
         public MonitorStatusTypes MonitorStatus { get; set; }
 
-        public TestStatusTypes TestStatus { get; set; }
-
-        public string Url { get; set; }
-
-        public decimal UpTime { get; set; }
+        public double UpTime { get; set; }
 
         public List<double> UpTimes { get; set; }
 
@@ -22,12 +18,18 @@ namespace Ketum.Monitors
 
         public double DownTimePercent { get; set; }
 
-        public int LoadTime { get; set; }
+        public double LoadTime { get; set; }
 
         public List<double> LoadTimes { get; set; }
 
-        public int MonitorTime { get; set; }
+        public int MonitoredTime { get; set; }
 
-        public MonitorStepStatusTypes StepStatus { get; set; }
+        public MonitorStepDto MonitorStep { get; set; }
+
+        public MonitorWithDetailsDto()
+        {
+            UpTimes = new List<double>();
+            LoadTimes = new List<double>();
+        }
     }
 }

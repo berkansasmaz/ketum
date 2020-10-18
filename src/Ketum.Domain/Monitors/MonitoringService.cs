@@ -18,7 +18,7 @@ namespace Ketum.Monitors
             IServiceScopeFactory serviceScopeFactory)
             : base(timer, serviceScopeFactory)
         {
-            Timer.Period = 1000;
+            Timer.Period = (int) KetumConsts.MonitorWorkerPeriod.TotalMilliseconds;
         }
 
         [UnitOfWork]
@@ -27,6 +27,7 @@ namespace Ketum.Monitors
             Logger.LogInformation("Starting: Monitoring the website’s health...");
 
             var guidGenerator = workerContext.ServiceProvider.GetRequiredService<IGuidGenerator>();
+            var monitoringUserNotifier = workerContext.ServiceProvider.GetRequiredService<MonitoringUserNotifier>();
             var unitOfWorkManager = workerContext.ServiceProvider.GetRequiredService<UnitOfWorkManager>();
 
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
@@ -37,73 +38,82 @@ namespace Ketum.Monitors
 
             monitors = monitors
                 .Where(x =>
-                    x.LastModificationTime == null ? x.CreationTime.ToUniversalTime().AddSeconds(x.MonitorStep.Interval) < DateTime.UtcNow : x.LastModificationTime?.ToUniversalTime().AddSeconds(x.MonitorStep.Interval) < DateTime.UtcNow)
+                    x.LastModificationTime == null
+                        ? x.CreationTime.ToUniversalTime().AddSeconds(x.MonitorStep.Interval) < DateTime.UtcNow
+                        : x.LastModificationTime?.ToUniversalTime().AddMinutes(x.MonitorStep.Interval) < DateTime.UtcNow)
                 .ToList();
 
             foreach (var monitor in monitors)
             {
                 if (!monitor.MonitorStep.Url.IsNullOrEmpty())
                 {
-                     var monitorStepLog = new MonitorStepLog(
-                         guidGenerator.Create(),
-                         monitor.Id,
-                         DateTime.UtcNow,
-                         MonitorStepStatusTypes.Processing,
-                         monitor.MonitorStep.Interval);
+                    var logInterval = monitor.MonitorStep.Interval + TimeSpan.FromMilliseconds(Timer.Period).Minutes; 
+                    var monitorStepLog = new MonitorStepLog(
+                        guidGenerator.Create(),
+                        monitor.Id,
+                        DateTime.UtcNow,
+                        MonitorStepStatusTypes.Processing,
+                        logInterval);
 
-                     monitor.AddMonitorStepLog(monitorStepLog);
+                    monitor.AddMonitorStepLog(monitorStepLog);
 
-                     await monitorRepository.UpdateAsync(monitor);
+                    await monitorRepository.UpdateAsync(monitor);
 
-                     await unitOfWorkManager.Current.SaveChangesAsync();
+                    await unitOfWorkManager.Current.SaveChangesAsync();
 
-                     try
-                     {
-                         var client = new HttpClient();
-                         client.Timeout = TimeSpan.FromSeconds(15);
-                         var response = await client.GetAsync(monitor.MonitorStep.Url);
-                         if (response.IsSuccessStatusCode)
-                         {
-                             monitorStepLog.Status = MonitorStepStatusTypes.Success;
-                         }
-                         else
-                         {
-                             monitorStepLog.Status = MonitorStepStatusTypes.Fail;
-                         }
-                     }
-                     catch (HttpRequestException rex)
-                     {
-                         monitorStepLog.SetLog(rex.Message);
-                         monitorStepLog.Status = MonitorStepStatusTypes.Fail;
-                     }
-                     catch (Exception ex)
-                     {
-                         monitorStepLog.SetLog(ex.Message);
-                         monitorStepLog.Status = MonitorStepStatusTypes.Error;
-                     }
-                     finally
-                     {
-                         monitorStepLog.EndDate = DateTime.UtcNow;
-                     }
+                    try
+                    {
+                        var client = new HttpClient();
+                        client.Timeout = TimeSpan.FromSeconds(15);
+                        var response = await client.GetAsync(monitor.MonitorStep.Url);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            monitorStepLog.Status = MonitorStepStatusTypes.Success;
+                        }
+                        else
+                        {
+                            monitorStepLog.Status = MonitorStepStatusTypes.Fail;
+                        }
+                    }
+                    catch (HttpRequestException rex)
+                    {
+                        monitorStepLog.SetLog(rex.Message);
+                        monitorStepLog.Status = MonitorStepStatusTypes.Fail;
+                    }
+                    catch (Exception ex)
+                    {
+                        monitorStepLog.SetLog(ex.Message);
+                        monitorStepLog.Status = MonitorStepStatusTypes.Error;
+                    }
+                    finally
+                    {
+                        monitorStepLog.EndDate = DateTime.UtcNow;
+                    }
 
-                     if (monitorStepLog.Status == MonitorStepStatusTypes.Success)
-                     {
-                         monitor.MonitorStep.Status = MonitorStepStatusTypes.Success;
-                     }
-                     else if (monitorStepLog.Status == MonitorStepStatusTypes.Error)
-                     {
-                         monitor.MonitorStep.Status = MonitorStepStatusTypes.Error;
-                     }
-                     else
-                     {
-                         monitor.MonitorStep.Status = MonitorStepStatusTypes.Fail;
-                     }
+                    if (monitorStepLog.Status == MonitorStepStatusTypes.Success)
+                    {
+                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Success;
+                        monitor.MonitorStatus = MonitorStatusTypes.Up;
+                    }
+                    else if (monitorStepLog.Status == MonitorStepStatusTypes.Error)
+                    {
+                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Error;
+                        monitor.MonitorStatus = MonitorStatusTypes.Warning;
+                    }
+                    else
+                    {
+                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Fail;
+                        monitor.MonitorStatus = MonitorStatusTypes.Down;
+                    }
                 }
+
                 monitor.LastModificationTime = DateTime.UtcNow;
 
                 await monitorRepository.UpdateAsync(monitor);
 
                 await unitOfWorkManager.Current.SaveChangesAsync();
+
+                await monitoringUserNotifier.NotifyAsync(monitor);
             }
 
             await Task.Delay(500);

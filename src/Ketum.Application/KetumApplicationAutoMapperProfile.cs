@@ -9,7 +9,14 @@ namespace Ketum
         {
             CreateMap<Monitor, MonitorDto>();
 
-            CreateMap<Monitor, MonitorWithDetailsDto>();
+            CreateMap<Monitor, MonitorWithDetailsDto>()
+                .ForMember(s => s.MonitorStep, c => c.MapFrom(m => m.MonitorStep))
+                .ForPath(s => s.MonitorStep.MonitorStepLogs, c => c.MapFrom(m => m.MonitorStep.MonitorStepLogs));
+
+            CreateMap<MonitorStep, MonitorStepDto>()
+                .ForMember(x => x.MonitorStepLogs, c => c.MapFrom(m => m.MonitorStepLogs));
+
+            CreateMap<MonitorStepLog, MonitorStepLogDto>();
         }
     }
 }

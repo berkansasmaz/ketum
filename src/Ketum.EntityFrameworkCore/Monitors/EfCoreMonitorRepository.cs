@@ -22,11 +22,11 @@ namespace Ketum.Monitors
             string sorting,
             int skipCount,
             int maxResultCount,
-            string name,
+            Guid userId,
             CancellationToken cancellationToken = default)
         {
             var query = DbSet
-                .WhereIf(!name.IsNullOrWhiteSpace(), t => t.Name.Contains(name))
+                .Where(x => x.CreatorId == userId)
                 .OrderBy(string.IsNullOrWhiteSpace(sorting) ? Monitor.DefaultSorting : sorting);
 
             return await query.PageBy(skipCount, maxResultCount)
@@ -49,11 +49,11 @@ namespace Ketum.Monitors
         }
 
         public async Task<int> GetCountByFilterAsync(
-            string name,
+            Guid userId,
             CancellationToken cancellationToken = default)
         {
             var query = DbSet
-                .WhereIf(!name.IsNullOrWhiteSpace(), t => t.Name.Contains(name));
+                .Where(x => x.CreatorId == userId);
 
             return await query.CountAsync(GetCancellationToken(cancellationToken));
         }

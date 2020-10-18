@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Volo.Abp.Domain.Repositories;
 
 namespace Ketum.Monitors
 {
-    public interface IMonitorRepository : IBasicRepository<Monitor, Guid>
+    public interface IMonitorRepository : IRepository<Monitor, Guid>
     {
         Task<List<Monitor>> GetListAsync(
             string sorting,
             int skipCount,
             int maxResultCount,
-            [CanBeNull] string name = null,
+            Guid userId,
             CancellationToken cancellationToken = default);
 
         Task<List<Monitor>> GetListByStepFilterAsync(
@@ -22,7 +21,7 @@ namespace Ketum.Monitors
             CancellationToken cancellationToken = default);
 
         Task<int> GetCountByFilterAsync(
-            string name,
+            Guid userId,
             CancellationToken cancellationToken = default);
     }
 }

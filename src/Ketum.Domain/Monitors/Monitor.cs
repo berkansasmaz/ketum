@@ -15,7 +15,7 @@ namespace Ketum.Monitors
 
         public string Name { get; protected set; }
 
-        public MonitorStatusTypes MonitorStatus { get; protected set; }
+        public MonitorStatusTypes MonitorStatus { get; set; }
 
         public TestStatusTypes TestStatus { get; protected set; }
 

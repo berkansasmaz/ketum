@@ -12,6 +12,8 @@ namespace Ketum.Monitors
         [StringLength(MonitorStepConsts.MaxUrLength)]
         public string Url { get; set; }
 
+        [Timestamp]
+        [Range(MonitorStepConsts.MinIntervalValue, MonitorStepConsts.MaxIntervalValue)]
         public int Interval { get; set; }
     }
 }

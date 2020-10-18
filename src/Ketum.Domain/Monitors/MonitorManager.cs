@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Volo.Abp;
+using Volo.Abp.Users;
 
 namespace Ketum.Monitors
 {
@@ -31,11 +32,12 @@ namespace Ketum.Monitors
 
             if (isExistingMonitorName)
             {
-                 throw new BusinessException(message: "This project name is already in use. Please choose a different name.");
+                throw new BusinessException(
+                    message: "This project name is already in use. Please choose a different name.");
             }
 
             var newMonitorStep = new MonitorStep(
-                monitorStepId, 
+                monitorStepId,
                 monitorId,
                 url,
                 interval,
@@ -43,24 +45,18 @@ namespace Ketum.Monitors
                 MonitorStepStatusTypes.Unknown);
 
             var newMonitor = new Monitor(
-                monitorId, 
+                monitorId,
                 name,
                 MonitorStatusTypes.Unknown,
                 TestStatusTypes.Unknown,
                 newMonitorStep);
-            
-            var newMonitorStepLog = new MonitorStepLog(
-                GuidGenerator.Create(),
-                monitorStepId,
-                DateTime.Now,
-                MonitorStepStatusTypes.Unknown,
-                newMonitorStep.Interval);
 
             return await _monitorRepository.InsertAsync(newMonitor);
         }
 
         public async Task<Monitor> UpdateAsync(
             Guid id,
+            Guid userId,
             [NotNull] string name,
             [NotNull] string url)
         {
@@ -69,13 +65,23 @@ namespace Ketum.Monitors
 
             var monitor = await _monitorRepository.GetAsync(id);
 
-            if (monitor.Name == name)
+            if (monitor.CreatorId != userId)
             {
-                throw  new BusinessException(message: "This monitor name already exists.");
+                return null;
+            }
+
+            var monitors = await _monitorRepository.GetListAsync();
+
+            var isExistingMonitorName = monitors.Any(x => x.Name == name);
+
+            if (isExistingMonitorName)
+            {
+                throw new BusinessException(
+                    message: "This project name is already in use. Please choose a different name.");
             }
 
             monitor.SetName(name);
-            monitor.MonitorStep.Url = url;
+            monitor.MonitorStep.SetUrl(url);
 
             return await _monitorRepository.UpdateAsync(monitor);
         }
