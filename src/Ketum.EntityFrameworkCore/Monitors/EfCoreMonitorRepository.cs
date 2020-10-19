@@ -34,7 +34,6 @@ namespace Ketum.Monitors
         }
 
         public async Task<List<Monitor>> GetListByStepFilterAsync(
-            int maxResultCount,
             MonitorStepTypes monitorStepType,
             CancellationToken cancellationToken = default)
         {
@@ -43,7 +42,7 @@ namespace Ketum.Monitors
                 .Where(x => x.MonitorStep.Type == monitorStepType)
                 .Where(x => x.MonitorStep.Status != MonitorStepStatusTypes.Processing)
                 .OrderBy(x => x.LastModificationTime)
-                .Take(maxResultCount);
+                .Take(KetumConsts.MaxMonitorsProcessedCount);
 
             return await query.ToListAsync(GetCancellationToken(cancellationToken));
         }

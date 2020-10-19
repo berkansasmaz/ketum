@@ -52,24 +52,5 @@ namespace Ketum.Monitors
 
             return this;
         }
-
-        public Monitor SetMonitorStatusType(Monitor monitor)
-        {
-            MonitorStatus = monitor.MonitorStatus;
-            
-            if (monitor.MonitorStatus.IsIn(MonitorStatusTypes.Down, MonitorStatusTypes.Warning))
-            {
-                AddDistributedEvent(                
-                    new MonitorEto(
-                        monitor.CreatorId,
-                        monitor.LastModificationTime,
-                        monitor.Name,
-                        monitor.MonitorStep.Url,
-                        monitor.MonitorStatus)
-                );
-            }
-
-            return this;
-        }
     }
 }

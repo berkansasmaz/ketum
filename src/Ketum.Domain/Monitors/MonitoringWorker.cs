@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Volo.Abp.BackgroundWorkers;
+using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.Guids;
 using Volo.Abp.Threading;
 using Volo.Abp.Uow;
@@ -14,11 +15,15 @@ namespace Ketum.Monitors
 {
     public class MonitoringWorker : AsyncPeriodicBackgroundWorkerBase
     {
+        private readonly IDistributedEventBus _distributedEventBus;
+
         public MonitoringWorker(
             AbpTimer timer,
-            IServiceScopeFactory serviceScopeFactory)
+            IServiceScopeFactory serviceScopeFactory, 
+            IDistributedEventBus distributedEventBus)
             : base(timer, serviceScopeFactory)
         {
+            _distributedEventBus = distributedEventBus;
             Timer.Period = (int) KetumConsts.MonitorWorkerPeriod.TotalMilliseconds;
         }
 
@@ -31,12 +36,9 @@ namespace Ketum.Monitors
 
             var guidGenerator = workerContext.ServiceProvider.GetRequiredService<IGuidGenerator>();
             var unitOfWorkManager = workerContext.ServiceProvider.GetRequiredService<UnitOfWorkManager>();
-
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
 
-            var monitors = await monitorRepository.GetListByStepFilterAsync(
-                KetumConsts.MaxMonitorWorkerService,
-                MonitorStepTypes.Request);
+            var monitors = await monitorRepository.GetListByStepFilterAsync(MonitorStepTypes.Request);
 
             monitors = monitors
                 .Where(x =>
@@ -93,35 +95,46 @@ namespace Ketum.Monitors
                         monitorStepLog.EndDate = DateTime.UtcNow;
                     }
 
-                    if (monitorStepLog.Status == MonitorStepStatusTypes.Success)
+                    switch (monitorStepLog.Status)
                     {
-                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Success;
-                        monitor.MonitorStatus = MonitorStatusTypes.Up;
-                    }
-                    else if (monitorStepLog.Status == MonitorStepStatusTypes.Error)
-                    {
-                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Error;
-                        monitor.MonitorStatus = MonitorStatusTypes.Warning;
-                    }
-                    else
-                    {
-                        monitor.MonitorStep.Status = MonitorStepStatusTypes.Fail;
-                        monitor.MonitorStatus = MonitorStatusTypes.Down;
+                        case MonitorStepStatusTypes.Success:
+                            monitor.MonitorStep.Status = MonitorStepStatusTypes.Success;
+                            monitor.MonitorStatus = MonitorStatusTypes.Up;
+                            break;
+                        case MonitorStepStatusTypes.Error:
+                            monitor.MonitorStep.Status = MonitorStepStatusTypes.Error;
+                            monitor.MonitorStatus = MonitorStatusTypes.Warning;
+                            break;
+                        default:
+                            monitor.MonitorStep.Status = MonitorStepStatusTypes.Fail;
+                            monitor.MonitorStatus = MonitorStatusTypes.Down;
+                            break;
                     }
                 }
 
                 monitor.LastModificationTime = DateTime.UtcNow;
 
-                monitor.SetMonitorStatusType(monitor); // for user notifier event publish
+                await PublishUserNotifyEvent(monitor);
 
                 await monitorRepository.UpdateAsync(monitor);
-
                 await unitOfWorkManager.Current.SaveChangesAsync();
             }
 
             stopwatch.Stop();
             TimeSpan stopwatchElapsed = stopwatch.Elapsed;
             Logger.LogInformation("Completed at {0} ms: Monitoring the website’s health...", stopwatchElapsed.TotalMilliseconds);
+        }
+
+        private async Task PublishUserNotifyEvent(Monitor monitor)
+        {
+            await _distributedEventBus.PublishAsync(
+                new MonitorEto(
+                    monitor.CreatorId,
+                    monitor.LastModificationTime,
+                    monitor.Name,
+                    monitor.MonitorStep.Url,
+                    monitor.MonitorStatus)
+            );
         }
     }
 }

@@ -103,60 +103,74 @@ namespace Ketum.Monitors
                 return null;
             }
 
+            var dto = HealthByStepTypeCalculate(monitor);
+
+            return dto;
+        }
+
+        private MonitorWithDetailsDto HealthByStepTypeCalculate(Monitor monitor)
+        {
             var dto = ObjectMapper.Map<Monitor, MonitorWithDetailsDto>(monitor);
 
             if (monitor.MonitorStep.Type == MonitorStepTypes.Request)
             {
-                var week = DateTime.UtcNow.AddDays(-14);
-
-                var monitorStepLogs = monitor.MonitorStep.MonitorStepLogs
-                    .Where(x => x.StartDate >= week && x.EndDate != null)
-                    .OrderByDescending(x => x.StartDate)
-                    .Take(50)
-                    .ToList();
-
-                monitorStepLogs = monitorStepLogs.OrderBy(x => x.StartDate).ToList();
-
-                if (monitorStepLogs.Any(x => x.Status == MonitorStepStatusTypes.Success))
-                {
-                    dto.LoadTime = monitorStepLogs
-                        .Where(x => x.Status == MonitorStepStatusTypes.Success)
-                        .Average(x => x.EndDate!.Value.Subtract(x.StartDate).TotalMilliseconds);
-                }
-
-                foreach (var stepLog in monitorStepLogs)
-                {
-                    if (stepLog.Status.IsIn(MonitorStepStatusTypes.Success, MonitorStepStatusTypes.Fail))
-                    {
-                        dto.MonitoredTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
-
-                        if (stepLog.Status == MonitorStepStatusTypes.Success)
-                        {
-                            dto.LoadTimes.Add(stepLog.EndDate!.Value.Subtract(stepLog.StartDate).TotalMilliseconds);
-                        }
-
-                        if (stepLog.Status == MonitorStepStatusTypes.Fail)
-                            dto.DownTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
-
-                        var currentDowntimePercent = dto.DownTime / dto.MonitoredTime * 100;
-                        var currentUptimePercent = 100 - currentDowntimePercent;
-
-                        dto.UpTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
-                    }
-                }
-
-                dto.DownTimePercent = dto.DownTime / dto.MonitoredTime * 100;
-                dto.UpTime = 100 - dto.DownTimePercent;
-                dto.UpTime = dto.UpTime < 0 ? 0 : dto.UpTime;
+                MeasureResponseHealth(dto);
             }
+            // TODO: Calculate other monitor step types. (Enhancment)
+
+            return dto;
+        }
+
+        private void MeasureResponseHealth(MonitorWithDetailsDto dto)
+        {
+            // TODO: Consider moving it into the MonitorManager.
+            var week = DateTime.UtcNow.AddDays(-14);
+
+            var monitorStepLogs = dto.MonitorStep.MonitorStepLogs
+                .Where(x => x.StartDate >= week && x.EndDate != null)
+                .OrderByDescending(x => x.StartDate)
+                .Take(50)
+                .ToList();
+
+            monitorStepLogs = monitorStepLogs.OrderBy(x => x.StartDate).ToList();
+
+            if (monitorStepLogs.Any(x => x.Status == MonitorStepStatusTypes.Success))
+            {
+                dto.LoadTime = monitorStepLogs
+                    .Where(x => x.Status == MonitorStepStatusTypes.Success)
+                    .Average(x => x.EndDate!.Value.Subtract(x.StartDate).TotalMilliseconds);
+            }
+
+            foreach (var stepLog in monitorStepLogs)
+            {
+                if (stepLog.Status.IsIn(MonitorStepStatusTypes.Success, MonitorStepStatusTypes.Fail))
+                {
+                    dto.MonitoredTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
+
+                    if (stepLog.Status == MonitorStepStatusTypes.Success)
+                    {
+                        dto.LoadTimes.Add(stepLog.EndDate!.Value.Subtract(stepLog.StartDate).TotalMilliseconds);
+                    }
+
+                    if (stepLog.Status == MonitorStepStatusTypes.Fail)
+                        dto.DownTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
+
+                    var currentDowntimePercent = dto.DownTime / dto.MonitoredTime * 100;
+                    var currentUptimePercent = 100 - currentDowntimePercent;
+
+                    dto.UpTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
+                }
+            }
+
+            dto.DownTimePercent = dto.DownTime / dto.MonitoredTime * 100;
+            dto.UpTime = 100 - dto.DownTimePercent;
+            dto.UpTime = dto.UpTime < 0 ? 0 : dto.UpTime;
 
             if (double.IsNaN(dto.UpTime))
             {
                 dto.UpTime = 0;
                 dto.DownTimePercent = 0;
             }
-
-            return dto;
         }
     }
 }

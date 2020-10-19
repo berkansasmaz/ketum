@@ -8,8 +8,8 @@ namespace Ketum
 
         public const string DbSchema = null;
 
-        public const int MaxMonitorWorkerService = 20;
+        public const int MaxMonitorsProcessedCount = 20;
 
-        public static readonly TimeSpan MonitorWorkerPeriod = TimeSpan.FromMinutes(1);
+        public static readonly TimeSpan MonitorWorkerPeriod = TimeSpan.FromSeconds(1);
     }
 }
