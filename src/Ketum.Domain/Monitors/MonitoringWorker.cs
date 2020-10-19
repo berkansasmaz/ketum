@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -24,7 +25,9 @@ namespace Ketum.Monitors
         [UnitOfWork]
         protected override async Task DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
         {
-            Logger.LogInformation("Starting: Monitoring the website’s health...");
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Logger.LogInformation("Starting at {0}: Monitoring the website’s health...", stopwatch.Elapsed.Milliseconds);
 
             var guidGenerator = workerContext.ServiceProvider.GetRequiredService<IGuidGenerator>();
             var monitoringUserNotifier = workerContext.ServiceProvider.GetRequiredService<MonitoringUserNotifier>();
@@ -117,9 +120,8 @@ namespace Ketum.Monitors
                 await monitoringUserNotifier.NotifyAsync(monitor);
             }
 
-            await Task.Delay(500);
-
-            Logger.LogInformation("Completed: Monitoring the website’s health...");
+            stopwatch.Stop();
+            Logger.LogInformation("Completed at {0} ms: Monitoring the website’s health...", stopwatch.Elapsed.Milliseconds);
         }
     }
 }
