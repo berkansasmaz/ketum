@@ -120,7 +120,8 @@ namespace Ketum.Monitors
             }
 
             stopwatch.Stop();
-            Logger.LogInformation("Completed at {0} ms: Monitoring the website’s health...", stopwatch.Elapsed.Milliseconds);
+            TimeSpan stopwatchElapsed = stopwatch.Elapsed;
+            Logger.LogInformation("Completed at {0} ms: Monitoring the website’s health...", stopwatchElapsed.TotalMilliseconds);
         }
     }
 }
