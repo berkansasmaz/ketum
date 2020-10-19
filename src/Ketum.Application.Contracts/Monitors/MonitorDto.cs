@@ -9,11 +9,5 @@ namespace Ketum.Monitors
         public string Name { get; set; }
 
         public MonitorStatusTypes MonitorStatus { get; set; }
-
-        public decimal UpTime { get; set; }
-
-        public int LoadTime { get; set; }
-
-        public int MonitorTime { get; set; }
     }
 }
