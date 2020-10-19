@@ -63,18 +63,18 @@ namespace Ketum.Monitors
         {
             if (monitorEto.MonitorStatus == MonitorStatusTypes.Down)
             {
-                return "Hello!<br/><br/>" +
-                       $"<strong>Uptime monitor {monitorEto.Name} {monitorEto.Url} is down.</strong><br/>" +
-                       $"Time: {monitorEto.LastModificationTime!.Value.ToLongDateString() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} <br/>" +
+                return "<h2>Hello!</h2><br/>" +
+                       $"<strong>Uptime monitor  {monitorEto.Name} {monitorEto.Url}  is down.</strong><br/><br/>" +
+                       $"Time: {monitorEto.LastModificationTime!.Value.ToLongDateString() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} <br/><br/>" +
                        "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
 
             if (monitorEto.MonitorStatus == MonitorStatusTypes.Warning)
             {
-                return "Hello!<br/><br/>" +
-                       $"<strong>Uptime monitor {monitorEto.Name} {monitorEto.Url} is warning.</strong><br/>" +
-                       $"Time: {monitorEto.LastModificationTime!.Value.ToLongDateString() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} <br/>" +
+                return "<h2>Hello!</h2><br/>" +
+                       $"<strong>Uptime monitor {monitorEto.Name} {monitorEto.Url} is warning.</strong><br/><br/>" +
+                       $"Time: <strong> {monitorEto.LastModificationTime!.Value.ToLongDateString() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} </strong><br/><br/>" +
                        "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
