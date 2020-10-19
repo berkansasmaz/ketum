@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Ketum.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
+using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -13,6 +14,7 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using Volo.Abp.EventBus.RabbitMq;
 
 namespace Ketum
 {
@@ -27,7 +29,8 @@ namespace Ketum
         typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpSettingManagementDomainModule),
         typeof(AbpTenantManagementDomainModule),
-        typeof(AbpEmailingModule)
+        typeof(AbpEmailingModule),
+        typeof(AbpEventBusRabbitMqModule)
     )]
     public class KetumDomainModule : AbpModule
     {

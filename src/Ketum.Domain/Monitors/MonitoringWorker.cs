@@ -30,7 +30,6 @@ namespace Ketum.Monitors
             Logger.LogInformation("Starting at {0}: Monitoring the website’s health...", stopwatch.Elapsed.Milliseconds);
 
             var guidGenerator = workerContext.ServiceProvider.GetRequiredService<IGuidGenerator>();
-            var monitoringUserNotifier = workerContext.ServiceProvider.GetRequiredService<MonitoringUserNotifier>();
             var unitOfWorkManager = workerContext.ServiceProvider.GetRequiredService<UnitOfWorkManager>();
 
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
@@ -113,11 +112,11 @@ namespace Ketum.Monitors
 
                 monitor.LastModificationTime = DateTime.UtcNow;
 
+                monitor.SetMonitorStatusType(monitor); // for user notifier event publish
+
                 await monitorRepository.UpdateAsync(monitor);
 
                 await unitOfWorkManager.Current.SaveChangesAsync();
-
-                await monitoringUserNotifier.NotifyAsync(monitor);
             }
 
             stopwatch.Stop();
