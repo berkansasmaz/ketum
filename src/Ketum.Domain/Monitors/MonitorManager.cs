@@ -19,6 +19,7 @@ namespace Ketum.Monitors
         public async Task<Monitor> CreateAsync(
             Guid monitorId,
             Guid monitorStepId,
+            Guid userId,
             [NotNull] string name,
             [NotNull] string url,
             int interval)
@@ -27,6 +28,11 @@ namespace Ketum.Monitors
             Check.NotNullOrWhiteSpace(url, nameof(url));
 
             var monitors = await _monitorRepository.GetListAsync();
+
+            monitors = monitors
+                .Where(x => x.CreatorId == userId)
+                .ToList();
+
 
             var isExistingMonitorName = monitors.Any(x => x.Name == name);
 
@@ -70,6 +76,11 @@ namespace Ketum.Monitors
             }
 
             var monitors = await _monitorRepository.GetListAsync();
+
+            monitors = monitors
+                .Where(x => x.CreatorId == monitor.CreatorId)
+                .Where(x => x.Id != id)
+                .ToList();
 
             var isExistingMonitorName = monitors.Any(x => x.Name == name);
 

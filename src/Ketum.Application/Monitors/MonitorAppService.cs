@@ -65,6 +65,7 @@ namespace Ketum.Monitors
             await _monitorManager.CreateAsync(
                 GuidGenerator.Create(),
                 GuidGenerator.Create(),
+                CurrentUser.Id!.Value,
                 input.Name,
                 input.Url,
                 input.Interval);
