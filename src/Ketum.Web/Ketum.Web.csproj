@@ -23,17 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Client" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.OpenIdConnect" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel.Web" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.2.1" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="3.2.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Client" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.OpenIdConnect" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel.Web" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="3.3.0-rc.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="3.3.0-rc.1" />
     <ProjectReference Include="..\Ketum.HttpApi\Ketum.HttpApi.csproj" />
     <ProjectReference Include="..\Ketum.HttpApi.Client\Ketum.HttpApi.Client.csproj" />
   </ItemGroup>
