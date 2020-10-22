@@ -18,9 +18,5 @@ namespace Ketum.Monitors
         Task<List<Monitor>> GetListByStepFilterAsync(
             MonitorStepTypes monitorStepTypes,
             CancellationToken cancellationToken = default);
-
-        Task<int> GetCountByFilterAsync(
-            Guid userId,
-            CancellationToken cancellationToken = default);
     }
 }

@@ -47,16 +47,6 @@ namespace Ketum.Monitors
             return await query.ToListAsync(GetCancellationToken(cancellationToken));
         }
 
-        public async Task<int> GetCountByFilterAsync(
-            Guid userId,
-            CancellationToken cancellationToken = default)
-        {
-            var query = DbSet
-                .Where(x => x.CreatorId == userId);
-
-            return await query.CountAsync(GetCancellationToken(cancellationToken));
-        }
-
         public override IQueryable<Monitor> WithDetails()
         {
             return GetQueryable().IncludeDetails();

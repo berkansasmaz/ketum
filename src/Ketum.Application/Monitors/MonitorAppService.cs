@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Caching;
+using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Users;
 
 namespace Ketum.Monitors
 {
@@ -30,13 +32,13 @@ namespace Ketum.Monitors
 
         public async Task<PagedResultDto<MonitorDto>> GetListAsync(GetMonitorsRequestInput input)
         {
-            var count = await _monitorRepository.GetCountByFilterAsync(CurrentUser.Id!.Value);
+            var count = await _monitorRepository.CountAsync(x => x.CreatorId == CurrentUser.GetId());
 
             var monitors = await _monitorRepository.GetListAsync(
                 input.Sorting,
                 input.SkipCount,
                 input.MaxResultCount,
-                CurrentUser.Id!.Value);
+                CurrentUser.GetId());
 
             return new PagedResultDto<MonitorDto>(
                 count,
@@ -65,7 +67,7 @@ namespace Ketum.Monitors
             await _monitorManager.CreateAsync(
                 GuidGenerator.Create(),
                 GuidGenerator.Create(),
-                CurrentUser.Id!.Value,
+                CurrentUser.GetId(),
                 input.Name,
                 input.Url,
                 input.Interval);
@@ -76,7 +78,7 @@ namespace Ketum.Monitors
         {
             await _monitorManager.UpdateAsync(
                 id,
-                CurrentUser.Id!.Value,
+                CurrentUser.GetId(),
                 input.Name,
                 input.Url);
         }
@@ -86,7 +88,7 @@ namespace Ketum.Monitors
         {
             var monitor = await _monitorRepository.GetAsync(id);
 
-            if (CurrentUser.Id!.Value != monitor.CreatorId)
+            if (CurrentUser.GetId() != monitor.CreatorId)
             {
                 return;
             }
@@ -98,7 +100,7 @@ namespace Ketum.Monitors
         {
             var monitor = await _monitorRepository.GetAsync(monitorId);
 
-            if (monitor.CreatorId != CurrentUser.Id!.Value)
+            if (monitor.CreatorId != CurrentUser.GetId())
             {
                 return null;
             }

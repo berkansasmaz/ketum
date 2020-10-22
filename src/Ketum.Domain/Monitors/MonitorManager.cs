@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.Users;
 
@@ -27,12 +28,7 @@ namespace Ketum.Monitors
             Check.NotNullOrWhiteSpace(name, nameof(name));
             Check.NotNullOrWhiteSpace(url, nameof(url));
 
-            var monitors = await _monitorRepository.GetListAsync();
-
-            monitors = monitors
-                .Where(x => x.CreatorId == userId)
-                .ToList();
-
+            var monitors = await _monitorRepository.Where(x => x.CreatorId == userId).ToListAsync();
 
             var isExistingMonitorName = monitors.Any(x => x.Name == name);
 
