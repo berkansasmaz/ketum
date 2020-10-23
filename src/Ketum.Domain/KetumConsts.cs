@@ -10,6 +10,6 @@ namespace Ketum
 
         public const int MaxMonitorsProcessedCount = 20;
 
-        public static readonly TimeSpan MonitorWorkerPeriod = TimeSpan.FromSeconds(1);
+        public static readonly TimeSpan MonitorWorkerPeriod = TimeSpan.FromMinutes(1);
     }
 }

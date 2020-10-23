@@ -114,10 +114,10 @@ namespace Ketum.Monitors
 
                 monitor.LastModificationTime = DateTime.UtcNow;
 
-                await PublishUserNotifyEvent(monitor);
-
                 await monitorRepository.UpdateAsync(monitor);
                 await unitOfWorkManager.Current.SaveChangesAsync();
+
+                await PublishUserNotifyEvent(monitor);
             }
 
             stopwatch.Stop();
