@@ -16,11 +16,8 @@ The following tools should be installed on your development machine:
 * [.NET Core 3.1+](https://www.microsoft.com/net/download/dotnet-core/)
 * [Node v12 or v14](https://nodejs.org/)
 * [Yarn v1.20+ (not v2)](https://classic.yarnpkg.com/en/docs/install) <sup id="a-yarn">[1](#f-yarn)</sup> or npm v6+ (already installed with Node)
-{{ if Tiered == "Yes" }}
 * [Redis](https://redis.io/) (the startup solution uses the Redis as the [distributed cache](Caching.md)).
 * Uses [RabbitMQ](https://www.rabbitmq.com/) for send your emails .
-
-{{ end }}
 
 <sup id="f-yarn"><b>1</b></sup> _Yarn v2 works differently and is not supported._ <sup>[↩](#a-yarn)</sup>
 
