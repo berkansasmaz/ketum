@@ -20,7 +20,7 @@ Never miss any problem on your website by our E-mail notifications.
 
 ## Install and Run
 
-Please follow [this](./docs/Get-Started/Getting Started.md) document to run Ketum.
+Please follow [this](./docs/Get-Started/getting-started.md) document to run Ketum.
 
 > NOTE: Ketum was created using the ABP framework startup template. So it fully supports ABP framework documentation. Please check the [ABP framework documentation](https://docs.abp.io/en/abp/latest) whenever you have any questions.
 
