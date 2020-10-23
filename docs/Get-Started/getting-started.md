@@ -101,7 +101,7 @@ Now that our application is running, we must first set our roles:
 
 ![identity-management](./identity-management.png)
 
-> Now all users with the admin role have full permissions on the monitor.
+Now all users with the admin role have full permissions on the monitor.
 
 We have pretty clearly defined roles so I don't need to explain further.
 
