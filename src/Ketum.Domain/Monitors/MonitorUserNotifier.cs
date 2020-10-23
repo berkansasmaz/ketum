@@ -65,7 +65,7 @@ namespace Ketum.Monitors
             {
                 return "<h2>Hello!</h2><br/>" +
                        $"<strong>Uptime monitor  {monitorEto.Name} {monitorEto.Url}  is down.</strong><br/><br/>" +
-                       $"Time: <strong> {monitorEto.LastModificationTime!.Value.ToLocalTime()} </strong> <br/><br/>" +
+                       $"Time: <strong> {monitorEto.LastModificationTime!.Value.ToLocalTime() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} </strong><br/><br/>" +
                        "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
@@ -74,7 +74,7 @@ namespace Ketum.Monitors
             {
                 return "<h2>Hello!</h2><br/>" +
                        $"<strong>Uptime monitor {monitorEto.Name} {monitorEto.Url} is warning.</strong><br/><br/>" +
-                       $"Time: <strong> {monitorEto.LastModificationTime!.Value.ToLocalTime()} </strong><br/><br/>" +
+                       $"Time: <strong> {monitorEto.LastModificationTime!.Value.ToLocalTime() + " " + monitorEto.LastModificationTime!.Value.ToLongTimeString()} </strong><br/><br/>" +
                        "We will inform you when it's up again! <br/></br>" +
                        "Regards, <br/> Ketum";
             }
