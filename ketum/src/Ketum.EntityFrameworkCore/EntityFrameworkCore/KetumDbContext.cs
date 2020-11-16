@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ketum.Monitors;
+using Microsoft.EntityFrameworkCore;
 using Ketum.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -18,14 +19,16 @@ namespace Ketum.EntityFrameworkCore
      * used modules (as explained above). See KetumMigrationsDbContext for migrations.
      */
     [ConnectionStringName("Default")]
-    public class KetumDbContext : AbpDbContext<KetumDbContext>
+    public class KetumDbContext : AbpDbContext<KetumDbContext>, IKetumDbContext
     {
         public DbSet<AppUser> Users { get; set; }
+        
+        public DbSet<Monitor> Monitors { get; set; }
 
-        /* Add DbSet properties for your Aggregate Roots / Entities here.
-         * Also map them inside KetumDbContextModelCreatingExtensions.ConfigureKetum
-         */
+        public DbSet<MonitorStep> MonitorSteps { get; set; }
 
+        public DbSet<MonitorStepLog> MonitorStepLogs { get; set; }
+    
         public KetumDbContext(DbContextOptions<KetumDbContext> options)
             : base(options)
         {
