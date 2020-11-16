@@ -3,6 +3,10 @@
   "texts": {
     "Menu:Home": "Ana sayfa",
     "Welcome": "Hoşgeldiniz",
-    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz."
+    "LongWelcomeMessage": "Uygulamaya hoşgeldiniz.",
+    "Permission:Monitoring": "İzleme",
+    "Permission:Create": "Oluşturma",
+    "Permission:Edit": "Düzenleme",
+    "Permission:Delete": "Silme"
   }
 }

@@ -3,6 +3,11 @@
   "texts": {
     "Menu:Home": "Home",
     "Welcome": "Welcome",
-    "LongWelcomeMessage": "Welcome to the KETUM."
+    "LongWelcomeMessage": "Welcome to the KETUM.",
+    "Permission:Monitoring": "Monitoring",
+    "Permission:Create": "Create",
+    "Permission:Edit": "Edit",
+    "Permission:Delete": "Delete"
+    
   }
 }
