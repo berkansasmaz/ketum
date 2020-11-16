@@ -30,13 +30,15 @@ namespace Ketum.Monitors
         [UnitOfWork]
         protected override async Task DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
             stopwatch.Start();
             Logger.LogInformation("Starting at {0}: Monitoring the website’s health...", stopwatch.Elapsed.Milliseconds);
 
             var guidGenerator = workerContext.ServiceProvider.GetRequiredService<IGuidGenerator>();
             var unitOfWorkManager = workerContext.ServiceProvider.GetRequiredService<UnitOfWorkManager>();
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
+            var clientFactory = workerContext.ServiceProvider.GetRequiredService<IHttpClientFactory>();
+
 
             var monitors = await monitorRepository.GetListByStepFilterAsync(MonitorStepTypes.Request);
 
@@ -68,7 +70,7 @@ namespace Ketum.Monitors
 
                     try
                     {
-                        var client = new HttpClient();
+                        var client = clientFactory.CreateClient();
                         client.Timeout = TimeSpan.FromSeconds(15);
                         var response = await client.GetAsync(monitor.MonitorStep.Url);
                         if (response.IsSuccessStatusCode)
