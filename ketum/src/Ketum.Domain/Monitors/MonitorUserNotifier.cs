@@ -35,6 +35,7 @@ namespace Ketum.Monitors
                 return;
             }
 
+            // TODO: Compare the QueueAsync method with the current version in terms of performance
             await _emailSender.SendAsync(
                 creatorUser.Email,
                 GetEmailSubject(monitorEto),
