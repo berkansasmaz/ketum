@@ -62,7 +62,6 @@ namespace Ketum.Blazor
         private void ConfigureBlazorise(ServiceConfigurationContext context)
         {
             context.Services
-                .AddBlazorise()
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
         }
@@ -99,13 +98,6 @@ namespace Ketum.Blazor
             {
                 options.AddMaps<KetumBlazorModule>();
             });
-        }
-
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        {
-            context.ServiceProvider
-                .UseBootstrapProviders()
-                .UseFontAwesomeIcons();
         }
     }
 }

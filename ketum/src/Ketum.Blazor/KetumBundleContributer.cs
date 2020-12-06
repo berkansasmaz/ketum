@@ -2,7 +2,7 @@
 
 namespace Ketum.Blazor
 {
-    public class KetumBundleContributer : IBundleContributer
+    public class KetumBundleContributer : IBundleContributor
     {
         public void AddScripts(BundleContext context)
         {
