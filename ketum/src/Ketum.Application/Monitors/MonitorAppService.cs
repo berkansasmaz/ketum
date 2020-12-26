@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Ketum.Permissions;
@@ -12,7 +13,7 @@ using Volo.Abp.Users;
 
 namespace Ketum.Monitors
 {
-    [Authorize(KetumPermissions.Monitoring.Default)]
+    [Authorize(KetumPermissions.Monitors.Default)]
     public class MonitorAppService : KetumAppService, IMonitorAppService
     {
         private readonly MonitorManager _monitorManager;
@@ -61,7 +62,7 @@ namespace Ketum.Monitors
             return cache;
         }
 
-        [Authorize(KetumPermissions.Monitoring.Create)]
+        [Authorize(KetumPermissions.Monitors.Create)]
         public async Task CreateAsync(CreateMonitorDto input)
         {
             await _monitorManager.CreateAsync(
@@ -73,17 +74,18 @@ namespace Ketum.Monitors
                 input.Interval);
         }
 
-        [Authorize(KetumPermissions.Monitoring.Update)]
+        [Authorize(KetumPermissions.Monitors.Update)]
         public async Task UpdateAsync(Guid id, UpdateMonitorDto input)
         {
             await _monitorManager.UpdateAsync(
                 id,
                 CurrentUser.GetId(),
                 input.Name,
-                input.Url);
+                input.Url,
+                input.Interval);
         }
 
-        [Authorize(KetumPermissions.Monitoring.Delete)]
+        [Authorize(KetumPermissions.Monitors.Delete)]
         public async Task DeleteAsync(Guid id)
         {
             var monitor = await _monitorRepository.GetAsync(id);
@@ -114,7 +116,7 @@ namespace Ketum.Monitors
         {
             var dto = ObjectMapper.Map<Monitor, MonitorWithDetailsDto>(monitor);
 
-            if (monitor.MonitorStep.Type == MonitorStepTypes.Request)
+            if (monitor.MonitorStep.Type == MonitorStepTypes.Request && dto.MonitorStep.MonitorStepLogs.Count > 0)
             {
                 MeasureResponseHealth(dto);
             }
@@ -131,7 +133,7 @@ namespace Ketum.Monitors
             var monitorStepLogs = dto.MonitorStep.MonitorStepLogs
                 .Where(x => x.StartDate >= week && x.EndDate != null)
                 .OrderByDescending(x => x.StartDate)
-                .Take(50)
+                .Take(20)
                 .ToList();
 
             monitorStepLogs = monitorStepLogs.OrderBy(x => x.StartDate).ToList();
@@ -161,6 +163,7 @@ namespace Ketum.Monitors
                     var currentUptimePercent = 100 - currentDowntimePercent;
 
                     dto.UpTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
+                    dto.DateTimes.Add(stepLog.EndDate!.Value.ToShortTimeString());
                 }
             }
 

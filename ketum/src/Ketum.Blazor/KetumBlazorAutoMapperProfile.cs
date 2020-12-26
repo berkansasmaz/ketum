@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Ketum.Monitors;
 
 namespace Ketum.Blazor
 {
@@ -6,7 +7,9 @@ namespace Ketum.Blazor
     {
         public KetumBlazorAutoMapperProfile()
         {
-            //Define your AutoMapper configuration here for the Blazor project.
+            CreateMap<MonitorDto, UpdateMonitorDto>()
+                .ForMember(s => s.Url, c => c.MapFrom(m => m.MonitorStep.Url))
+                .ForMember(s => s.Interval, c => c.MapFrom(m => m.MonitorStep.Interval));
         }
     }
 }

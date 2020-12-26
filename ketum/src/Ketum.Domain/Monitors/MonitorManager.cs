@@ -26,15 +26,17 @@ namespace Ketum.Monitors
         {
             Check.NotNullOrWhiteSpace(name, nameof(name));
             Check.NotNullOrWhiteSpace(url, nameof(url));
-
-            var monitors = await _monitorRepository.Where(x => x.CreatorId == userId).ToListAsync();
-
-            var isExistingMonitorName = monitors.Any(x => x.Name == name);
+            
+            if (interval < 1)
+            {
+                throw new UserFriendlyException("Interval value cannot be less than one");
+            }
+            
+            var isExistingMonitorName = _monitorRepository.Any(x => x.CreatorId == userId && x.Name.Equals(name));
 
             if (isExistingMonitorName)
             {
-                throw new BusinessException(
-                    message: "This project name is already in use. Please choose a different name.");
+                throw new UserFriendlyException("This project name is already in use. Please choose a different name.");
             }
 
             var newMonitorStep = new MonitorStep(
@@ -58,10 +60,16 @@ namespace Ketum.Monitors
             Guid id,
             Guid userId,
             [NotNull] string name,
-            [NotNull] string url)
+            [NotNull] string url,
+            int interval)
         {
             Check.NotNullOrWhiteSpace(name, nameof(name));
             Check.NotNullOrWhiteSpace(url, nameof(url));
+
+            if (interval < 1)
+            {
+                throw new UserFriendlyException("Interval value cannot be less than one");
+            }
 
             var monitor = await _monitorRepository.GetAsync(id);
 
@@ -69,24 +77,18 @@ namespace Ketum.Monitors
             {
                 return null;
             }
-
-            var monitors = await _monitorRepository.GetListAsync();
-
-            monitors = monitors
-                .Where(x => x.CreatorId == monitor.CreatorId)
-                .Where(x => x.Id != id)
-                .ToList();
-
-            var isExistingMonitorName = monitors.Any(x => x.Name == name);
+            
+            var isExistingMonitorName = _monitorRepository
+                .Any(x => x.CreatorId == monitor.CreatorId && x.Id != id && x.Name.Equals(name));
 
             if (isExistingMonitorName)
             {
-                throw new BusinessException(
-                    message: "This project name is already in use. Please choose a different name.");
+                throw new UserFriendlyException("This project name is already in use. Please choose a different name.");
             }
 
             monitor.SetName(name);
             monitor.MonitorStep.SetUrl(url);
+            monitor.MonitorStep.Interval = interval;
 
             return await _monitorRepository.UpdateAsync(monitor);
         }

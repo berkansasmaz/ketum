@@ -16,5 +16,16 @@ namespace Ketum.Monitors
                 .Include(x => x.MonitorStep)
                 .Include(x => x.MonitorStep.MonitorStepLogs);
         }
+        
+        public static IQueryable<Monitor> IncludeStepDetails(this IQueryable<Monitor> queryable, bool include = true)
+        {
+            if (!include)
+            {
+                return queryable;
+            }
+
+            return queryable
+                .Include(x => x.MonitorStep);
+        }
     }
 }

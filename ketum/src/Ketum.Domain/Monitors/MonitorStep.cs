@@ -15,7 +15,7 @@ namespace Ketum.Monitors
 
         public string Url { get; protected set; }
 
-        public int Interval { get; protected set; }
+        public int Interval { get; set; }
 
         public MonitorStepTypes Type { get; protected set; }
 

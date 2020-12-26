@@ -21,6 +21,8 @@ namespace Ketum.Monitors
         public double LoadTime { get; set; }
 
         public List<double> LoadTimes { get; set; }
+        
+        public List<string> DateTimes { get; set; }
 
         public int MonitoredTime { get; set; }
 
@@ -30,6 +32,7 @@ namespace Ketum.Monitors
         {
             UpTimes = new List<double>();
             LoadTimes = new List<double>();
+            DateTimes = new List<string>();
         }
     }
 }

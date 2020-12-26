@@ -4,9 +4,9 @@
     {
         public const string GroupName = "Ketum";
 
-        public static class Monitoring
+        public static class Monitors
         {
-            public const string MonitorGroup = GroupName + ".Monitoring";
+            public const string MonitorGroup = GroupName + ".Monitors";
 
             public const string Default = MonitorGroup;
             public const string Create = Default + ".Create";

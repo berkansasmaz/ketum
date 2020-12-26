@@ -8,12 +8,12 @@ namespace Ketum.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var monitor = context.AddGroup(KetumPermissions.Monitoring.MonitorGroup, L("Permission:Monitoring"));
+            var monitor = context.AddGroup(KetumPermissions.Monitors.MonitorGroup, L("Permission:Monitors"));
 
-            var communityArticles = monitor.AddPermission(KetumPermissions.Monitoring.Default, L("Permission:Monitoring"));
-            communityArticles.AddChild(KetumPermissions.Monitoring.Create, L("Permission:Create"));
-            communityArticles.AddChild(KetumPermissions.Monitoring.Update, L("Permission:Edit"));
-            communityArticles.AddChild(KetumPermissions.Monitoring.Delete, L("Permission:Delete"));
+            var communityArticles = monitor.AddPermission(KetumPermissions.Monitors.Default, L("Permission:Monitors"));
+            communityArticles.AddChild(KetumPermissions.Monitors.Create, L("Permission:Create"));
+            communityArticles.AddChild(KetumPermissions.Monitors.Update, L("Permission:Edit"));
+            communityArticles.AddChild(KetumPermissions.Monitors.Delete, L("Permission:Delete"));
         }
 
         private static LocalizableString L(string name)

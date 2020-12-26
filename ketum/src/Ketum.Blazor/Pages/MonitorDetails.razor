@@ -1,0 +1,30 @@
+@page "/monitor-details/{id}"
+@inherits KetumComponentBase
+@inject IMonitorAppService MonitorAppService
+@inject NavigationManager NavigationManager
+@using Ketum.Monitors
+
+<PageHeader Title="@L["MonitorDetails"]" BreadcrumbItems="BreadcrumbItems">
+    <Paragraph Alignment="TextAlignment.Right">
+        <Button Color="Color.Primary"
+                Clicked='() => NavigationManager.NavigateTo("monitors")'>
+            @L["BackToMonitors"]
+        </Button>
+    </Paragraph>
+</PageHeader>
+<Card class="mt-3 mb-3">
+    <CardHeader>
+        <Button Clicked="@(async () => await HandleRedrawChartAsync())">Redraw</Button>
+        @if (MonitorWithDetails is not null && MonitorWithDetails.UpTimes.Count > 0 && MonitorWithDetails.LoadTimes.Count > 0)
+        {
+            <Row>
+                <Column ColumnSize="ColumnSize.Is6">
+                    <LineChart @ref="MonitorUpTimeChart" TItem="double"/>
+                </Column>
+                <Column ColumnSize="ColumnSize.Is6">
+                    <LineChart @ref="MonitorLoadTimeChart" TItem="double"/>
+                </Column>
+            </Row>
+        }
+    </CardHeader>
+</Card>

@@ -26,6 +26,7 @@ namespace Ketum.Monitors
             CancellationToken cancellationToken = default)
         {
             var query = DbSet
+                .IncludeStepDetails()
                 .Where(x => x.CreatorId == userId)
                 .OrderBy(string.IsNullOrWhiteSpace(sorting) ? Monitor.DefaultSorting : sorting);
 

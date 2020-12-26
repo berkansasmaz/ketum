@@ -1,0 +1,227 @@
+@page "/monitors"
+@inherits KetumComponentBase
+@inject IMonitorAppService MonitorAppService
+@inject NavigationManager NavigationManager
+@using Ketum.Monitors
+@using Ketum.Permissions
+
+<PageHeader Title="@L["Monitors"]" BreadcrumbItems="BreadcrumbItems">
+    <Paragraph Alignment="TextAlignment.Right">
+        @if (CanCreateMonitor)
+        {
+            <Button Color="Color.Primary"
+                    Clicked="OpenCreateMonitorModal">
+                @L["NewMonitor"]
+            </Button>
+        }
+    </Paragraph>
+</PageHeader>
+<Card>
+    <CardBody>
+        <DataGrid TItem="MonitorDto"
+                  Data="MonitorList"
+                  ReadData="OnDataGridReadAsync"
+                  TotalItems="TotalCount"
+                  ShowPager="true"
+                  PageSize="PageSize">
+            <DataGridColumns>
+                <DataGridEntityActionsColumn TItem="MonitorDto">
+                    <DisplayTemplate>
+                        <EntityActions TItem="MonitorDto">
+                            <EntityAction TItem="MonitorDto"
+                                          RequiredPolicy="@KetumPermissions.Monitors.Default"
+                                          Clicked="() => OpenDetailMonitor(context)"
+                                          Text="@L["Detail"]">
+                            </EntityAction>
+                            <EntityAction TItem="MonitorDto"
+                                          RequiredPolicy="@KetumPermissions.Monitors.Update"
+                                          Clicked="() => OpenEditMonitorModal(context)"
+                                          Text="@L["Edit"]">
+                            </EntityAction>
+                            <EntityAction TItem="MonitorDto"
+                                          RequiredPolicy="@KetumPermissions.Monitors.Delete"
+                                          Clicked="() => DeleteMonitorAsync(context)"
+                                          ConfirmationMessage="@(() => L["DeleteConfirmationMessage"])"
+                                          Text="@L["Delete"]">
+                            </EntityAction>
+                        </EntityActions>
+                    </DisplayTemplate>
+                </DataGridEntityActionsColumn>
+
+                <DataGridColumn TItem="MonitorDto"
+                                Field="Name"
+                                Caption="@L["Name"]">
+                    <DisplayTemplate>
+                        @context.Name.ToUpperInvariant()
+                    </DisplayTemplate>
+                </DataGridColumn>
+                
+                <DataGridColumn TItem="MonitorDto"
+                                Field="MonitorStep.Url"
+                                Caption="@L["Url"]">
+                    <DisplayTemplate>
+                        <div role="tooltip" data-tooltip="@context.MonitorStep.Url">
+                            @context.MonitorStep.Url.TruncateWithPostfix(50).ToLower()
+                        </div>
+                    </DisplayTemplate>
+                </DataGridColumn>
+                
+                <DataGridColumn TItem="MonitorDto"
+                                Field="MonitorStep.Interval"
+                                Caption="@L["Interval"]">
+                    <DisplayTemplate>
+                        @context.MonitorStep.Interval
+                    </DisplayTemplate>
+                </DataGridColumn>
+                
+                <DataGridColumn TItem="MonitorDto"
+                                Field="MonitorStatus"
+                                Caption="@L["MonitorStatus"]">
+                    <DisplayTemplate>
+                        @{
+                            var status = (context as MonitorDto).MonitorStatus;
+
+                            if (status is MonitorStatusTypes.Up)
+                            {
+                                <Badge Color="Color.Success">@($"{status}")</Badge>
+                                <i class="fas fa-arrow-circle-up"></i>
+                            }else if (status is MonitorStatusTypes.Down)
+                            {
+                                <Badge Color="Color.Danger">@($"{status}")</Badge>
+                                <i class="fas fa-arrow-circle-down"></i>
+                            }
+                            else
+                            {
+                                <Badge Color="Color.Warning">@($"{status}")</Badge>
+                                <i class="fas fa-exclamation-circle"></i>
+                            }
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
+
+                <DataGridColumn TItem="MonitorDto"
+                                Field="LastModificationTime"
+                                Caption="@L["LastModificationTime"]">
+                    <DisplayTemplate>
+                        @{
+                            var date = (context as MonitorDto)?.LastModificationTime;
+
+                            if (date is not null)
+                            {
+                                <div role="tooltip" data-tooltip="@context.LastModificationTime">
+                                    @($"{date.Value.ToShortDateString()}")
+                                </div>
+                            }
+                            else
+                            {
+                                @L["This is quite new"]
+                                ;
+                            }
+                        }
+                    </DisplayTemplate>
+                </DataGridColumn>
+
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+<Modal @ref="CreateMonitorModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true">
+        <Form id="CreateMonitorForm">
+            <ModalHeader>
+                <ModalTitle>@L["NewMonitor"]</ModalTitle>
+                <CloseButton Clicked="@CreateMonitorModal.Hide" />
+            </ModalHeader>
+            <ModalBody>
+                <Validations Mode="ValidationMode.Auto" Model="@CreateMonitorModal" ValidateOnLoad="false">
+                    <Field>
+                        <FieldLabel>@L["Name"]</FieldLabel>
+                        <TextEdit @bind-Text="@NewMonitor.Name">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                                        
+                    <Field>
+                        <FieldLabel>@L["Url"]</FieldLabel>
+                        <TextEdit @bind-Text="@NewMonitor.Url">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                                        
+                    @* TODO: We can let the user set the interval value with the slider *@
+                    <Field>
+                        <FieldLabel>@L["Interval"]</FieldLabel>
+                        <NumericEdit TValue="int" @bind-Value="@NewMonitor.Interval">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </NumericEdit>
+                    </Field>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary"
+                        Clicked="@CreateMonitorModal.Hide">
+                    @L["Cancel"]
+                </Button>
+                <SubmitButton Clicked="CreateMonitorAsync" Color="Color.Primary"></SubmitButton>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="EditMonitorModal">
+    <ModalBackdrop />
+    <ModalContent IsCentered="true">
+        <Form id="EditMonitorForm">
+            <ModalHeader>
+                <ModalTitle>@L["Update"]</ModalTitle>
+                <CloseButton Clicked="@EditMonitorModal.Hide" />
+            </ModalHeader>
+            <ModalBody>
+                <Validations Mode="ValidationMode.Auto" Model="@EditMonitorModal" ValidateOnLoad="false">
+                    <Field>
+                        <FieldLabel>@L["Name"]</FieldLabel>
+                        <TextEdit @bind-Text="@EditingMonitor.Name">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                    
+                    <Field>
+                        <FieldLabel>@L["Url"]</FieldLabel>
+                        <TextEdit @bind-Text="@EditingMonitor.Url">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                    
+                    @* TODO: We can let the user set the interval value with the slider *@
+                    <Field>
+                        <FieldLabel>@L["Interval"]</FieldLabel>
+                        <NumericEdit TValue="int" @bind-Value="@EditingMonitor.Interval">
+                            <Feedback>
+                                <ValidationError/>
+                            </Feedback>
+                        </NumericEdit>
+                    </Field>
+                </Validations>
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary"
+                        Clicked="@EditMonitorModal.Hide">
+                    @L["Cancel"]
+                </Button>
+                <SubmitButton Clicked="UpdateMonitorAsync" Color="Color.Primary" ></SubmitButton>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>

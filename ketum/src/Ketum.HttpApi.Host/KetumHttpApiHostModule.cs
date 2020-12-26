@@ -228,7 +228,7 @@ namespace Ketum
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
             
-            context.AddBackgroundWorker<MonitoringWorker>();
+            context.AddBackgroundWorker<MonitorWorker>();
         }
     }
 }

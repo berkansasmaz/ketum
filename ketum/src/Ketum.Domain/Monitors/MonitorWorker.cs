@@ -13,12 +13,12 @@ using Volo.Abp.Uow;
 
 namespace Ketum.Monitors
 {
-    public class MonitoringWorker : AsyncPeriodicBackgroundWorkerBase
+    public class MonitorWorker : AsyncPeriodicBackgroundWorkerBase
     {
         private readonly IDistributedEventBus _distributedEventBus;
 
-        public MonitoringWorker(
-            AbpTimer timer,
+        public MonitorWorker(
+            AbpAsyncTimer timer,
             IServiceScopeFactory serviceScopeFactory, 
             IDistributedEventBus distributedEventBus)
             : base(timer, serviceScopeFactory)
