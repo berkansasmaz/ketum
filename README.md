@@ -6,13 +6,13 @@ Monitor your Website and APIs from your on-premises server and never miss any pr
 
 ## Features
 
-#### Uptime Monitoring
 
- Test your website or API every minute, log response times, get notified when it's down.
+#### WEBSITE TESTING
+Our convenient platform allows you to monitor the health of your website effortlessly. The testing process is quick, reliable, and simple. You can receive your results in no time so that you don’t have to wonder about the status of your site!
 
-#### PageSpeed Monitoring
+#### TRACK HEALTH
 
-Get daily PageSpeed reports and analyze the performance metrics of your website.
+Ketum provides you with simple and easy-to-read charts that track your website’s health, and you will have access to charts displaying your uptime, response time, and other test results
 
 #### Instant Notifications
 
