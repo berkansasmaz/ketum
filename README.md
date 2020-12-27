@@ -12,7 +12,7 @@ Our convenient platform allows you to monitor the health of your website effortl
 
 #### TRACK HEALTH
 
-Ketum provides you with simple and easy-to-read charts that track your website’s health, and you will have access to charts displaying your uptime, response time, and other test results
+Ketum provides you with simple and easy-to-read charts that track your website’s health, and you will have access to charts displaying your uptime, response time, and other test results.
 
 #### Instant Notifications
 
