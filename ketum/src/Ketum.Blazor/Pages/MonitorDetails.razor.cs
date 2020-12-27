@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Blazorise.Charts;
 using Ketum.Monitors;
@@ -10,14 +11,14 @@ namespace Ketum.Blazor.Pages
 {
     public partial class MonitorDetails
     {
-        [Parameter]
-        public string Id { get; set; } 
-        
+        [Parameter] 
+        public string Id { get; set; }
+
         private MonitorWithDetailsDto MonitorWithDetails { get; set; }
         private LineChart<double> MonitorUpTimeChart { get; set; }
         private LineChart<double> MonitorLoadTimeChart { get; set; }
 
-        private List<BreadcrumbItem> BreadcrumbItems = new List<BreadcrumbItem>();
+        private List<BreadcrumbItem> BreadcrumbItems;
 
         // TODO: Delete or edit lines below
         private string[] Labels;
@@ -28,38 +29,49 @@ namespace Ketum.Blazor.Pages
         {
             MonitorUpTimeChart = new LineChart<double>();
             MonitorLoadTimeChart = new LineChart<double>();
+            BreadcrumbItems = new List<BreadcrumbItem>();
             Labels = new string[20];
         }
-        
+
         protected override async Task OnInitializedAsync()
         {
-            MonitorWithDetails = await MonitorAppService.GetAsync(Guid.Parse(Id));
+            await GetMonitorAsync();
             BreadcrumbItems.Add(new BreadcrumbItem(L["Monitor"].Value, "monitors"));
             BreadcrumbItems.Add(new BreadcrumbItem(L["Details"].Value));
-            FillLabels();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
             await HandleRedrawChartAsync();
         }
-
-        private void FillLabels()
+        
+        private async Task GetMonitorAsync()
         {
-            if (MonitorWithDetails.DateTimes.Count > 0)
-            {
-                Labels = MonitorWithDetails.DateTimes.ToArray();
-            }
+            MonitorWithDetails = await MonitorAppService.GetAsync(Guid.Parse(Id));
         }
-
+        
         private async Task HandleRedrawChartAsync()
         {
-            if (MonitorWithDetails.MonitorStep.MonitorStepLogs.Count > 1)
+            if (MonitorWithDetails is not null && MonitorWithDetails.UpTimes.Any() && MonitorWithDetails.LoadTimes.Any())
             {
                 await MonitorUpTimeChart.Clear();
                 await MonitorLoadTimeChart.Clear();
+
+                FillLabels();
 
                 await MonitorUpTimeChart.AddLabelsDatasetsAndUpdate(Labels, GetUpTimeLineChartDataset());
                 await MonitorLoadTimeChart.AddLabelsDatasetsAndUpdate(Labels, GetLoadTimeLineChartDataset());
             }
         }
         
+        private void FillLabels()
+        {
+            if (MonitorWithDetails.DateTimes.Any())
+            {
+                Labels = MonitorWithDetails.DateTimes.ToArray();
+            }
+        }
+
         private LineChartDataset<double> GetUpTimeLineChartDataset()
         {
             return new LineChartDataset<double>
@@ -73,7 +85,7 @@ namespace Ketum.Blazor.Pages
                 BorderDash = new List<int> { }
             };
         }
-        
+
         private LineChartDataset<double> GetLoadTimeLineChartDataset()
         {
             return new LineChartDataset<double>
