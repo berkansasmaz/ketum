@@ -39,7 +39,7 @@ namespace Ketum.Monitors
         {
             Login(_testData.UserId1);
 
-            var monitor = await _monitorAppService.GetAsync(_testData.MonitorId1);
+            var monitor = await _monitorAppService.GetAsync(_testData.MonitorId1, new GetMonitorRequestInput());
 
             monitor.ShouldNotBeNull();
             monitor.Id.ShouldBe(_testData.MonitorId1);
@@ -54,9 +54,9 @@ namespace Ketum.Monitors
 
             var randomMonitorId = Guid.NewGuid();
 
-            await Assert.ThrowsAnyAsync<EntityNotFoundException>(async () =>
+            await Assert.ThrowsAnyAsync<InvalidOperationException>(async () =>
             {
-                await _monitorAppService.GetAsync(randomMonitorId);
+                await _monitorAppService.GetAsync(randomMonitorId, new GetMonitorRequestInput());
             });
         }
 
