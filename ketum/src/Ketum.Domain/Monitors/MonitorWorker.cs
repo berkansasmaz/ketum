@@ -38,8 +38,7 @@ namespace Ketum.Monitors
             var unitOfWorkManager = workerContext.ServiceProvider.GetRequiredService<UnitOfWorkManager>();
             var monitorRepository = workerContext.ServiceProvider.GetRequiredService<IMonitorRepository>();
             var clientFactory = workerContext.ServiceProvider.GetRequiredService<IHttpClientFactory>();
-
-
+            
             var monitors = await monitorRepository.GetListByStepFilterAsync(MonitorStepTypes.Request);
 
             monitors = monitors
@@ -54,7 +53,7 @@ namespace Ketum.Monitors
             {
                 if (!monitor.MonitorStep.Url.IsNullOrEmpty())
                 {
-                    var logInterval = monitor.MonitorStep.Interval + TimeSpan.FromMilliseconds(Timer.Period).Minutes;
+                    var logInterval = monitor.MonitorStep.Interval;
                     var monitorStepLog = new MonitorStepLog(
                         guidGenerator.Create(),
                         monitor.Id,
@@ -63,6 +62,8 @@ namespace Ketum.Monitors
                         logInterval);
 
                     monitor.AddMonitorStepLog(monitorStepLog);
+
+                    monitorStepLog.Status = MonitorStepStatusTypes.Processing;
 
                     await monitorRepository.UpdateAsync(monitor);
 
@@ -73,6 +74,7 @@ namespace Ketum.Monitors
                         var client = clientFactory.CreateClient();
                         client.Timeout = TimeSpan.FromSeconds(15);
                         var response = await client.GetAsync(monitor.MonitorStep.Url);
+                        monitorStepLog.Status = MonitorStepStatusTypes.Pending;
                         if (response.IsSuccessStatusCode)
                         {
                             monitorStepLog.Status = MonitorStepStatusTypes.Success;

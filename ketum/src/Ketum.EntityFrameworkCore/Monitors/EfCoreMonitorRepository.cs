@@ -18,6 +18,30 @@ namespace Ketum.Monitors
         {
         }
 
+        public Task<Monitor> GetAsync(
+            Guid id, 
+            int skipCount, 
+            int maxResultCount,
+            CancellationToken cancellationToken = default)
+        {
+            var query = DbSet
+                .Where(x => x.Id == id)
+                .Include(x => x.MonitorStep)
+                .Include(x => x.MonitorStep.MonitorStepLogs
+                    .OrderByDescending(x => x.StartDate)
+                    .Skip(skipCount)
+                    .Take(maxResultCount));
+            return query.SingleAsync(GetCancellationToken(cancellationToken));
+        }
+
+        public Task<int> GetMonitorStepLogCountAsync(
+            Guid monitorStepId, 
+            CancellationToken cancellationToken = default)
+        {
+            return DbContext.MonitorStepLogs
+                .CountAsync(x => x.MonitorStepId == monitorStepId, GetCancellationToken(cancellationToken));
+        }
+
         public async Task<List<Monitor>> GetListAsync(
             string sorting,
             int skipCount,

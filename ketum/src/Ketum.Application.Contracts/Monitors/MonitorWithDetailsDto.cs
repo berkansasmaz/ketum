@@ -10,7 +10,7 @@ namespace Ketum.Monitors
 
         public MonitorStatusTypes MonitorStatus { get; set; }
 
-        public double UpTime { get; set; }
+        public double UpTimePercent { get; set; }
 
         public List<double> UpTimes { get; set; }
 

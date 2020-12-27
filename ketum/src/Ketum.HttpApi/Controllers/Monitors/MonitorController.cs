@@ -28,11 +28,17 @@ namespace Ketum.Controllers.Monitors
         }
 
         [HttpGet("{id}")]
-        public async Task<MonitorWithDetailsDto> GetAsync(Guid id)
+        public async Task<MonitorWithDetailsDto> GetAsync(Guid id, GetMonitorRequestInput input)
         {
-            var monitor = await _monitorAppService.GetAsync(id);
+            var monitor = await _monitorAppService.GetAsync(id, input);
 
             return monitor;
+        }
+
+        [HttpGet("{monitorStepId}/logsCount")]
+        public async Task<int> GetMonitorStepLogCountAsync(Guid monitorStepId)
+        {
+            return await _monitorAppService.GetMonitorStepLogCountAsync(monitorStepId);
         }
 
         [HttpPost]

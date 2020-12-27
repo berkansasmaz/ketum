@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Domain.Entities;
 
 namespace Ketum.Monitors
 {
-    public class MonitorStepDto
+    public class MonitorStepDto : EntityDto<Guid>
     {
         public string Url { get; set; }
 

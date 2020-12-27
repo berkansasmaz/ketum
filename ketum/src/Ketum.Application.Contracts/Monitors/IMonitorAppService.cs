@@ -9,8 +9,10 @@ namespace Ketum.Monitors
     {
         Task<PagedResultDto<MonitorDto>> GetListAsync(GetMonitorsRequestInput input);
 
-        Task<MonitorWithDetailsDto> GetAsync(Guid id);
+        Task<MonitorWithDetailsDto> GetAsync(Guid id, GetMonitorRequestInput input);
 
+        Task<int> GetMonitorStepLogCountAsync(Guid monitorStepId);
+        
         Task CreateAsync(CreateMonitorDto input);
 
         Task UpdateAsync(Guid id, UpdateMonitorDto input);

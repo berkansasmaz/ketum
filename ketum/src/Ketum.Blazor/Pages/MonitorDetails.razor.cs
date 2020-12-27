@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Blazorise.Charts;
 using Ketum.Monitors;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using BreadcrumbItem = Volo.Abp.BlazoriseUI.BreadcrumbItem;
 
 namespace Ketum.Blazor.Pages
@@ -15,20 +16,22 @@ namespace Ketum.Blazor.Pages
         public string Id { get; set; }
 
         private MonitorWithDetailsDto MonitorWithDetails { get; set; }
+        private int TotalMonitorStepLogCount { get; set; }
+        private GetMonitorRequestInput Filter { get; set; }
         private LineChart<double> MonitorUpTimeChart { get; set; }
         private LineChart<double> MonitorLoadTimeChart { get; set; }
 
         private List<BreadcrumbItem> BreadcrumbItems;
 
-        // TODO: Delete or edit lines below
-        private string[] Labels;
-        List<string> backgroundColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 0.2f ), ChartColor.FromRgba( 54, 162, 235, 0.2f ), ChartColor.FromRgba( 255, 206, 86, 0.2f ), ChartColor.FromRgba( 75, 192, 192, 0.2f ), ChartColor.FromRgba( 153, 102, 255, 0.2f ), ChartColor.FromRgba( 255, 159, 64, 0.2f ) };
-        List<string> borderColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 1f ), ChartColor.FromRgba( 54, 162, 235, 1f ), ChartColor.FromRgba( 255, 206, 86, 1f ), ChartColor.FromRgba( 75, 192, 192, 1f ), ChartColor.FromRgba( 153, 102, 255, 1f ), ChartColor.FromRgba( 255, 159, 64, 1f ) };
-        
         public MonitorDetails()
         {
             MonitorUpTimeChart = new LineChart<double>();
             MonitorLoadTimeChart = new LineChart<double>();
+            Filter = new GetMonitorRequestInput
+            {
+                SkipCount = 0,
+                MaxResultCount = 20
+            };
             BreadcrumbItems = new List<BreadcrumbItem>();
             Labels = new string[20];
         }
@@ -47,7 +50,18 @@ namespace Ketum.Blazor.Pages
         
         private async Task GetMonitorAsync()
         {
-            MonitorWithDetails = await MonitorAppService.GetAsync(Guid.Parse(Id));
+            MonitorWithDetails = await MonitorAppService.GetAsync(Guid.Parse(Id), Filter);
+            TotalMonitorStepLogCount = await MonitorAppService.GetMonitorStepLogCountAsync(MonitorWithDetails.MonitorStep.Id);
+        }
+        
+        private async ValueTask<ItemsProviderResult<MonitorStepLogDto>> LoadMonitorAsync(ItemsProviderRequest request)
+        {
+            var numStepLogs = Math.Min(request.Count, TotalMonitorStepLogCount - request.StartIndex);
+            Filter.SkipCount = request.StartIndex;
+            Filter.MaxResultCount = numStepLogs;
+            MonitorWithDetails = await MonitorAppService.GetAsync(Guid.Parse(Id), Filter);
+            
+            return new ItemsProviderResult<MonitorStepLogDto>(MonitorWithDetails.MonitorStep.MonitorStepLogs, TotalMonitorStepLogCount);
         }
         
         private async Task HandleRedrawChartAsync()
@@ -99,5 +113,10 @@ namespace Ketum.Blazor.Pages
                 BorderDash = new List<int> { }
             };
         }
+        
+        // TODO: Delete or edit lines below
+        private string[] Labels;
+        List<string> backgroundColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 0.2f ), ChartColor.FromRgba( 54, 162, 235, 0.2f ), ChartColor.FromRgba( 255, 206, 86, 0.2f ), ChartColor.FromRgba( 75, 192, 192, 0.2f ), ChartColor.FromRgba( 153, 102, 255, 0.2f ), ChartColor.FromRgba( 255, 159, 64, 0.2f ) };
+        List<string> borderColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 1f ), ChartColor.FromRgba( 54, 162, 235, 1f ), ChartColor.FromRgba( 255, 206, 86, 1f ), ChartColor.FromRgba( 75, 192, 192, 1f ), ChartColor.FromRgba( 153, 102, 255, 1f ), ChartColor.FromRgba( 255, 159, 64, 1f ) };
     }
 }

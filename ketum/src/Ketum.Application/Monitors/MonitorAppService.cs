@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Ketum.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.VisualBasic;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Caching;
 using Volo.Abp.Domain.Repositories;
@@ -47,20 +47,26 @@ namespace Ketum.Monitors
             );
         }
 
-        public async Task<MonitorWithDetailsDto> GetAsync(Guid id)
+        public async Task<MonitorWithDetailsDto> GetAsync(Guid id, GetMonitorRequestInput input)
         {
             var cacheItem = await _cache.GetOrAddAsync(
-                id.ToString(),
-                async () => await GetMonitorFromDatabaseAsync(id),
+                id.ToString() + input.SkipCount + input.MaxResultCount,
+                async () => await GetMonitorFromDatabaseAsync(id, input),
                 () => new DistributedCacheEntryOptions
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(KetumConsts.MonitorWorkerPeriod.TotalMinutes)
                 }
             );
-
+            
             var cache = cacheItem;
             return cache;
         }
+        
+        public async Task<int> GetMonitorStepLogCountAsync(Guid monitorStepId)
+        {
+            return await _monitorRepository.GetMonitorStepLogCountAsync(monitorStepId);
+        }
+
 
         [Authorize(KetumPermissions.Monitors.Create)]
         public async Task CreateAsync(CreateMonitorDto input)
@@ -98,15 +104,15 @@ namespace Ketum.Monitors
             await _monitorRepository.DeleteAsync(id);
         }
 
-        private async Task<MonitorWithDetailsDto> GetMonitorFromDatabaseAsync(Guid monitorId)
+        private async Task<MonitorWithDetailsDto> GetMonitorFromDatabaseAsync(Guid monitorId, GetMonitorRequestInput input)
         {
-            var monitor = await _monitorRepository.GetAsync(monitorId);
+            var monitor = await _monitorRepository.GetAsync(monitorId, input.SkipCount, input.MaxResultCount);
 
             if (monitor.CreatorId != CurrentUser.GetId())
             {
                 return null;
             }
-
+            
             var dto = HealthByStepTypeCalculate(monitor);
 
             return dto;
@@ -116,11 +122,10 @@ namespace Ketum.Monitors
         {
             var dto = ObjectMapper.Map<Monitor, MonitorWithDetailsDto>(monitor);
 
-            if (monitor.MonitorStep.Type == MonitorStepTypes.Request && dto.MonitorStep.MonitorStepLogs.Count > 0)
+            if (dto.MonitorStep.MonitorStepLogs.Any())
             {
                 MeasureResponseHealth(dto);
             }
-            // TODO: Calculate other monitor step types. (Enhancment)
 
             return dto;
         }
@@ -129,15 +134,14 @@ namespace Ketum.Monitors
         {
             // TODO: Consider moving it into the MonitorManager.
             var week = DateTime.UtcNow.AddDays(-14);
-
+            
             var monitorStepLogs = dto.MonitorStep.MonitorStepLogs
                 .Where(x => x.StartDate >= week && x.EndDate != null)
                 .OrderByDescending(x => x.StartDate)
-                .Take(20)
                 .ToList();
-
-            monitorStepLogs = monitorStepLogs.OrderBy(x => x.StartDate).ToList();
-
+            
+            dto.MonitoredTime = dto.MonitorStep.MonitorStepLogs.Sum(x => x.Interval);
+            
             if (monitorStepLogs.Any(x => x.Status == MonitorStepStatusTypes.Success))
             {
                 dto.LoadTime = monitorStepLogs
@@ -149,31 +153,39 @@ namespace Ketum.Monitors
             {
                 if (stepLog.Status.IsIn(MonitorStepStatusTypes.Success, MonitorStepStatusTypes.Fail))
                 {
-                    dto.MonitoredTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
-
-                    if (stepLog.Status == MonitorStepStatusTypes.Success)
-                    {
-                        dto.LoadTimes.Add(stepLog.EndDate!.Value.Subtract(stepLog.StartDate).TotalMilliseconds);
-                    }
-
                     if (stepLog.Status == MonitorStepStatusTypes.Fail)
-                        dto.DownTime += TimeSpan.FromMinutes(dto.MonitorStep.Interval).Minutes;
+                    {
+                        dto.DownTime += TimeSpan.FromMinutes(stepLog.Interval).Minutes;
+                    }
 
                     var currentDowntimePercent = dto.DownTime / dto.MonitoredTime * 100;
                     var currentUptimePercent = 100 - currentDowntimePercent;
 
-                    dto.UpTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
-                    dto.DateTimes.Add(stepLog.EndDate!.Value.ToShortTimeString());
+                    if (dto.LoadTimes.Count <= 20)
+                    {
+                        if (stepLog.Status == MonitorStepStatusTypes.Success)
+                        {
+                            dto.LoadTimes.Add(stepLog.EndDate!.Value.Subtract(stepLog.StartDate).TotalMilliseconds);
+                            dto.UpTimes.Add(double.IsNaN(currentUptimePercent) ? 0 : currentUptimePercent);
+                        }
+                        else
+                        {
+                            dto.LoadTimes.Add(0);
+                            dto.UpTimes.Add(0);
+                        }
+                        dto.DateTimes.Add(stepLog.EndDate!.Value.ToShortTimeString());
+                    }
                 }
             }
 
             dto.DownTimePercent = dto.DownTime / dto.MonitoredTime * 100;
-            dto.UpTime = 100 - dto.DownTimePercent;
-            dto.UpTime = dto.UpTime < 0 ? 0 : dto.UpTime;
+            dto.DownTimePercent = dto.DownTimePercent > 100 ? 100 : dto.DownTimePercent;
+            dto.UpTimePercent = 100 - dto.DownTimePercent;
+            dto.UpTimePercent = dto.UpTimePercent < 0 ? 0 : dto.UpTimePercent;
 
-            if (double.IsNaN(dto.UpTime))
+            if (double.IsNaN(dto.UpTimePercent))
             {
-                dto.UpTime = 0;
+                dto.UpTimePercent = 0;
                 dto.DownTimePercent = 0;
             }
         }
