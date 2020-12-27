@@ -2,7 +2,7 @@
 
 Ketum is an **open source application** that enables you to easily test and monitor your website’s health.
 
-Monitor your Website and APIs from your on-premises server and Never miss any problem on your website by our E-mail notifications.
+Monitor your Website and APIs from your on-premises server and never miss any problem on your website with our E-mail notifications.
 
 ## Features
 
@@ -12,11 +12,11 @@ Monitor your Website and APIs from your on-premises server and Never miss any pr
 
 #### PageSpeed Monitoring
 
-Get daily PageSpeed reports and analyze performance metrics of your website.
+Get daily PageSpeed reports and analyze the performance metrics of your website.
 
 #### Instant Notifications
 
-Never miss any problem on your website by our E-mail notifications.
+Never miss any problem on your website with our E-mail notifications.
 
 ## Install and Run
 
