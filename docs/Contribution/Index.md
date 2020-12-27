@@ -26,7 +26,7 @@ You ran into a problem and fixed it. However, if the problem is difficult to sol
 
 ## Resource Localization
 
-KETUM has a flexible [localization system](../../src/Ketum.Domain.Shared/Localization/Ketum). You can create localized user interfaces for your own application.
+KETUM has a flexible [localization system](https://github.com/berkansasmaz/ketum/tree/master/ketum/src/Ketum.Domain.Shared/Localization/Ketum). You can create localized user interfaces for your own application.
 
 ## Bug Report
 
