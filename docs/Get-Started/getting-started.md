@@ -25,7 +25,7 @@ The following tools should be installed on your development machine:
 
 ### Connection String
 
-Check the **connection string** in the `appsettings.json` file under the `Ketum.DbMigrator` and `Ketum.IdentityServer` and `Ketum.HttpApi.Host` projects.
+Check the **connection string** in the `appsettings.json` file under the `Ketum.IdentityServer` and `Ketum.HttpApi.Host` projects.
 
 ````json
 "ConnectionStrings": {
