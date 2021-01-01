@@ -1,6 +1,6 @@
 # Ketum
 
-Ketum is an **open-source and cross-platform** that enables you to easily test and monitor your website’s health.
+Ketum is an **open-source and cross-platform application** that enables you to easily test and monitor your website’s health.
 
 Monitor your Website and APIs from your on-premises server and never miss any problem on your website with our E-mail notifications.
 
