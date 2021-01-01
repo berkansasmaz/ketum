@@ -38,6 +38,10 @@
     "Minute": "dakika",
     "NumberOfDataToBeCalculated": "Hesaplanacak veri sayısı",
     "Refresh": "Yenile",
-    "NoMonitorsAreFound": "Monitor bulunamadı!"
+    "NoMonitorsAreFound": "Monitor bulunamadı!",
+    "Permission:Monitors": "Monitörler",
+    "Permission:Create": "Ekleme",
+    "Permission:Edit": "Düzenleme",
+    "Permission:Delete": "Silme"
   }
 }

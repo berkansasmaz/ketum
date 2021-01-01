@@ -108,3 +108,8 @@ We have pretty clearly defined roles so I don't need to explain further.
 > Note: If you want, you can create a new role and assign it to your new users as the default.
 
 The application is designed to support multi-tenant, but has never been tested. I need your feedback on this subject. Please let me know about the problems you are experiencing and let's discuss them together and create a solution map.
+
+## See Also
+
+- [Notification](https://github.com/berkansasmaz/ketum/blob/master/docs/Notification/Index.md)
+
