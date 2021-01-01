@@ -38,6 +38,10 @@
     "Minute": "minute",
     "NumberOfDataToBeCalculated": "Number of data to be calculated",
     "Refresh": "Refresh",
-    "NoMonitorsAreFound": "No monitors are found!"
+    "NoMonitorsAreFound": "No monitors are found!",
+    "Permission:Monitors": "Monitors",
+    "Permission:Create": "Create",
+    "Permission:Edit": "Edit",
+    "Permission:Delete": "Delete"
   }
 }
