@@ -4,6 +4,8 @@
 @inject NavigationManager NavigationManager
 @using Ketum.Monitors
 @using Ketum.Permissions
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(KetumPermissions.Monitors.Default)]
 
 <PageHeader Title="@L["Monitors"]" BreadcrumbItems="BreadcrumbItems">
     <Paragraph Alignment="TextAlignment.Right">
@@ -23,105 +25,128 @@
                   ReadData="OnDataGridReadAsync"
                   TotalItems="TotalCount"
                   ShowPager="true"
-                  PageSize="PageSize">
-            <DataGridColumns>
-                <DataGridEntityActionsColumn TItem="MonitorDto">
-                    <DisplayTemplate>
-                        <EntityActions TItem="MonitorDto">
-                            <EntityAction TItem="MonitorDto"
-                                          RequiredPolicy="@KetumPermissions.Monitors.Default"
-                                          Clicked="() => OpenDetailMonitor(context)"
-                                          Text="@L["Detail"]">
-                            </EntityAction>
-                            <EntityAction TItem="MonitorDto"
-                                          RequiredPolicy="@KetumPermissions.Monitors.Update"
-                                          Clicked="() => OpenEditMonitorModal(context)"
-                                          Text="@L["Edit"]">
-                            </EntityAction>
-                            <EntityAction TItem="MonitorDto"
-                                          RequiredPolicy="@KetumPermissions.Monitors.Delete"
-                                          Clicked="() => DeleteMonitorAsync(context)"
-                                          ConfirmationMessage="@(() => L["DeleteConfirmationMessage"])"
-                                          Text="@L["Delete"]">
-                            </EntityAction>
-                        </EntityActions>
-                    </DisplayTemplate>
-                </DataGridEntityActionsColumn>
-
-                <DataGridColumn TItem="MonitorDto"
-                                Field="Name"
-                                Caption="@L["Name"]">
-                    <DisplayTemplate>
-                        @context.Name.ToUpperInvariant()
-                    </DisplayTemplate>
-                </DataGridColumn>
-                
-                <DataGridColumn TItem="MonitorDto"
-                                Field="MonitorStep.Url"
-                                Caption="@L["Url"]">
-                    <DisplayTemplate>
-                        <div role="tooltip" data-tooltip="@context.MonitorStep.Url">
-                            @context.MonitorStep.Url.TruncateWithPostfix(50).ToLower()
-                        </div>
-                    </DisplayTemplate>
-                </DataGridColumn>
-                
-                <DataGridColumn TItem="MonitorDto"
-                                Field="MonitorStep.Interval"
-                                Caption="@L["Interval"]">
-                    <DisplayTemplate>
-                        @context.MonitorStep.Interval
-                    </DisplayTemplate>
-                </DataGridColumn>
-                
-                <DataGridColumn TItem="MonitorDto"
-                                Field="MonitorStatus"
-                                Caption="@L["MonitorStatus"]">
-                    <DisplayTemplate>
-                        @{
-                            var status = (context as MonitorDto).MonitorStatus;
-
-                            if (status is MonitorStatusTypes.Up)
-                            {
-                                <Badge Color="Color.Success">@($"{status}")</Badge>
-                                <i class="fas fa-arrow-circle-up"></i>
-                            }else if (status is MonitorStatusTypes.Down)
-                            {
-                                <Badge Color="Color.Danger">@($"{status}")</Badge>
-                                <i class="fas fa-arrow-circle-down"></i>
+                  PageSize="PageSize"
+                  Responsive="true"
+                  Striped="true"
+                  Sortable="false">
+            <ChildContent>
+                <DataGridColumns>
+                    <DataGridEntityActionsColumn TItem="MonitorDto">
+                        <DisplayTemplate>
+                            <EntityActions TItem="MonitorDto">
+                                <EntityAction TItem="MonitorDto"
+                                              RequiredPolicy="@KetumPermissions.Monitors.Default"
+                                              Clicked="() => OpenDetailMonitor(context)"
+                                              Text="@L["Detail"]">
+                                </EntityAction>
+                                <EntityAction TItem="MonitorDto"
+                                              RequiredPolicy="@KetumPermissions.Monitors.Update"
+                                              Clicked="() => OpenEditMonitorModal(context)"
+                                              Text="@L["Edit"]">
+                                </EntityAction>
+                                <EntityAction TItem="MonitorDto"
+                                              RequiredPolicy="@KetumPermissions.Monitors.Delete"
+                                              Clicked="() => DeleteMonitorAsync(context)"
+                                              ConfirmationMessage="@(() => L["DeleteConfirmationMessage"])"
+                                              Text="@L["Delete"]">
+                                </EntityAction>
+                            </EntityActions>
+                        </DisplayTemplate>
+                    </DataGridEntityActionsColumn>
+                    
+                    <DataGridColumn TItem="MonitorDto"
+                                    Field="Name"
+                                    Caption="@L["Name"]"
+                                    TextAlignment="TextAlignment.Center"
+                                    HeaderTextAlignment="TextAlignment.Center">
+                        <DisplayTemplate>
+                            @context.Name.ToUpperInvariant()
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                                    
+                    <DataGridColumn TItem="MonitorDto"
+                                    Field="MonitorStep.Url"
+                                    Caption="@L["Url"]"
+                                    TextAlignment="TextAlignment.Center"
+                                    HeaderTextAlignment="TextAlignment.Center">
+                        <DisplayTemplate>
+                            <div role="tooltip" data-tooltip="@context.MonitorStep.Url">
+                                <a href="@context.MonitorStep.Url" alt="monitored-url">@context.MonitorStep.Url.TruncateWithPostfix(50).ToLower()</a>
+                            </div>
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                                    
+                    <DataGridColumn TItem="MonitorDto"
+                                    Field="MonitorStep.Interval"
+                                    Caption="@L["Interval"]"
+                                    TextAlignment="TextAlignment.Center"
+                                    HeaderTextAlignment="TextAlignment.Center">
+                        <DisplayTemplate>
+                            @context.MonitorStep.Interval
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                                    
+                    <DataGridColumn TItem="MonitorDto"
+                                    Field="MonitorStatus"
+                                    Caption="@L["MonitorStatus"]"
+                                    TextAlignment="TextAlignment.Center"
+                                    HeaderTextAlignment="TextAlignment.Center">
+                        <DisplayTemplate>
+                            @{
+                                var status = (context as MonitorDto).MonitorStatus;
+                    
+                                if (status is MonitorStatusTypes.Up)
+                                {
+                                    <Badge Color="Color.Success">@($"{status}")</Badge>
+                                    <i class="fas fa-arrow-circle-up"></i>
+                                }else if (status is MonitorStatusTypes.Down)
+                                {
+                                    <Badge Color="Color.Danger">@($"{status}")</Badge>
+                                    <i class="fas fa-arrow-circle-down"></i>
+                                }
+                                else
+                                {
+                                    <Badge Color="Color.Warning">@($"{status}")</Badge>
+                                    <i class="fas fa-exclamation-circle"></i>
+                                }
                             }
-                            else
-                            {
-                                <Badge Color="Color.Warning">@($"{status}")</Badge>
-                                <i class="fas fa-exclamation-circle"></i>
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                    
+                    <DataGridColumn TItem="MonitorDto"
+                                    Field="LastModificationTime"
+                                    Caption="@L["LastModificationTime"]"
+                                    TextAlignment="TextAlignment.Center"
+                                    HeaderTextAlignment="TextAlignment.Center">
+                        <DisplayTemplate>
+                            @{
+                                var date = (context as MonitorDto)?.LastModificationTime;
+                    
+                                if (date is not null)
+                                {
+                                    <div role="tooltip" data-tooltip="@context.LastModificationTime">
+                                        @($"{date.Value.ToShortDateString()}")
+                                    </div>
+                                }
+                                else
+                                {
+                                    @L["ThisIsQuiteNew"]
+                                }
                             }
-                        }
-                    </DisplayTemplate>
-                </DataGridColumn>
-
-                <DataGridColumn TItem="MonitorDto"
-                                Field="LastModificationTime"
-                                Caption="@L["LastModificationTime"]">
-                    <DisplayTemplate>
-                        @{
-                            var date = (context as MonitorDto)?.LastModificationTime;
-
-                            if (date is not null)
-                            {
-                                <div role="tooltip" data-tooltip="@context.LastModificationTime">
-                                    @($"{date.Value.ToShortDateString()}")
-                                </div>
-                            }
-                            else
-                            {
-                                @L["This is quite new"]
-                                ;
-                            }
-                        }
-                    </DisplayTemplate>
-                </DataGridColumn>
-
-            </DataGridColumns>
+                        </DisplayTemplate>
+                    </DataGridColumn>
+                </DataGridColumns>
+            </ChildContent>
+            <EmptyTemplate>
+                <div class="box text-center">
+                    <p>@L["NoMonitorsAreFound"].Value</p>
+                </div>
+            </EmptyTemplate>
+            <LoadingTemplate>
+                <div class="box text-center">
+                    <progress class="progress is-small is-primary" max="100"/>
+                </div>
+            </LoadingTemplate>
         </DataGrid>
     </CardBody>
 </Card>
