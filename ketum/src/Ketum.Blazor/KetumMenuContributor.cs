@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ketum.Localization;
+using Ketum.Permissions;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.Users;
@@ -30,7 +31,7 @@ namespace Ketum.Blazor
             }
         }
 
-        private Task ConfigureMainMenuAsync(MenuConfigurationContext context)
+        private async Task ConfigureMainMenuAsync(MenuConfigurationContext context)
         {
             var l = context.GetLocalizer<KetumResource>();
 
@@ -44,7 +45,16 @@ namespace Ketum.Blazor
                 )
             );
 
-            return Task.CompletedTask;
+            if (await context.IsGrantedAsync(KetumPermissions.Monitors.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem(
+                        "Ketum.Monitors",
+                        l["Menu:Monitors"],
+                        url: "/monitors",
+                        "fas fa-chart-line")
+                );
+            }
         }
 
         private Task ConfigureUserMenuAsync(MenuConfigurationContext context)

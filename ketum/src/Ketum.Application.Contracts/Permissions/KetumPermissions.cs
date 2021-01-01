@@ -6,7 +6,7 @@
 
         public static class Monitors
         {
-            public const string MonitorGroup = GroupName + ".Monitors";
+            private const string MonitorGroup = GroupName + ".Monitors";
 
             public const string Default = MonitorGroup;
             public const string Create = Default + ".Create";
