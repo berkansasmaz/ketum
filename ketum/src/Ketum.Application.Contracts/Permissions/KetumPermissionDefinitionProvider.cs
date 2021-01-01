@@ -8,7 +8,7 @@ namespace Ketum.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var monitor = context.AddGroup(KetumPermissions.Monitors.MonitorGroup, L("Permission:Monitors"));
+            var monitor = context.AddGroup(KetumPermissions.Monitors.Default, L("Permission:Monitors"));
 
             var communityArticles = monitor.AddPermission(KetumPermissions.Monitors.Default, L("Permission:Monitors"));
             communityArticles.AddChild(KetumPermissions.Monitors.Create, L("Permission:Create"));

@@ -20,11 +20,13 @@ namespace Ketum.Blazor.Pages
         private GetMonitorRequestInput Filter { get; set; }
         private LineChart<double> MonitorUpTimeChart { get; set; }
         private LineChart<double> MonitorLoadTimeChart { get; set; }
+        private List<string> Labels;
 
         private List<BreadcrumbItem> BreadcrumbItems;
 
         public MonitorDetails()
         {
+            MonitorWithDetails = new MonitorWithDetailsDto();
             MonitorUpTimeChart = new LineChart<double>();
             MonitorLoadTimeChart = new LineChart<double>();
             Filter = new GetMonitorRequestInput
@@ -33,7 +35,7 @@ namespace Ketum.Blazor.Pages
                 MaxResultCount = 20
             };
             BreadcrumbItems = new List<BreadcrumbItem>();
-            Labels = new string[20];
+            Labels = new List<string>();
         }
 
         protected override async Task OnInitializedAsync()
@@ -71,18 +73,13 @@ namespace Ketum.Blazor.Pages
                 await MonitorUpTimeChart.Clear();
                 await MonitorLoadTimeChart.Clear();
 
-                FillLabels();
+                if (MonitorWithDetails.DateTimes.Any())
+                {
+                    Labels = MonitorWithDetails.DateTimes;
+                }
 
                 await MonitorUpTimeChart.AddLabelsDatasetsAndUpdate(Labels, GetUpTimeLineChartDataset());
                 await MonitorLoadTimeChart.AddLabelsDatasetsAndUpdate(Labels, GetLoadTimeLineChartDataset());
-            }
-        }
-        
-        private void FillLabels()
-        {
-            if (MonitorWithDetails.DateTimes.Any())
-            {
-                Labels = MonitorWithDetails.DateTimes.ToArray();
             }
         }
 
@@ -90,10 +87,10 @@ namespace Ketum.Blazor.Pages
         {
             return new LineChartDataset<double>
             {
-                Label = "UpTimes",
+                Label = L["Uptimes"].Value,
                 Data = MonitorWithDetails.UpTimes,
-                BackgroundColor = backgroundColors,
-                BorderColor = borderColors,
+                BackgroundColor = new List<string> { ChartColor.FromRgba( 97, 1, 238, 0.2f ) },
+                BorderColor = new List<string> { ChartColor.FromRgba( 97, 1, 238, 1f ) },
                 Fill = true,
                 PointRadius = 2,
                 BorderDash = new List<int> { }
@@ -104,19 +101,14 @@ namespace Ketum.Blazor.Pages
         {
             return new LineChartDataset<double>
             {
-                Label = "LoadTimes",
+                Label = L["LoadTime"].Value,
                 Data = MonitorWithDetails.LoadTimes,
-                BackgroundColor = backgroundColors,
-                BorderColor = borderColors,
+                BackgroundColor =  new List<string> { ChartColor.FromRgba( 0, 218, 197, 0.2f ) },
+                BorderColor =  new List<string> { ChartColor.FromRgba( 0, 218, 197, 1f ) },
                 Fill = true,
                 PointRadius = 2,
                 BorderDash = new List<int> { }
             };
         }
-        
-        // TODO: Delete or edit lines below
-        private string[] Labels;
-        List<string> backgroundColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 0.2f ), ChartColor.FromRgba( 54, 162, 235, 0.2f ), ChartColor.FromRgba( 255, 206, 86, 0.2f ), ChartColor.FromRgba( 75, 192, 192, 0.2f ), ChartColor.FromRgba( 153, 102, 255, 0.2f ), ChartColor.FromRgba( 255, 159, 64, 0.2f ) };
-        List<string> borderColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 1f ), ChartColor.FromRgba( 54, 162, 235, 1f ), ChartColor.FromRgba( 255, 206, 86, 1f ), ChartColor.FromRgba( 75, 192, 192, 1f ), ChartColor.FromRgba( 153, 102, 255, 1f ), ChartColor.FromRgba( 255, 159, 64, 1f ) };
     }
 }
