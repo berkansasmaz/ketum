@@ -85,7 +85,7 @@ This will create a new database based on the configured connection string.
 
 This is the HTTP API that is used by the web application.
 
-3. Lastly, ensure that the `Ketum.Web` project is the startup project and run the application which will open a **welcome** page in your browser.
+3. Lastly, ensure that the `Ketum.Blazor` project is the startup project and run the application which will open a **welcome** page in your browser.
 
 ![home-page](./home-page.png)
 
