@@ -4,7 +4,7 @@
 
 Ketum's e-mail notification system was developed based on ABP's e-mail service. So, it's documentation is valid in KETUM too.
 
-Below you can find some useful content.
+Below you can find some useful content:
 
 [For e-mail settings](https://docs.abp.io/en/abp/latest/Emailing#email-settings)<br>
 [For MailKit integration](https://docs.abp.io/en/abp/latest/MailKit) <br>
