@@ -1,4 +1,4 @@
-# Screenshots
+# ScreenShots
 
 ## Home
 
