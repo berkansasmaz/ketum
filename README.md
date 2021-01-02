@@ -20,7 +20,7 @@ Never miss any problem on your website with our E-mail notifications.
 
 ## Install and Run
 
-Please follow [this](./docs/Get-Started/getting-started.md) document to run Ketum.
+Please follow [this](./docs/Get-Started/getting-started.md) document to run Ketum. If you want to see screenshots of the application, you can check it [here](https://github.com/berkansasmaz/ketum/blob/master/docs/ScreenShots/Index.md).
 
 > NOTE: Ketum was created using the ABP framework startup template. So it fully supports ABP framework documentation. Please check the [ABP framework documentation](https://docs.abp.io/en/abp/latest) whenever you have any questions.
 
