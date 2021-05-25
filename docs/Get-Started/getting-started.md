@@ -69,7 +69,7 @@ Open the **Package Manager Console**, select `Ketum.EntityFrameworkCore.DbMigrat
 
 This will create a new database based on the configured connection string.
 
-> **Using the `.DbMigrator` tool is the suggested way**, because it also seeds the initial data to be able to properly run the web application.
+> **Using the `Ketum.DbMigrator` tool is the suggested way**, because it also seeds the initial data to be able to properly run the web application.
 >
 > If you just use the `Update-Database` command, you will have an empty database, so you can not login to the application since there is no initial admin user in the database. You can use the `Update-Database` command in development time when you don't need to seed the database. However, using the `Ketum.DbMigrator` application is easier and you can always use it to migrate the schema and seed the database.
 
