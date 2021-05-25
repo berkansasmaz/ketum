@@ -1,6 +1,8 @@
 # Ketum
 ![build and test](https://github.com/berkansasmaz/ketum/workflows/build%20and%20test/badge.svg)
 
+> Ketum is where I go deep by implementing what I learned. I try to make sure each release is production-ready, but still don't put it into production without testing the app!
+
 Ketum is a **cross-platform and open-source application** that enables you to easily test and monitor your website’s health.
 
 Monitor your Website and APIs from your on-premises server and never miss any problem on your website with our E-mail notifications.
