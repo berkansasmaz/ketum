@@ -6,6 +6,7 @@ body:
     attributes:
       value: |
         We welcome bug reports! This template will help us gather the information we need to start the triage process.
+        
         Please keep in mind that the GitHub issue tracker is not intended as a general support forum, but for reporting **non-security** bugs and feature requests.
         If you believe you have an issue that affects the SECURITY of the platform, please do NOT create an issue and instead email your issue details to info@abp.io.
         For other types of questions, consider using [StackOverflow](https://stackoverflow.com/questions/tagged/abp).
