@@ -70,12 +70,14 @@ body:
   - type: markdown
     attributes:
       value: |
+        ---
+        ### Configuration
         Please provide more information on your ABP configuration.
   - type: input
     id: version
     attributes:
       label: Version
-      description: Which version of ABP is the code running on
+      description: Which version of ABP is the code running on?
       placeholder: Version
     validations:
       required: true
@@ -122,7 +124,11 @@ body:
       description: What OS and version, and what distro if applicable
       placeholder: Operation System
     validations:
-      required: true
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        ---
   - type: textarea
     id: other-info
     attributes:
