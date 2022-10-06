@@ -7,6 +7,7 @@ body:
       value: |
         We welcome bug reports! This template will help us gather the information we need to start the triage process.
   - type: checkboxes
+    id: searched
     attributes:
       label: Is there an existing issue for this?
       description: Please search to see if an issue already exists for the bug you encountered ([aspnetcore/issues](https://github.com/dotnet/aspnetcore/issues?q=is%3Aissue)). More information on our issue management policies is available [here](https://aka.ms/aspnet/issue-policies).
