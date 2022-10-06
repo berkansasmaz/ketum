@@ -86,7 +86,7 @@ body:
     validations:
       required: false
   - type: textarea
-    id: configuration
+    id: version
     attributes:
       label: Version
       description: Which version of ABP is the code running on
@@ -94,7 +94,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: configuration
+    id: Operation-System
     attributes:
       label: Operation System
       description: What OS and version, and what distro if applicable
@@ -102,7 +102,7 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: configuration
+    id: user-interface
     attributes:
       label: User Interface
       description: Which user interface of ABP is related to the problem?
@@ -117,7 +117,7 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: configuration
+    id: database-provider
     attributes:
       label: Database Provider
       description: Which database provider of ABP is used?
@@ -127,7 +127,7 @@ body:
     validations:
       required: false
   - type: dropdown
-    id: configuration
+    id: structure
     attributes:
       label: Tiered or separate authentication server
       description: Which structure of ABP is specified?
