@@ -10,7 +10,7 @@ body:
     id: searched
     attributes:
       label: Is there an existing issue for this?
-      description: Please search to see if an issue already exists for the bug you encountered ([aspnetcore/issues](https://github.com/dotnet/aspnetcore/issues?q=is%3Aissue)). More information on our issue management policies is available [here](https://aka.ms/aspnet/issue-policies).
+      description: Please search to see if an issue already exists for the bug you encountered ([abp/issues](https://github.com/abpframework/abp/issues)).
       options:
       - label: I have searched the existing issues
         required: true
@@ -71,34 +71,12 @@ body:
     attributes:
       value: |
         Please provide more information on your ABP configuration.
-  - type: textarea
-    id: configuration
-    attributes:
-      label: Version
-      description: |
-        Please provide more information on your ABP configuration:
-          * Which version of ABP is the code running on?
-          * What OS and version, and what distro if applicable?
-          * What is the architecture (x64, x86, ARM, ARM64)?
-          * Do you know whether it is specific to that configuration?
-          * If you're using Blazor, which web browser(s) do you see this issue in?
-      placeholder: Configuration
-    validations:
-      required: false
-  - type: textarea
+  - type: input
     id: version
     attributes:
       label: Version
       description: Which version of ABP is the code running on
       placeholder: Version
-    validations:
-      required: true
-  - type: textarea
-    id: Operation-System
-    attributes:
-      label: Operation System
-      description: What OS and version, and what distro if applicable
-      placeholder: Operation System
     validations:
       required: true
   - type: dropdown
@@ -125,7 +103,7 @@ body:
         - EF Core
         - MongoDB
     validations:
-      required: false
+      required: true
   - type: dropdown
     id: structure
     attributes:
@@ -136,7 +114,15 @@ body:
         - Tiered
         - Separate Auth Server
     validations:
-      required: false
+      required: true
+  - type: input
+    id: Operation-System
+    attributes:
+      label: Operation System
+      description: What OS and version, and what distro if applicable
+      placeholder: Operation System
+    validations:
+      required: true
   - type: textarea
     id: other-info
     attributes:
