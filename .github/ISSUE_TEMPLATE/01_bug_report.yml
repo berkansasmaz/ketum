@@ -70,8 +70,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ---
-        ### Configuration
+        ## Configuration
         Please provide more information on your ABP configuration.
   - type: input
     id: version
