@@ -105,9 +105,9 @@ body:
       label: Database Provider
       description: Which database provider of ABP is used?
       options:
-        - None/Others
-        - EF Core
+        - EF Core (Default)
         - MongoDB
+        - None/Others
     validations:
       required: true
   - type: dropdown
