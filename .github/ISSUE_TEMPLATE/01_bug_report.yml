@@ -129,7 +129,7 @@ body:
       options:
         - Windows (Default)
         - Linux
-        - MacOS
+        - macOS
         - Others
     validations:
       required: true
