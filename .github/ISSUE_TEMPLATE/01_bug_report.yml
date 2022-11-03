@@ -34,7 +34,7 @@ body:
         Please include minimal steps to reproduce the problem if possible. E.g.: the smallest possible code snippet; or a small project, with steps to run it. If possible include text as text rather than screenshots (so it shows up in searches).
       placeholder: Minimal Reproduction
     validations:
-      required: true
+      required: false
   - type: textarea
     id: expected-behavior
     attributes:
@@ -43,7 +43,7 @@ body:
         Provide a description of the expected behavior.
       placeholder: Expected behavior
     validations:
-      required: true
+      required: false
   - type: textarea
     id: actual-behavior
     attributes:
@@ -52,7 +52,7 @@ body:
         Provide a description of the actual behavior observed. If applicable please include any error messages, exception stacktraces or memory dumps.
       placeholder: Actual behavior
     validations:
-      required: true
+      required: false
   - type: textarea
     id: regression
     attributes:
@@ -105,6 +105,7 @@ body:
       label: Database Provider
       description: Which database provider of ABP is used?
       options:
+        - None/Others
         - EF Core
         - MongoDB
     validations:
@@ -120,12 +121,16 @@ body:
         - Separate Auth Server
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: Operation-System
     attributes:
       label: Operation System
-      description: What OS and version, and what distro if applicable
-      placeholder: Operation System
+      description: What is the operation system of the server?
+      options:
+        - Windows (Default)
+        - Linux
+        - MacOS
+        - Others
     validations:
       required: false
   - type: markdown
