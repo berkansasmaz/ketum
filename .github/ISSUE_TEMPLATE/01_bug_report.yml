@@ -132,7 +132,7 @@ body:
         - MacOS
         - Others
     validations:
-      required: false
+      required: true
   - type: markdown
     attributes:
       value: |
