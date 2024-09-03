@@ -57,19 +57,30 @@ body:
       label: Solution Configuration
       description: |
         If there is an open solution, what are the configurations of the solution? 
-        🧐 Hint: You can see all the information about the solution from the Configuration screen, which opens when you right-click on the [solution](https://abp.io/docs/latest/studio/solution-explorer#solution) and click on the Solution Configuration button.
+        🧐 Hint: You can see all the information about your solution from the configuration window, which opens when you right-click on the [solution](https://abp.io/docs/latest/studio/solution-explorer#solution) and click on the Solution Configuration button.
       placeholder: |
         - **Template**: app
+
         - **Created ABP Studio Version**: 0.7.9
+
         - **Tiered**: No
+
         - **UI Framework**: mvc
+
         - **Theme**: leptonx
+
         - **Theme Style**: system
+
         - **Database Provider**: ef
+
         - **Database Management System**: sqlserver
+
         - **Separate Tenant Schema**: No
+
         - **Mobile Framework**: none
+
         - **Public Website**: No
+        
         - **Optional Modules**:
           * GDPR
           * TextTemplateManagement
