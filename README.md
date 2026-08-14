@@ -1,3 +1,5 @@
+Status: maintenance mode. Last real work 2024. Built as an ABP learning product.
+
 # Ketum
 ![build and test](https://github.com/berkansasmaz/ketum/workflows/build%20and%20test/badge.svg)
 
